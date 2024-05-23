@@ -39,7 +39,7 @@ exports.createUser = async (payload) => {
   })
 
   // exp 15 menit
-  const otpExp = new Date(Date.now() + 15 * 60 * 1000);
+  const otpExp = new Date(Date.now() + 15 * 60 * 1000)
 
   payload.otp = otp
   payload.otpExp = otpExp
@@ -47,30 +47,28 @@ exports.createUser = async (payload) => {
   return data = await user.create(payload) 
 }
 
-
 // Get User : Email
 exports.findUserByEmail = async (email) => {
   return await user.findOne({where : { email }})
 }
 
-
 // verify OTP
 exports.verifyOtp = async (email, otp) => {
-  const data = await user.findOne({ where: { email } });
+  const data = await user.findOne({ where: { email } })
   if (!data) {
-    throw new Error('User not found');
+    throw new Error('User not found')
   }
 
   if (data.otp !== otp) {
-    throw new Error('Invalid OTP');
+    throw new Error('Invalid OTP')
   }
 
   if (data.otpExp <= new Date()) {
-    throw new Error('Expired OTP');
+    throw new Error('Expired OTP')
   }
 
-  data.otp = null;
-  data.otpExp = null;
-  await data.save();
-  return data;
-};
+  data.otp = null
+  data.otpExp = null
+  await data.save()
+  return data
+}
