@@ -1,4 +1,4 @@
-const { verifyOtp, register, login, profile, updateUser, deleteUser, resendOtp } = require("../services/auth")
+const { verifyOtp, register, login, profile, updateUser, deleteUser, resendOtp, forgotPassword, resetPassword, googleLogin } = require("../services/auth")
 
 // */register
 exports.register = async (req, res, next) => {
@@ -102,7 +102,7 @@ exports.verifyOtp = async (req, res, next) => {
   }
 }
 
-//  */resendOtp
+//  */resend-otp
 exports.resendOtp = async (req, res, next) => {
   try {
     const { id } = req.user;
@@ -148,6 +148,62 @@ exports.login = async (req, res, next) => {
     next(error)
   }
 }
+
+exports.googleLogin = async (req, res, next) => {
+  try {
+    // get the body
+    const { access_token } = req.body;
+
+    if (!access_token) {
+      return next({
+        statusCode: 400,
+        message: "Access token must be provided!",
+      });
+    }
+
+    // login with google logic
+    const data = await googleLogin(access_token);
+
+    res.status(200).json({
+      message: "Success",
+      data,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// */forgot-pass
+exports.forgotPassword = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const link = await forgotPassword(email);
+    res.status(200).json({ 
+      message: 'Password reset link sent successfully', 
+      link 
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// */reset-pass
+exports.resetPassword = async (req, res, next) => {
+  try {
+    const { id, token } = req.params;
+    const { password } = req.body;
+    if (!password || password == "") {
+      return next({
+        message: "Password Must Be Field",
+        statusCode: 400,
+      });
+    }
+    await resetPassword(id, token, password);
+    res.status(200).json({ message: 'Password Reset Successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // */profile
 exports.profile = async (req, res, next) => {

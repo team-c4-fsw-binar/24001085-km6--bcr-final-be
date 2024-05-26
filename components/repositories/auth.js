@@ -5,6 +5,7 @@ const { uploader } = require("../../src/helper/cloudinary");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const path = require("path");
+const axios = require("axios")
 const otpGenerator = require("otp-generator");
 
 // Create User
@@ -32,7 +33,9 @@ exports.createUser = async (payload) => {
 
   // create otp
   const otp = otpGenerator.generate(6, {
-    upperCaseAlphabets: true,
+    digits: true,
+    upperCaseAlphabets: false,
+    lowerCaseAlphabets: false,
     specialChars: false,
   });
 
@@ -55,7 +58,9 @@ exports.resendOtp = async (id) => {
   }
 
   const otp = otpGenerator.generate(6, {
-    upperCaseAlphabets: true,
+    digits: true,
+    upperCaseAlphabets: false,
+    lowerCaseAlphabets: false,
     specialChars: false,
   });
 
@@ -72,13 +77,22 @@ exports.resendOtp = async (id) => {
 exports.findUserByEmail = async (email) => await User.findOne({ where: { email }});
 
 // Find User : ID
-exports.findUserById = async (id) => {
-  if (typeof id !== 'number' || id <= 0) {
-    throw new Error('Invalid user ID');
-  }
+exports.findUserById = async (id) => await User.findOne({ where: { id } });
 
-  return await User.findOne({ where: { id } });
+// get user data using access_token from google
+exports.getGoogleAccessTokenData = async (accessToken) => {
+  const response = await axios.get(`https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`)
+  return response.data
 }
+
+// reset Pass
+exports.updateUserPassword = async (id, password) => {
+  // encrypt the pass
+  password = bcrypt.hashSync(password, 10);
+
+  await User.update({ password }, { where: { id } });
+  return await User.findOne({ where: { id } });
+};
 
 // verify OTP
 exports.verifyOtp = async (email, otp) => {
@@ -105,6 +119,10 @@ exports.verifyOtp = async (email, otp) => {
 
 // Update User
 exports.updateUser = async(id, payload) => {
+
+  // encrypt the pass
+  payload.password = bcrypt.hashSync(payload.password, 10);
+  
   const { photo } = payload
   
   if (photo) {
