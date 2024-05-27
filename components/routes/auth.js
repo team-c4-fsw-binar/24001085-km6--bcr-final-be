@@ -1,7 +1,7 @@
 const { register, verifyOtp, login, profile, edit, delUser, resendOtp, forgotPassword, resetPassword, googleLogin } = require('../controllers/auth')
 const { authMiddleware } = require('../../src/middleware/auth')
 
-const router = require('express').Router()
+const router = express.Router();
 
 router.post('/register', register)
 router.post('/verify-otp', verifyOtp)
@@ -18,4 +18,4 @@ router
   .put(authMiddleware(), edit)
   .delete(authMiddleware(), delUser)
 
-module.exports = router
+module.exports = router;
