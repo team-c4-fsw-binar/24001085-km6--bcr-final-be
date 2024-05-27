@@ -37,14 +37,17 @@ exports.updateSeat = async (id, payload) => {
   if (data.length > 0) {
     return data[0];
   }
-  return data;
+  throw new Error(`Seat is not found`);
 };
 
 exports.deleteSeat = async (id) => {
-  await Seat.destroy({
+  const deletedCount = await Seat.destroy({
     where: {
       id,
     },
   });
+  if (deletedCount === 0) {
+    throw new Error(`Seat is not found`);
+  }
   return null;
 };

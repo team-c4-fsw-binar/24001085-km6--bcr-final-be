@@ -34,7 +34,6 @@ exports.createPassenger = async (req, res, next) => {
       identity_number,
       publisher_country,
       expired_at,
-      booking_id,
     } = req.body;
     if (!name || name == "") {
       return next({
@@ -72,12 +71,6 @@ exports.createPassenger = async (req, res, next) => {
         statusCode: 400,
       });
     }
-    if (!booking_id || booking_id == "") {
-      return next({
-        message: "Booking ID must be provided",
-        statusCode: 400,
-      });
-    }
 
     const data = await passengerUsecase.createPassenger({
       name,
@@ -86,7 +79,6 @@ exports.createPassenger = async (req, res, next) => {
       identity_number,
       publisher_country,
       expired_at,
-      booking_id,
     });
     res.status(201).json({
       message: "Success",
@@ -107,7 +99,6 @@ exports.updatePassenger = async (req, res, next) => {
       identity_number,
       publisher_country,
       expired_at,
-      booking_id,
     } = req.body;
     if (!name || name == "") {
       return next({
@@ -145,12 +136,6 @@ exports.updatePassenger = async (req, res, next) => {
         statusCode: 400,
       });
     }
-    if (!booking_id || booking_id == "") {
-      return next({
-        message: "Booking ID must be provided",
-        statusCode: 400,
-      });
-    }
 
     const data = await passengerUsecase.updatePassenger(id, {
       name,
@@ -159,7 +144,6 @@ exports.updatePassenger = async (req, res, next) => {
       identity_number,
       publisher_country,
       expired_at,
-      booking_id,
     });
     res.status(201).json({
       message: "Success",

@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       identity_number: DataTypes.STRING,
       publisher_country: DataTypes.STRING,
       expired_at: DataTypes.DATE,
-      booking_id: DataTypes.INTEGER,
     },
     {
       sequelize,
