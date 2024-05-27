@@ -39,3 +39,14 @@ exports.sendOtpEmail = async (email, otp) => {
 
   await transporter.sendMail(mailOptions);
 };
+
+exports.sendResetPasswordEmail = async (email, link) => {
+  const mailOptions = {
+    from: process.env.EMAIL_USERNAME,
+    to: email,
+    subject: 'Password Reset',
+    text: `Click on the following link to reset your password: ${link}`,
+  };
+
+  await transporter.sendMail(mailOptions);
+};

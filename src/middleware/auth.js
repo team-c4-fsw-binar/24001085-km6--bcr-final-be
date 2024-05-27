@@ -1,7 +1,7 @@
 const { getTokenFromHeaders, extractToken } = require("../helper/auth")
-const { profile } = require("../../server/services/auth")
+const { profile } = require("../../components/services/auth")
 
-exports.authMiddelware = () => async (req, res, next) => {
+exports.authMiddleware = () => async (req, res, next) => {
   try {
     // get token form headers
     const token = getTokenFromHeaders(req?.headers)
