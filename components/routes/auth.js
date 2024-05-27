@@ -1,21 +1,32 @@
-const { register, verifyOtp, login, profile, edit, delUser, resendOtp, forgotPassword, resetPassword, googleLogin } = require('../controllers/auth')
-const { authMiddleware } = require('../../src/middleware/auth')
+const {
+  register,
+  verifyOtp,
+  login,
+  profile,
+  edit,
+  delUser,
+  resendOtp,
+  forgotPassword,
+  resetPassword,
+  googleLogin,
+} = require("../controllers/auth");
+const { authMiddleware } = require("../../src/middleware/auth");
+const express = require("express");
 
 const router = express.Router();
 
-router.post('/register', register)
-router.post('/verify-otp', verifyOtp)
-router.post('/login', login)
-router.post('/google-login', googleLogin)
-router.post('/forgot-password', forgotPassword)
-router.post('/reset-password/:id/:token', resetPassword)
-router.post('/resend-otp', authMiddleware(), resendOtp)
-
+router.post("/register", register);
+router.post("/verify-otp", verifyOtp);
+router.post("/login", login);
+router.post("/google-login", googleLogin);
+router.post("/forgot-password", forgotPassword);
+router.post("/reset-password/:id/:token", resetPassword);
+router.post("/resend-otp", authMiddleware(), resendOtp);
 
 router
-  .route('/')
+  .route("/")
   .get(authMiddleware(), profile)
   .put(authMiddleware(), edit)
-  .delete(authMiddleware(), delUser)
+  .delete(authMiddleware(), delUser);
 
 module.exports = router;
