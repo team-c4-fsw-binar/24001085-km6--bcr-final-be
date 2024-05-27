@@ -37,14 +37,19 @@ exports.updatePayment = async (id, payload) => {
   if (data.length > 0) {
     return data[0];
   }
-  return data;
+  throw new Error(`Payment is not found`);
 };
 
 exports.deletePayment = async (id) => {
-  await Payment.destroy({
+  const deletedCount = await Payment.destroy({
     where: {
       id,
     },
   });
+
+  if (deletedCount === 0) {
+    throw new Error(`Payment is not found`);
+  }
+
   return null;
 };

@@ -37,14 +37,17 @@ exports.updatePassenger = async (id, payload) => {
   if (data.length > 0) {
     return data[0];
   }
-  return data;
+  throw new Error(`Passenger is not found`);
 };
 
 exports.deletePassenger = async (id) => {
-  await Passenger.destroy({
+  const deletedCount = await Passenger.destroy({
     where: {
       id,
     },
   });
+  if (deletedCount === 0) {
+    throw new Error(`Passenger is not found`);
+  }
   return null;
 };

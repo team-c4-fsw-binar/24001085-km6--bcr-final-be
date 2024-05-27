@@ -33,9 +33,6 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: true,
       },
-      booking_id: {
-        type: Sequelize.INTEGER,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
