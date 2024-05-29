@@ -16,10 +16,4 @@ exports.readNotification = async (id) => {
   return notification;
 }
 
-exports.deleteNotification = async (id) => {
-  const result = await deleteNotification(id);
-  if (result === 0) {
-    throw new Error('Notification not found');
-  }
-  return { message: 'Notification deleted successfully' };
-}
+exports.deleteNotification = async (id) => await deleteNotification(id);

@@ -20,4 +20,7 @@ exports.readNotification = async (id, isRead) => {
 }
 
 // Menghapus notifikasi
-exports.deleteNotification = async (id) => await Notification.destroy({ where: { id } });
+exports.deleteNotification = async (id) => {
+  await Notification.destroy({ where: { id } });
+  return null
+}

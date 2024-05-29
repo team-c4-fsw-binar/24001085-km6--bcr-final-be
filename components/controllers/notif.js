@@ -1,6 +1,6 @@
 const { createNotification, getUserNotifications, readNotification, deleteNotification } = require("../services/notif");
 
-exports.createNotification = async (req, res) => {
+exports.createNotification = async (req, res, next) => {
   try {
     // get body
     const { type, title, content } = req.body
@@ -40,7 +40,7 @@ exports.createNotification = async (req, res) => {
   }
 }
 
-exports.getUserNotifications = async (req, res) => {
+exports.getUserNotifications = async (req, res, next) => {
   try {
     const data = await getUserNotifications(req.user.id);
     res.status(200).json({
@@ -52,7 +52,7 @@ exports.getUserNotifications = async (req, res) => {
   }
 }
 
-exports.readNotification = async (req, res) => {
+exports.readNotification = async (req, res, next) => {
   try {
     // get id by params
     const { id } = req.params
@@ -67,7 +67,7 @@ exports.readNotification = async (req, res) => {
   }
 }
 
-exports.delNotification = async (req, res) => {
+exports.delNotification = async (req, res, next) => {
   try {
     // get id by params
     const { id } = req.params
