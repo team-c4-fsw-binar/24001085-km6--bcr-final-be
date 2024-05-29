@@ -27,18 +27,19 @@ module.exports = {
         type: Sequelize.TEXT
       },
       phone: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
-      otp : {
+      otp: {
         allowNull: true,
         type: Sequelize.TEXT,
       },
       otpExp: {
         allowNull: true,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       isVerified: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
