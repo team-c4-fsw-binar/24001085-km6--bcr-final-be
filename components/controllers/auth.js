@@ -225,7 +225,7 @@ exports.profile = async (req, res, next) => {
 exports.edit = async (req, res, next) => {
   try {
     const { id } = req.user
-    const { name, email, phone } = req.body
+    const { name, email, phone, password } = req.body
     const { photo } = req.files
 
     if (!name || name == "") {
@@ -249,7 +249,7 @@ exports.edit = async (req, res, next) => {
       })
     }
 
-    const data = await updateUser(id, { name, email, photo, phone })
+    const data = await updateUser(id, { name, email, photo, phone, password })
 
     res.status(200).json({
       message : "Update Success",
