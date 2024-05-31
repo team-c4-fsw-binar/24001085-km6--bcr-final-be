@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       BookingPassenger.belongsTo(models.Passenger, {
         foreignKey: "passenger_id",
       });
-      BookingPassenger.belongsToMany(models.Booking, {
+      BookingPassenger.belongsTo(models.Booking, {
         foreignKey: "booking_id",
       });
     }
