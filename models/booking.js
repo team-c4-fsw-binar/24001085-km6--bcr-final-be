@@ -1,12 +1,14 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Booking extends Model {
     
     static associate(models) {
-      
+      Booking.belongsTo(models.User, { foreignKey : 'user_id' })
+      Booking.hasOne(models.Payment, { foreignKey : 'booking_id' })
+      Booking.belongsTo(models.Flight, { foreignKey : 'flight_id'})
+      Booking.hasMany(models.Seat, { foreignKey : 'booking_id' })
+      Booking.hasOne(models.BookingPessanger, { foreignKey : 'booking_id'})
     }
   }
   Booking.init({
