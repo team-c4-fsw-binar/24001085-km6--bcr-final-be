@@ -10,10 +10,10 @@ const {
   resetPassword,
   googleLogin,
 } = require("../controllers/auth");
-const { authMiddleware } = require("../../src/middleware/auth");
-const express = require("express");
 
-const router = express.Router();
+const { authMiddleware } = require("../../src/middleware/auth");
+
+const router = require("express").Router();
 
 router.post("/register", register);
 router.post("/verify-otp", verifyOtp);
