@@ -23,7 +23,7 @@ exports.createUser = async (payload) => {
     const imageUpload = await uploader(photo);
     payload.photo = imageUpload.secure_url;
   } else {
-    payload.photo = null;
+    payload.photo = "https://res.cloudinary.com/dqr9vycth/image/upload/profile_dummy.png";
   }
 
   // validation for picture from google login

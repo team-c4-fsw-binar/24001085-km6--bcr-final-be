@@ -28,7 +28,6 @@ exports.register = async (payload) => {
     delete user?.dataValues?.password;
   }
   
-
   // Buat token jwt
   const jwtPayload = { id: user[0]?.id || user?.id };
   const token = jsonwebtoken.sign(jwtPayload, process.env.JWT_SECRET, {
@@ -37,6 +36,13 @@ exports.register = async (payload) => {
 
   // Kirim email OTP
   await sendOtpEmail(user[0]?.dataValues?.email || user?.dataValues?.email, user[0]?.dataValues?.otp || user?.dataValues?.otp);
+
+  // delete otp from respons payload
+  if (user[0]) {
+    delete user[0]?.dataValues?.otp;
+  } else {
+    delete user?.dataValues?.otp;
+  }
 
   return {
     user, 

@@ -1,23 +1,23 @@
-const { getTokenFromHeaders, extractToken } = require("../helper/auth")
-const { profile } = require("../../components/services/auth")
+const { getTokenFromHeaders, extractToken } = require("../helper/auth");
+const { profile } = require("../../components/services/auth");
 
 exports.authMiddleware = () => async (req, res, next) => {
   try {
     // get token form headers
-    const token = getTokenFromHeaders(req?.headers)
-  
+    const token = getTokenFromHeaders(req?.headers);
+
     // extract token to get id user
-    const extractedToken = extractToken(token)
+    const extractedToken = extractToken(token);
 
     // get user detail by Id
-    const user = await profile(extractedToken?.id)
+    const user = await profile(extractedToken?.id);
 
     // push to request
-    req.user = user
+    req.user = user;
 
-    next()
+    next();
   } catch (error) {
-    error.statusCode = 401
-    next(error)
+    error.statusCode = 401;
+    next(error);
   }
-}
+};
