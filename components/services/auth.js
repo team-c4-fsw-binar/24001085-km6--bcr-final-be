@@ -156,7 +156,7 @@ exports.forgotPassword = async (email) => {
   });
 
   // link deploy for reset pass route
-  const link = `${process.env.BACKEND_URL}/api/auth/reset-password/${user.id}/${token}`;
+  const link = `${process.env.FRONTEND_URL}/api/auth/reset-password/${user.id}/${token}`;
 
   await sendResetPasswordEmail(email, link);
 
