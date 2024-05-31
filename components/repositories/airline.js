@@ -1,10 +1,6 @@
 const { Airline } = require("../../models");
 
-exports.getAirlines = async () => {
-  const airlines = await Airline.findAll();
-
-  return airlines;
-};
+exports.getAirlines = async () => await Airline.findAll();
 
 exports.getAirlineById = async (id) => {
   const selectedAirline = await Airline.findOne({

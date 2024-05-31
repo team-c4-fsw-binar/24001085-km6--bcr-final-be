@@ -1,13 +1,9 @@
+const { Airport } = require("../../models");
+const { uploader } = require("../../src/helper/cloudinary");
 const crypto = require("crypto");
 const path = require("path");
-const { Airport } = require("../../models");
-const { uploader } = require("../../helper/cloudinary");
 
-exports.getAirports = async () => {
-  const airports = await Airport.findAll();
-
-  return airports;
-};
+exports.getAirports = async () => await Airport.findAll();
 
 exports.getAirportById = async (id) => {
   const selectedAirport = await Airport.findOne({

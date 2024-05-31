@@ -24,6 +24,7 @@ exports.register = async (req, res, next) => {
         message : "Password Must Be Filled!",
         statusCode : 400
       })
+
     } else if (password.length <= 7) {
       return next({
         message : "Password Must Be Longer Than 8 Characters!",
@@ -43,6 +44,7 @@ exports.register = async (req, res, next) => {
         message: "Phone Number Must Be Filled!", 
         statusCode: 400
       })
+      
     } else if (!/^\d{11,13}$/.test(phone)) {
       return next({ 
         message: "Phone Must Be a Valid Number Between 11 and 13 Digits!", 
