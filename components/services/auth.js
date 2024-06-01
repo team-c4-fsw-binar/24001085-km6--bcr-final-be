@@ -23,6 +23,7 @@ exports.register = async (payload) => {
   // Cek apakah email sudah terdaftar dan diverifikasi
   const existingUser = await findUserByEmail(payload.email);
 
+
   if (existingUser?.dataValues?.isVerified) {
     throw new Error("Email is already registered and verified!");
   }
@@ -47,6 +48,7 @@ exports.register = async (payload) => {
   const jwtPayload = { id: user[0]?.id || user?.id };
   const token = jsonwebtoken.sign(jwtPayload, process.env.JWT_SECRET, {
     expiresIn: "2h",
+    expiresIn: "2h",
   });
 
   // Kirim email OTP
@@ -63,6 +65,8 @@ exports.register = async (payload) => {
   }
 
   return {
+    user,
+    token,
     user,
     token,
   };
@@ -99,6 +103,7 @@ exports.login = async (payload) => {
   if (user?.isVerified === false) {
     throw new Error("Your Account Has Not Been Verified, Please Register!");
   }
+
 
   const passwordMatch = await bcrypt.compare(payload.password, user?.password);
 
@@ -154,7 +159,8 @@ exports.googleLogin = async (accessToken) => {
   const token = jsonwebtoken.sign(jwtPayload, process.env.JWT_SECRET, {
     expiresIn: "2h",
   });
-  return (data = {
+
+  return ({
     user,
     token,
   });
@@ -172,7 +178,7 @@ exports.forgotPassword = async (email) => {
 
   const token = jsonwebtoken.sign(jwtPayload, process.env.JWT_SECRET, {
     expiresIn: "2h",
-  });
+  })
 
   // link deploy for reset pass route
   const link = `${process.env.FRONTEND_URL}/api/auth/reset-password/${user.id}/${token}`;
@@ -222,4 +228,6 @@ exports.updateUser = async (id, payload) => {
 };
 
 // delete
+exports.deleteUser = async (id) => (data = await deleteUser(id));
+
 exports.deleteUser = async (id) => (data = await deleteUser(id));
