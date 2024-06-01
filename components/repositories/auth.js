@@ -5,7 +5,7 @@ const { uploader } = require("../../src/helper/cloudinary");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const path = require("path");
-const axios = require("axios")
+const axios = require("axios");
 const otpGenerator = require("otp-generator");
 
 // Create User
@@ -23,7 +23,8 @@ exports.createUser = async (payload) => {
     const imageUpload = await uploader(photo);
     payload.photo = imageUpload.secure_url;
   } else {
-    payload.photo = "https://res.cloudinary.com/dqr9vycth/image/upload/profile_dummy.png";
+    payload.photo =
+      "https://res.cloudinary.com/dqr9vycth/image/upload/profile_dummy.png";
   }
 
   // validation for picture from google login
@@ -52,9 +53,9 @@ exports.createUser = async (payload) => {
 
 // resend OTP
 exports.resendOtp = async (id) => {
-  const user = await User.findOne({where : { id }});
+  const user = await User.findOne({ where: { id } });
   if (!user) {
-    throw new Error('User not found');
+    throw new Error("User not found");
   }
 
   const otp = otpGenerator.generate(6, {
@@ -71,19 +72,22 @@ exports.resendOtp = async (id) => {
   await user.save();
 
   return user;
-}
+};
 
 // Find User : Email
-exports.findUserByEmail = async (email) => await User.findOne({ where: { email }});
+exports.findUserByEmail = async (email) =>
+  await User.findOne({ where: { email } });
 
 // Find User : ID
 exports.findUserById = async (id) => await User.findOne({ where: { id } });
 
 // get user data using access_token from google
 exports.getGoogleAccessTokenData = async (accessToken) => {
-  const response = await axios.get(`https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`)
-  return response.data
-}
+  const response = await axios.get(
+    `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`
+  );
+  return response.data;
+};
 
 // reset Pass
 exports.updateUserPassword = async (id, password) => {
@@ -118,38 +122,37 @@ exports.verifyOtp = async (email, otp) => {
 };
 
 // Update User
-exports.updateUser = async(id, payload) => {
-
+exports.updateUser = async (id, payload) => {
   // encrypt the pass
   payload.password = bcrypt.hashSync(payload.password, 10);
-  
-  const { photo } = payload
-  
+
+  const { photo } = payload;
+
   if (photo) {
-    photo.publicId = crypto.randomBytes(16).toString('hex')
+    photo.publicId = crypto.randomBytes(16).toString("hex");
 
-    photo.name = `${photo.publicId}${path.parse(photo.name).ext}`
+    photo.name = `${photo.publicId}${path.parse(photo.name).ext}`;
 
-    const imageUpload = await uploader(photo)
-    payload.photo = imageUpload.secure_url
+    const imageUpload = await uploader(photo);
+    payload.photo = imageUpload.secure_url;
   } else {
-    payload.photo = null
+    payload.photo = null;
   }
 
   // validation for picture from google login
   if (payload?.picture) {
-    payload.photo = payload?.picture
+    payload.photo = payload?.picture;
   }
-  
-  await User.update(payload, {where : { id }})
 
-  return data = await User.findAll({
-    where:{ id }
-  })
-}
+  await User.update(payload, { where: { id } });
+
+  return (data = await User.findOne({
+    where: { id },
+  }));
+};
 
 // Delete User
-exports.deleteUser = async(id) => {
-  await User.destroy({ where: { id } })
-  return null
-}
+exports.deleteUser = async (id) => {
+  await User.destroy({ where: { id } });
+  return null;
+};
