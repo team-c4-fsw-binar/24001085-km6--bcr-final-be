@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       booking_id: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
       },
       createdAt: {

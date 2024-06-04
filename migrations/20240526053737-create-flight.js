@@ -16,32 +16,32 @@ module.exports = {
       airlineId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: {
-            tableName: "Airlines",
-          },
-          key: "id",
-        },
+        // references: {
+        //   model: {
+        //     tableName: "Airlines",
+        //   },
+        //   key: "id",
+        // },
       },
       departureAirport: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: {
-            tableName: "Airports",
-          },
-          key: "id",
-        },
+        // references: {
+        //   model: {
+        //     tableName: "Airports",
+        //   },
+        //   key: "id",
+        // },
       },
       arrivalAirport: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: {
-            tableName: "Airports",
-          },
-          key: "id",
-        },
+        // references: {
+        //   model: {
+        //     tableName: "Airports",
+        //   },
+        //   key: "id",
+        // },
       },
       discount: {
         type: Sequelize.INTEGER,
@@ -57,6 +57,22 @@ module.exports = {
       },
       firstClassPrice: {
         type: Sequelize.INTEGER,
+      },
+      numberOfEconomySeatsLeft: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      numberOfPremiumSeatsLeft: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      numberOfBusinessSeatsLeft: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      numberOfFirstClassSeatsLeft: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       departureTime: {
         type: Sequelize.DATE,

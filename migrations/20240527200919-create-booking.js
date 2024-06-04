@@ -17,10 +17,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      passenger_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
       orderDate: {
         allowNull: false,
         type: Sequelize.DATE

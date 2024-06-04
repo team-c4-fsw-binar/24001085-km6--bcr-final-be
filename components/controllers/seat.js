@@ -40,12 +40,6 @@ exports.createSeat = async (req, res, next) => {
         statusCode: 400,
       });
     }
-    if (!booking_id || booking_id == "") {
-      return next({
-        message: "Booking ID must be provided",
-        statusCode: 400,
-      });
-    }
 
     const data = await seatUsecase.createSeat({
       seat_number,
@@ -75,12 +69,6 @@ exports.updateSeat = async (req, res, next) => {
     if (!flight_id || flight_id == "") {
       return next({
         message: "Flight ID must be provided",
-        statusCode: 400,
-      });
-    }
-    if (!booking_id || booking_id == "") {
-      return next({
-        message: "Booking ID must be provided",
         statusCode: 400,
       });
     }
