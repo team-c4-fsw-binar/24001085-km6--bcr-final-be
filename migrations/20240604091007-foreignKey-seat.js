@@ -4,11 +4,11 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.addConstraint("Seats", {
-      fields: ["flight_id"],
+      fields: ["airline_id"],
       type: "foreign key",
-      name: "fk-to-Seats-flight_id",
+      name: "fk-to-Seats-airline_id",
       references: {
-        table: "Flights",
+        table: "Airlines",
         field: "id",
       },
       onDelete: "CASCADE",
@@ -17,6 +17,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeConstraint("Seats", "fk-to-Seats-flight_id");
+    await queryInterface.removeConstraint("Seats", "fk-to-Seats-airline_id");
   },
 };
