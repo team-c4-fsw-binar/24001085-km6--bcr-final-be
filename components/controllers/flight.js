@@ -56,9 +56,9 @@ exports.addFlight = async (req, res, next) => {
       });
     }
     if (
-      !newFlight.airlineId ||
-      isNaN(parseInt(newFlight.airlineId)) ||
-      parseInt(newFlight.airlineId) < 0
+      !newFlight.airline_id ||
+      isNaN(parseInt(newFlight.airline_id)) ||
+      parseInt(newFlight.airline_id) < 0
     ) {
       return next({
         statusCode: 500,
@@ -126,7 +126,7 @@ exports.addFlight = async (req, res, next) => {
       });
     }
 
-    const airlineExist = await getAirlineById(parseInt(newFlight.airlineId));
+    const airlineExist = await getAirlineById(parseInt(newFlight.airline_id));
 
     if (!airlineExist) {
       return next({
@@ -189,9 +189,9 @@ exports.updateFlight = async (req, res, next) => {
       });
     }
     if (
-      !selectedFlight.airlineId ||
-      isNaN(parseInt(selectedFlight.airlineId)) ||
-      parseInt(selectedFlight.airlineId) < 0
+      !selectedFlight.airline_id ||
+      isNaN(parseInt(selectedFlight.airline_id)) ||
+      parseInt(selectedFlight.airline_id) < 0
     ) {
       return next({
         statusCode: 500,
@@ -261,7 +261,7 @@ exports.updateFlight = async (req, res, next) => {
     }
 
     const airlineExist = await getAirlineById(
-      parseInt(selectedFlight.airlineId)
+      parseInt(selectedFlight.airline_id)
     );
 
     if (!airlineExist) {

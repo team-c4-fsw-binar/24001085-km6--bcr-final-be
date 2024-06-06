@@ -3,7 +3,7 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Flight extends Model {
     static associate(models) {
-      Flight.belongsTo(models.Airline, { foreignKey: "airlineId" });
+      Flight.belongsTo(models.Airline, { foreignKey: "airline_id" });
       Flight.belongsTo(models.Airport, { foreignKey: "departureAirport" });
       Flight.belongsTo(models.Airport, { foreignKey: "arrivalAirport" });
       Flight.hasMany(models.Booking, { foreignKey: "flight_id" });

@@ -4,9 +4,9 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.addConstraint("Flights", {
-      fields: ["airlineId"],
+      fields: ["airline_id"],
       type: "foreign key",
-      name: "fk-to-Flights-airlineId",
+      name: "fk-to-Flights-airline_id",
       references: {
         table: "Airlines",
         field: "id",
@@ -39,7 +39,10 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeConstraint("Flights", "fk-to-Flights-airlineId");
+    await queryInterface.removeConstraint(
+      "Flights",
+      "fk-to-Flights-airline_id"
+    );
     await queryInterface.removeConstraint(
       "Flights",
       "fk-Flights-to-departureAirport"
