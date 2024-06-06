@@ -56,9 +56,9 @@ exports.addFlight = async (req, res, next) => {
       });
     }
     if (
-      !newFlight.airlineId ||
-      isNaN(parseInt(newFlight.airlineId)) ||
-      parseInt(newFlight.airlineId) < 0
+      !newFlight.airline_id ||
+      isNaN(parseInt(newFlight.airline_id)) ||
+      parseInt(newFlight.airline_id) < 0
     ) {
       return next({
         statusCode: 500,
@@ -85,8 +85,48 @@ exports.addFlight = async (req, res, next) => {
         message: "Flight's arrival airport is required",
       });
     }
+    if (
+      !newFlight.numberOfEconomySeatsLeft ||
+      isNaN(parseInt(newFlight.numberOfEconomySeatsLeft)) ||
+      parseInt(newFlight.numberOfEconomySeatsLeft) < 0
+    ) {
+      return next({
+        statusCode: 500,
+        message: "Number of Economy Seats Left is required",
+      });
+    }
+    if (
+      !newFlight.numberOfPremiumSeatsLeft ||
+      isNaN(parseInt(newFlight.numberOfPremiumSeatsLeft)) ||
+      parseInt(newFlight.numberOfPremiumSeatsLeft) < 0
+    ) {
+      return next({
+        statusCode: 500,
+        message: "Number of Premium Seats Left is required",
+      });
+    }
+    if (
+      !newFlight.numberOfBusinessSeatsLeft ||
+      isNaN(parseInt(newFlight.numberOfBusinessSeatsLeft)) ||
+      parseInt(newFlight.numberOfBusinessSeatsLeft) < 0
+    ) {
+      return next({
+        statusCode: 500,
+        message: "Number of Business Seats Left is required",
+      });
+    }
+    if (
+      !newFlight.numberOfFirstClassSeatsLeft ||
+      isNaN(parseInt(newFlight.numberOfFirstClassSeatsLeft)) ||
+      parseInt(newFlight.numberOfFirstClassSeatsLeft) < 0
+    ) {
+      return next({
+        statusCode: 500,
+        message: "Number of First Class Seats Left is required",
+      });
+    }
 
-    const airlineExist = await getAirlineById(parseInt(newFlight.airlineId));
+    const airlineExist = await getAirlineById(parseInt(newFlight.airline_id));
 
     if (!airlineExist) {
       return next({
@@ -149,9 +189,9 @@ exports.updateFlight = async (req, res, next) => {
       });
     }
     if (
-      !selectedFlight.airlineId ||
-      isNaN(parseInt(selectedFlight.airlineId)) ||
-      parseInt(selectedFlight.airlineId) < 0
+      !selectedFlight.airline_id ||
+      isNaN(parseInt(selectedFlight.airline_id)) ||
+      parseInt(selectedFlight.airline_id) < 0
     ) {
       return next({
         statusCode: 500,
@@ -179,8 +219,49 @@ exports.updateFlight = async (req, res, next) => {
       });
     }
 
+    if (
+      !newFlight.numberOfEconomySeatsLeft ||
+      isNaN(parseInt(newFlight.numberOfEconomySeatsLeft)) ||
+      parseInt(newFlight.numberOfEconomySeatsLeft) < 0
+    ) {
+      return next({
+        statusCode: 500,
+        message: "Number of Economy Seats Left is required",
+      });
+    }
+    if (
+      !newFlight.numberOfPremiumSeatsLeft ||
+      isNaN(parseInt(newFlight.numberOfPremiumSeatsLeft)) ||
+      parseInt(newFlight.numberOfPremiumSeatsLeft) < 0
+    ) {
+      return next({
+        statusCode: 500,
+        message: "Number of Premium Seats Left is required",
+      });
+    }
+    if (
+      !newFlight.numberOfBusinessSeatsLeft ||
+      isNaN(parseInt(newFlight.numberOfBusinessSeatsLeft)) ||
+      parseInt(newFlight.numberOfBusinessSeatsLeft) < 0
+    ) {
+      return next({
+        statusCode: 500,
+        message: "Number of Business Seats Left is required",
+      });
+    }
+    if (
+      !newFlight.numberOfFirstClassSeatsLeft ||
+      isNaN(parseInt(newFlight.numberOfFirstClassSeatsLeft)) ||
+      parseInt(newFlight.numberOfFirstClassSeatsLeft) < 0
+    ) {
+      return next({
+        statusCode: 500,
+        message: "Number of First Class Seats Left is required",
+      });
+    }
+
     const airlineExist = await getAirlineById(
-      parseInt(selectedFlight.airlineId)
+      parseInt(selectedFlight.airline_id)
     );
 
     if (!airlineExist) {

@@ -23,7 +23,6 @@ exports.register = async (payload) => {
   // Cek apakah email sudah terdaftar dan diverifikasi
   const existingUser = await findUserByEmail(payload.email);
 
-
   if (existingUser?.dataValues?.isVerified) {
     throw new Error("Email is already registered and verified!");
   }
@@ -43,7 +42,7 @@ exports.register = async (payload) => {
   } else {
     delete user?.dataValues?.password;
   }
-  
+
   // Buat token jwt
   const jwtPayload = { id: user[0]?.id || user?.id };
   const token = jsonwebtoken.sign(jwtPayload, process.env.JWT_SECRET, {
@@ -74,16 +73,15 @@ exports.register = async (payload) => {
 
 // verify-otp
 exports.verifyOtp = async (email, otp) => {
-  
   user = await verifyOtp(email, otp);
 
   // Hapus password dari respons
-  user 
+  user
     ? delete user?.dataValues?.password && delete user?.dataValues?.otp
-    : delete user[0]?.dataValues?.password && delete user[0]?.dataValues?.otp
-  
-  return user
-}
+    : delete user[0]?.dataValues?.password && delete user[0]?.dataValues?.otp;
+
+  return user;
+};
 
 //  resend-otp
 exports.resendOtp = async (id) => {
@@ -103,7 +101,6 @@ exports.login = async (payload) => {
   if (user?.isVerified === false) {
     throw new Error("Your Account Has Not Been Verified, Please Register!");
   }
-
 
   const passwordMatch = await bcrypt.compare(payload.password, user?.password);
 
@@ -160,10 +157,10 @@ exports.googleLogin = async (accessToken) => {
     expiresIn: "2h",
   });
 
-  return ({
+  return {
     user,
     token,
-  });
+  };
 };
 
 // forgot-pass
@@ -178,10 +175,10 @@ exports.forgotPassword = async (email) => {
 
   const token = jsonwebtoken.sign(jwtPayload, process.env.JWT_SECRET, {
     expiresIn: "2h",
-  })
+  });
 
   // link deploy for reset pass route
-  const link = `${process.env.FRONTEND_URL}/api/auth/reset-password/${user.id}/${token}`;
+  const link = `${process.env.FRONTEND_URL}/reset-password/${user.id}/${token}`;
 
   await sendResetPasswordEmail(email, link);
 

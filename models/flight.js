@@ -2,19 +2,17 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Flight extends Model {
-    
     static associate(models) {
-      Flight.belongsTo(models.Airline, { foreignKey: "airlineId" });
+      Flight.belongsTo(models.Airline, { foreignKey: "airline_id" });
       Flight.belongsTo(models.Airport, { foreignKey: "departureAirport" });
       Flight.belongsTo(models.Airport, { foreignKey: "arrivalAirport" });
-      Flight.hasMany(models.Booking, { foreignKey : 'flight_id'})
-      Flight.hasMany(models.Seat, { foreignKey : 'flight_id'})
+      Flight.hasMany(models.Booking, { foreignKey: "flight_id" });
     }
   }
   Flight.init(
     {
       code: DataTypes.STRING,
-      airlineId: DataTypes.INTEGER,
+      airline_id: DataTypes.INTEGER,
       departureAirport: DataTypes.INTEGER,
       arrivalAirport: DataTypes.INTEGER,
       discount: DataTypes.INTEGER,
@@ -22,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       premiumPrice: DataTypes.INTEGER,
       businessPrice: DataTypes.INTEGER,
       firstClassPrice: DataTypes.INTEGER,
+      numberOfEconomySeatsLeft: DataTypes.INTEGER,
+      numberOfPremiumSeatsLeft: DataTypes.INTEGER,
+      numberOfBusinessSeatsLeft: DataTypes.INTEGER,
+      numberOfFirstClassSeatsLeft: DataTypes.INTEGER,
       departureTime: DataTypes.DATE,
       arrivalTime: DataTypes.DATE,
     },
