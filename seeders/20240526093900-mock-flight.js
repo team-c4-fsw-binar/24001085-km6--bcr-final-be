@@ -6,7 +6,7 @@ module.exports = {
     return queryInterface.bulkInsert("Flights", [
       {
         code: "FLI-ujkyw",
-        airlineId: 1,
+        airline_id: 1,
         departureAirport: 1,
         arrivalAirport: 2,
         discount: 10,
@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         code: "FLI-ftbhj",
-        airlineId: 1,
+        airline_id: 1,
         departureAirport: 1,
         arrivalAirport: 2,
         discount: null,
@@ -44,7 +44,7 @@ module.exports = {
       },
       {
         code: "FLI-plokj",
-        airlineId: 3,
+        airline_id: 3,
         departureAirport: 1,
         arrivalAirport: 2,
         discount: 15,
@@ -63,7 +63,7 @@ module.exports = {
       },
       {
         code: "FLI-awdsx",
-        airlineId: 2,
+        airline_id: 2,
         departureAirport: 1,
         arrivalAirport: 2,
         discount: null,
@@ -82,7 +82,7 @@ module.exports = {
       },
       {
         code: "FLI-koknm",
-        airlineId: 2,
+        airline_id: 2,
         departureAirport: 1,
         arrivalAirport: 2,
         discount: null,
@@ -101,7 +101,7 @@ module.exports = {
       },
       {
         code: "FLI-okwid",
-        airlineId: 2,
+        airline_id: 2,
         departureAirport: 1,
         arrivalAirport: 2,
         discount: null,
@@ -120,7 +120,7 @@ module.exports = {
       },
       {
         code: "FLI-popiy",
-        airlineId: 3,
+        airline_id: 3,
         departureAirport: 1,
         arrivalAirport: 2,
         discount: null,
@@ -139,7 +139,7 @@ module.exports = {
       },
       {
         code: "FLI-koknm",
-        airlineId: 3,
+        airline_id: 3,
         departureAirport: 1,
         arrivalAirport: 2,
         discount: null,
@@ -158,7 +158,7 @@ module.exports = {
       },
       {
         code: "FLI-okwid",
-        airlineId: 3,
+        airline_id: 3,
         departureAirport: 1,
         arrivalAirport: 2,
         discount: null,
@@ -177,7 +177,7 @@ module.exports = {
       },
       {
         code: "FLI-mooak",
-        airlineId: 4,
+        airline_id: 4,
         departureAirport: 3,
         arrivalAirport: 4,
         discount: 10,
@@ -196,7 +196,7 @@ module.exports = {
       },
       {
         code: "FLI-mimik",
-        airlineId: 4,
+        airline_id: 4,
         departureAirport: 3,
         arrivalAirport: 4,
         discount: null,
@@ -215,7 +215,7 @@ module.exports = {
       },
       {
         code: "FLI-adwek",
-        airlineId: 5,
+        airline_id: 5,
         departureAirport: 5,
         arrivalAirport: 2,
         discount: 30,
