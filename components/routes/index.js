@@ -11,6 +11,7 @@ const seatRoutes = require("./seat");
 const airportRoutes = require("./airport");
 const airlineRoutes = require("./airline");
 const flightRoutes = require("./flight");
+const midtransRoutes = require("./midtrans");
 
 router.use("/auth", authRoutes);
 router.use("/notifications", notifRoutes);
@@ -23,5 +24,6 @@ router.use("/seats", seatRoutes);
 router.use("/airports", airportRoutes);
 router.use("/airlines", airlineRoutes);
 router.use("/flights", flightRoutes);
+router.use("/midtrans", midtransRoutes);
 
 module.exports = router;
