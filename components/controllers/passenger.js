@@ -28,6 +28,7 @@ exports.getPassenger = async (req, res, next) => {
 exports.createPassenger = async (req, res, next) => {
   try {
     const {
+      user_id,
       name,
       born_date,
       citizenship,
@@ -35,6 +36,12 @@ exports.createPassenger = async (req, res, next) => {
       publisher_country,
       expired_at,
     } = req.body;
+    if (!user_id || user_id == "") {
+      return next({
+        message: "User Id must be provided",
+        statusCode: 400,
+      });
+    }
     if (!name || name == "") {
       return next({
         message: "Name must be provided",
@@ -73,6 +80,7 @@ exports.createPassenger = async (req, res, next) => {
     }
 
     const data = await passengerUsecase.createPassenger({
+      user_id,
       name,
       born_date,
       citizenship,
@@ -93,6 +101,7 @@ exports.updatePassenger = async (req, res, next) => {
   try {
     const { id } = req.params;
     const {
+      user_id,
       name,
       born_date,
       citizenship,
@@ -100,6 +109,12 @@ exports.updatePassenger = async (req, res, next) => {
       publisher_country,
       expired_at,
     } = req.body;
+    if (!user_id || user_id == "") {
+      return next({
+        message: "User Id must be provided",
+        statusCode: 400,
+      });
+    }
     if (!name || name == "") {
       return next({
         message: "Name must be provided",
@@ -138,6 +153,7 @@ exports.updatePassenger = async (req, res, next) => {
     }
 
     const data = await passengerUsecase.updatePassenger(id, {
+      user_id,
       name,
       born_date,
       citizenship,

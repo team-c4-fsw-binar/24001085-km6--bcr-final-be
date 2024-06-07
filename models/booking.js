@@ -6,8 +6,9 @@ module.exports = (sequelize, DataTypes) => {
       Booking.belongsTo(models.User, { foreignKey: "user_id" });
       Booking.hasOne(models.Payment, { foreignKey: "booking_id" });
       Booking.belongsTo(models.Flight, { foreignKey: "flight_id" });
-      Booking.hasMany(models.Seat, { foreignKey: "booking_id" });
       Booking.hasMany(models.BookingPassenger, { foreignKey: "booking_id" });
+      Booking.hasMany(models.BookingSeat, { foreignKey: "booking_id" });
+
     }
   }
   Booking.init(
@@ -17,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       passenger_id: DataTypes.INTEGER,
       orderDate: DataTypes.DATE,
       priceAmount: DataTypes.INTEGER,
+      code: DataTypes.STRING,
     },
     {
       sequelize,

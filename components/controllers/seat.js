@@ -27,30 +27,32 @@ exports.getSeat = async (req, res, next) => {
 
 exports.createSeat = async (req, res, next) => {
   try {
-    const { seat_number, flight_id, booking_id } = req.body;
+    const validSeatClasses = ["economy", "premium", "business", "first_class"];
+    const { seat_number, airline_id, seat_class } = req.body;
     if (!seat_number || seat_number == "") {
       return next({
         message: "Seat Number must be provided",
         statusCode: 400,
       });
     }
-    if (!flight_id || flight_id == "") {
+    if (!validSeatClasses.includes(seat_class)) {
       return next({
-        message: "Flight ID must be provided",
-        statusCode: 400,
+        message:
+          "Invalid Seat's class. Must be one of: " +
+          validSeatClasses.join(", "),
       });
     }
-    if (!booking_id || booking_id == "") {
+    if (!airline_id || airline_id == "") {
       return next({
-        message: "Booking ID must be provided",
+        message: "Flight ID must be provided",
         statusCode: 400,
       });
     }
 
     const data = await seatUsecase.createSeat({
       seat_number,
-      flight_id,
-      booking_id,
+      seat_class,
+      airline_id,
     });
 
     res.status(201).json({
@@ -64,32 +66,35 @@ exports.createSeat = async (req, res, next) => {
 
 exports.updateSeat = async (req, res, next) => {
   try {
+    const validSeatClasses = ["economy", "premium", "business", "first_class"];
     const { id } = req.params;
-    const { seat_number, flight_id, booking_id } = req.body;
+    const { seat_number, airline_id, seat_class } = req.body;
     if (!seat_number || seat_number == "") {
       return next({
         message: "Seat Number must be provided",
         statusCode: 400,
       });
     }
-    if (!flight_id || flight_id == "") {
+    if (!validSeatClasses.includes(seat_class)) {
       return next({
-        message: "Flight ID must be provided",
-        statusCode: 400,
+        message:
+          "Invalid Seat's class. Must be one of: " +
+          validSeatClasses.join(", "),
       });
     }
-    if (!booking_id || booking_id == "") {
+    if (!airline_id || airline_id == "") {
       return next({
-        message: "Booking ID must be provided",
+        message: "Flight ID must be provided",
         statusCode: 400,
       });
     }
 
     const data = await seatUsecase.updateSeat(id, {
       seat_number,
-      flight_id,
-      booking_id,
+      seat_class,
+      airline_id,
     });
+
     res.status(201).json({
       message: "Success",
       data,
