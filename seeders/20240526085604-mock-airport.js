@@ -9,7 +9,7 @@ module.exports = {
         city: "Batam",
         country: "Indonesia",
         imgUrl:
-          "https://asset.kompas.com/crops/bp8MibSIifzJ5-a2XKwloZuWjOk=/11x0:965x636/750x500/data/photo/2023/05/05/645479bf9b6a7.jpg",
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775166/rbjrcw39aih9xq17esto.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -18,7 +18,7 @@ module.exports = {
         city: "Tangerang",
         country: "Indonesia",
         imgUrl:
-          "https://nb-img.imgix.net/images-cgk/Jakarta-Airport-CGK12.jpg?auto=compress,enhance,format",
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775227/vvqc3fkleuutssz46czl.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -27,7 +27,7 @@ module.exports = {
         city: "Bali",
         country: "Indonesia",
         imgUrl:
-          "https://media.suara.com/pictures/970x544/2022/06/07/44006-bandara-ngurah-rai-bali.jpg",
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775226/dplgnpobo4djlfdg3nyu.png",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -35,7 +35,8 @@ module.exports = {
         name: "Bandar Udara Husein Sastranegara",
         city: "Bandung",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775239/okdp8esxxx5l0vasrmgu.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -43,7 +44,8 @@ module.exports = {
         name: "Bandar Udara Pattimura",
         city: "Ambon",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775227/umki656vurhiohuofpwv.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -51,7 +53,8 @@ module.exports = {
         name: "Bandar Udara Internasional Adisumarmo",
         city: "Boyolali",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775227/er6pjj0zixoqnsuxsjyb.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -59,7 +62,8 @@ module.exports = {
         name: "Bandar Udara Ahmad Yani",
         city: "Semarang",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775227/zz2wzdzswbiwm2y5dluu.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -67,7 +71,8 @@ module.exports = {
         name: "Bandar Udara Banyuwangi",
         city: "Banyuwangi",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775227/ewysemmlmnapzppuqgrn.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -75,7 +80,8 @@ module.exports = {
         name: "Bandar Udara Cakrabhuwana",
         city: "Cirebon",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775226/wifn4waaqk8zhlrwgkqc.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -83,7 +89,8 @@ module.exports = {
         name: "Bandar Udara Sultan Mahmud Badaruddin II",
         city: "Palembang",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775226/t3ii3lkhs1kd9itcxdme.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -91,7 +98,8 @@ module.exports = {
         name: "Bandar Udara Halim Perdanakusuma",
         city: "Jakarta",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775226/fta0um5jjwsau3xjwmgj.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -99,7 +107,8 @@ module.exports = {
         name: "Bandar Udara Internasional Sultan Aji Muhammad Sulaiman Sepinggan",
         city: "Balikpapan",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775226/dplgnpobo4djlfdg3nyu.png",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -107,7 +116,8 @@ module.exports = {
         name: "Bandar Udara Internasional Sultan Hasanuddin",
         city: "Makassar",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775226/eyefb9eczmocwsenagj7.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -115,7 +125,8 @@ module.exports = {
         name: "Bandar Udara Internasional Yogyakarta	",
         city: "Yogyakarta",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775225/ssafld6cvhfmstdm7hyr.webp",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -123,7 +134,8 @@ module.exports = {
         name: "Bandar Udara Pondok Cabe",
         city: "Banten",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775225/ngg7nnozdz2nuwky0jfy.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -131,7 +143,8 @@ module.exports = {
         name: "Pangkalan Udara Atang Senjaya",
         city: "Bogor",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775225/yakyficrmk5georlrkjk.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -139,7 +152,8 @@ module.exports = {
         name: "Pangkalan Udara Soewondo",
         city: "Medan",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775225/ub05fp914zyhplgq4igu.webp",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -147,7 +161,8 @@ module.exports = {
         name: "Bandar Udara Misool",
         city: "Raja Ampat",
         country: "Indonesia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775225/ert4vwmkhga5qavvw7pl.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -156,7 +171,7 @@ module.exports = {
         city: "Singapore",
         country: "Singapore",
         imgUrl:
-          "https://static01.nyt.com/images/2019/12/02/travel/02singapore-sub/merlin_164028534_c51c096d-a0f9-4b9b-be7d-1f8d11bbf72c-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775224/ij4bbu8ny9jaogiiiujc.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -165,7 +180,7 @@ module.exports = {
         city: "Kuala Lumpur",
         country: "Malaysia",
         imgUrl:
-          "https://lh3.googleusercontent.com/p/AF1QipPe73oDVZlQixpQKHZWg71KgVxSkbdNkNPfWoEb=s1360-w1360-h1020",
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775226/w2ws0suwdfps1zf76bvm.webp",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -173,7 +188,8 @@ module.exports = {
         name: "Amsterdam Airport Schiphol",
         city: "Amsterdam",
         country: "Netherlands",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775225/vvronaqee8mvlagojtwf.webp",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -181,7 +197,8 @@ module.exports = {
         name: "Paris-Charles de Gaulle Airport",
         city: "Paris",
         country: "France",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775224/rkb0vsl0llrlcx0u7yub.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -189,7 +206,8 @@ module.exports = {
         name: "Istanbul Airport",
         city: "Istanbul",
         country: "Turkey",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775223/ghadbbyoiwu4s8qb0tyb.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -197,7 +215,8 @@ module.exports = {
         name: "Incheon International Airport",
         city: "Seoul",
         country: "Korea",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775223/nr3sthk85dai4budliet.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -205,7 +224,8 @@ module.exports = {
         name: "Frankfurt Airport",
         city: "Frankfurt",
         country: "Germany",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775223/ehi0glo22z9cfaumm7rw.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -213,7 +233,8 @@ module.exports = {
         name: "Hamad International Airport",
         city: "Doha",
         country: "Qatar",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775223/raywzuaubxawjfp5dmjj.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -221,7 +242,8 @@ module.exports = {
         name: "Madrid-Barajas Airport",
         city: "Madrid",
         country: "Spain",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775225/m7a0qsaz1dwy2qpq4nj6.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -229,7 +251,8 @@ module.exports = {
         name: "London Heathrow Airport",
         city: "London",
         country: "United Kingdom",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775222/n6bq2wlkcrsspjn4m0hm.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -237,7 +260,8 @@ module.exports = {
         name: "Cancún International Airport",
         city: "Cancún",
         country: "Mexico",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775222/esru6lzqtcjdof0cutwn.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -245,7 +269,8 @@ module.exports = {
         name: "John F. Kennedy International Airport",
         city: "New York City",
         country: "United States",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775223/x8i1ue7rmz2dqaxvk470.webp",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -253,7 +278,8 @@ module.exports = {
         name: "Toronto Pearson International Airport",
         city: "Toronto",
         country: "Canada",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775222/xx2ig1uschutqdr4kxfs.webp",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -261,7 +287,8 @@ module.exports = {
         name: "Narita International Airport",
         city: "Tokyo",
         country: "Japan",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775222/phfd1mghbefegjfnmody.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -269,7 +296,8 @@ module.exports = {
         name: "Hong Kong International Airport",
         city: "Hong Kong",
         country: "China",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775222/cqlg0vlekrfsm0naklux.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -277,7 +305,8 @@ module.exports = {
         name: "Taoyuan International Airport",
         city: "Taipei",
         country: "Taiwan",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775221/lvehelahvk6myihxnnud.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -285,7 +314,8 @@ module.exports = {
         name: "Suvarnabhumi Airport",
         city: "Bangkok",
         country: "Thailand",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775220/q8ilcizhypgaocygmqb2.webp",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -293,7 +323,8 @@ module.exports = {
         name: "Yangon International Airport",
         city: "Mingaladon",
         country: "Myanmar",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775228/wwzcaxfv6p4bwcuj7hp1.webp",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -301,7 +332,8 @@ module.exports = {
         name: "Tan Son Nhat International Airport",
         city: "Ho Chi Minh",
         country: "Vietnam",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775228/fzidlmdvdjsrasseumrz.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -309,7 +341,8 @@ module.exports = {
         name: "Phnom Penh International Airport",
         city: "Phnom Penh",
         country: "Cambodia",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775228/jhomlaeotwwpsr74ieoz.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -317,7 +350,8 @@ module.exports = {
         name: "Ninoy Aquino International Airport",
         city: "Manila",
         country: "Philippines",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775228/hrcmi6mngsvionhvbfws.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -325,7 +359,8 @@ module.exports = {
         name: "Wattay International Airport",
         city: "Vientiane",
         country: "Laos",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775228/c78wbimv21assy8fbo0v.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -333,7 +368,8 @@ module.exports = {
         name: "Bandar Seri Begawan International Airport",
         city: "Bandar Seri Begawan",
         country: "Brunei",
-        imgUrl: "",
+        imgUrl:
+          "https://res.cloudinary.com/dv2jeayrr/image/upload/v1717775228/r0zqityqdbyz4021xvaf.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
