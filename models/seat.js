@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Seat.init(
     {
-      seat_number: DataTypes.INTEGER,
+      seat_number: DataTypes.STRING,
       seat_class: DataTypes.ENUM(
         "economy",
         "premium",

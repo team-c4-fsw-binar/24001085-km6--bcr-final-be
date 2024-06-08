@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Flight.init(
     {
-      code: DataTypes.STRING,
       airline_id: DataTypes.INTEGER,
       departureAirport: DataTypes.INTEGER,
       arrivalAirport: DataTypes.INTEGER,
