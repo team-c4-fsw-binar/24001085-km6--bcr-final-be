@@ -14,6 +14,7 @@ const flightRoutes = require("./flight");
 const midtransRoutes = require("./midtrans");
 
 const bookingHistoryRoutes = require("./booking_history");
+const findTicketsRoutes = require("./find_ticket");
 
 router.use("/auth", authRoutes);
 router.use("/notifications", notifRoutes);
@@ -29,6 +30,7 @@ router.use("/flights", flightRoutes);
 router.use("/midtrans", midtransRoutes);
 
 // API Lanjutan
-router.use("/bookingHistory", bookingHistoryRoutes);
+router.use("/bookingHistories", bookingHistoryRoutes);
+router.use("/findTickets", findTicketsRoutes);
 
 module.exports = router;
