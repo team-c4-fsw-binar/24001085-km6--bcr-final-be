@@ -4,17 +4,17 @@ exports.getBookingHistoriesByFlightIDandDateRange = async (
   user_id,
   payload
 ) => {
-  const { flight_id, startDate, endDate } = payload;
+  const { code, startDate, endDate } = payload;
 
   // Ambil semua booking berdasarkan user_id
   const data = await getBookingsByUserId(user_id);
 
   let filteredData = data;
 
-  // Filter berdasarkan flight_id
-  if (flight_id) {
+  // Filter berdasarkan code
+  if (code) {
     filteredData = filteredData.filter(
-      (booking) => booking.flight_id === flight_id
+      (booking) => booking.code === code
     );
   }
 
