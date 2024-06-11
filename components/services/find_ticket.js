@@ -94,7 +94,7 @@ exports.getFilteredTickets = async (payload) => {
     filtered_return_flight = return_flight;
 
     filtered_return_flight = filtered_return_flight.filter((ticket) => {
-      return ticket.departureAirport === from && ticket.arrivalAirport === to;
+      return ticket.departureAirport === to && ticket.arrivalAirport === from;
     });
 
     if (seat_class === "economy") {
