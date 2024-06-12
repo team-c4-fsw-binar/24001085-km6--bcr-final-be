@@ -53,7 +53,8 @@ exports.register = async (payload) => {
   // Kirim email OTP
   await sendOtpEmail(
     user[0]?.dataValues?.email || user?.dataValues?.email,
-    user[0]?.dataValues?.otp || user?.dataValues?.otp
+    user[0]?.dataValues?.otp || user?.dataValues?.otp,
+    user[0]?.dataValues?.name || user?.dataValues?.name
   );
 
   // delete otp from respons payload
