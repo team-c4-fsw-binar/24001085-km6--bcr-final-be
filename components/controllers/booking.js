@@ -9,35 +9,64 @@ const {
 exports.createBooking = async (req, res, next) => {
   try {
     // get body
-    const { flight_id, orderDate, priceAmount } = req.body;
+    const {
+      departure_flight_id,
+      return_flight_id,
+      order_date,
+      price_amount,
+      seats_id,
+    } = req.body;
     const user_id = req?.user?.id;
 
-    if (!flight_id || flight_id == "") {
+    if (
+      !departure_flight_id ||
+      isNaN(parseInt(departure_flight_id) || parseInt(departure_flight_id) < 0)
+    ) {
       return next({
-        message: "Flight Id Must Be Filled!",
+        message: "Departure flight Id is required!",
         statusCode: 400,
       });
     }
 
-    if (!orderDate || orderDate == "") {
+    if (
+      return_flight_id &&
+      isNaN(parseInt(return_flight_id) || parseInt(return_flight_id) < 0)
+    ) {
       return next({
-        message: "Order Date Must Be Filled!",
+        message: "Return flight Id is not valid!",
+        statusCode: 400,
+      });
+    }
+    if (!order_date || order_date == "") {
+      return next({
+        message: "Order Date is required!",
         statusCode: 400,
       });
     }
 
-    if (!priceAmount || priceAmount == "") {
+    if (
+      !price_amount ||
+      isNaN(parseInt(price_amount) || parseInt(price_amount) < 0)
+    ) {
       return next({
-        message: "Price Amount Must Be Filled!",
+        message: "Price Amount is required!",
         statusCode: 400,
       });
     }
 
+    if (seats_id.length == 0) {
+      return next({
+        message: "Seats Id is required!",
+        statusCode: 400,
+      });
+    }
     const data = await createBooking({
-      flight_id,
-      orderDate,
-      priceAmount,
       user_id,
+      departure_flight_id,
+      return_flight_id,
+      order_date,
+      price_amount,
+      seats_id,
     });
 
     res.status(201).json({
@@ -52,11 +81,36 @@ exports.createBooking = async (req, res, next) => {
 exports.getBookingsByUserId = async (req, res, next) => {
   try {
     const user_id = req?.user?.id;
-
+    let results = {};
     const data = await getBookingsByUserId(user_id);
+
+    const page = parseInt(req.query?.page);
+    const limit = parseInt(req.query?.limit);
+    if (page && limit) {
+      const startIndex = (page - 1) * limit;
+      const endIndex = page * limit;
+
+      if (endIndex < data.length) {
+        results.next = {
+          page: page + 1,
+          limit: limit,
+        };
+      }
+
+      if (startIndex > 0) {
+        results.previous = {
+          page: page - 1,
+          limit: limit,
+        };
+      }
+
+      results.results = data.slice(startIndex, endIndex);
+    } else {
+      results.results = data.slice();
+    }
     res.status(200).json({
+      data: results,
       message: `Success Get Booking By User`,
-      data,
     });
   } catch (error) {
     next(error);
@@ -79,12 +133,12 @@ exports.getBookingById = async (req, res, next) => {
 exports.updateBooking = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { flight_id, orderDate, priceAmount } = req.body;
+    const { flight_id, order_date, price_amount } = req.body;
 
     const data = await updateBooking(id, {
       flight_id,
-      orderDate,
-      priceAmount,
+      order_date,
+      price_amount,
     });
     res.status(200).json({
       message: `Success Update Booking`,

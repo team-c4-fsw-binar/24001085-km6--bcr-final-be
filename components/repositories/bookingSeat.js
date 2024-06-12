@@ -17,6 +17,30 @@ exports.getBookingSeat = async (id) => {
   throw new Error(`Booking Seat is not found`);
 };
 
+exports.getBookingSeatsByBookingId = async (bookingId) => {
+  const data = await BookingSeat.findAll({
+    where: {
+      booking_id: bookingId,
+    },
+  });
+  if (data.length > 0) {
+    return data[0];
+  }
+  throw new Error(`Booking Seat is not found`);
+};
+
+exports.getBookingSeatsBySeatId = async (seatId) => {
+  const data = await BookingSeat.findAll({
+    where: {
+      seat_id: seatId,
+    },
+  });
+  if (data.length > 0) {
+    return data[0];
+  }
+  throw new Error(`Booking Seat is not found`);
+};
+
 exports.createBookingSeat = async (payload) => {
   const data = await BookingSeat.create(payload);
   return data;

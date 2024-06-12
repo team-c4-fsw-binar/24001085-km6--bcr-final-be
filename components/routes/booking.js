@@ -1,17 +1,23 @@
-const { authMiddleware } = require("../../src/middleware/auth")
-const { createBooking, getBookingsByUserId, getBookingById, updateBooking, deleteBooking } = require("../controllers/booking")
+const { authMiddleware } = require("../../src/middleware/auth");
+const {
+  createBooking,
+  getBookingsByUserId,
+  getBookingById,
+  updateBooking,
+  deleteBooking,
+} = require("../controllers/booking");
 
-const router = require('express').Router()
+const router = require("express").Router();
 
 router
-  .route('/')
+  .route("/")
   .post(authMiddleware(), createBooking)
-  .get(authMiddleware(), getBookingsByUserId)
+  .get(authMiddleware(), getBookingsByUserId);
 
 router
-  .route('/:id')
-  .get(getBookingById)
-  .put(updateBooking)
-  .delete(deleteBooking)
+  .route("/:id")
+  .get(authMiddleware(), getBookingById)
+  .put(authMiddleware(), updateBooking)
+  .delete(authMiddleware(), deleteBooking);
 
-module.exports = router
+module.exports = router;
