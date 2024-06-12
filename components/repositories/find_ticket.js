@@ -17,23 +17,28 @@ exports.getTickets = async (departure_date, seat_class) => {
     include: [
       {
         model: Airport,
+        as: "departureAirport_respon",
       },
       {
-        model: Airline,
-        include: [
-          {
-            model: Seat,
-            where: {
-              seat_class: seat_class,
-            },
-            include: [
-              {
-                model: BookingSeat,
-              },
-            ],
-          },
-        ],
+        model: Airport,
+        as: "arrivalAirport_respon",
       },
+      // {
+      //   model: Airline,
+      //   include: [
+      //     {
+      //       model: Seat,
+      //       where: {
+      //         seat_class: seat_class,
+      //       },
+      //       include: [
+      //         {
+      //           model: BookingSeat,
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
     ],
   });
   return data;

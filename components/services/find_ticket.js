@@ -11,13 +11,23 @@ exports.getFilteredTickets = async (payload) => {
     filter,
   } = payload;
 
+  const fromLowerCase = from.toLowerCase();
+  const toLowerCase = to.toLowerCase();
+
   const departure_flight = await getTickets(departure_date, seat_class);
   let filtered_return_flight = [];
 
   let filtered_departure_flight = departure_flight;
 
   filtered_departure_flight = filtered_departure_flight.filter((ticket) => {
-    return ticket.departureAirport === from && ticket.arrivalAirport === to;
+    const departureAirport_respon_lowerCase =
+      ticket.departureAirport_respon.city.toLowerCase();
+    const arrivalAirport_respon_lowerCase =
+      ticket.arrivalAirport_respon.city.toLowerCase();
+    return (
+      departureAirport_respon_lowerCase === fromLowerCase &&
+      arrivalAirport_respon_lowerCase === toLowerCase
+    );
   });
 
   if (seat_class === "economy") {
@@ -94,7 +104,14 @@ exports.getFilteredTickets = async (payload) => {
     filtered_return_flight = return_flight;
 
     filtered_return_flight = filtered_return_flight.filter((ticket) => {
-      return ticket.departureAirport === to && ticket.arrivalAirport === from;
+      const departureAirport_respon_lowerCase =
+        ticket.departureAirport_respon.city.toLowerCase();
+      const arrivalAirport_respon_lowerCase =
+        ticket.arrivalAirport_respon.city.toLowerCase();
+      return (
+        departureAirport_respon_lowerCase === toLowerCase &&
+        arrivalAirport_respon_lowerCase === fromLowerCase
+      );
     });
 
     if (seat_class === "economy") {

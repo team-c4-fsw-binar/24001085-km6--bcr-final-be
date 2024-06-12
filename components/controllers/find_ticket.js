@@ -15,14 +15,14 @@ exports.getFilteredTickets = async (req, res, next) => {
 
     if (!findTicketsPayload.from || findTicketsPayload.from == "") {
       return next({
-        message: "Departure Aiport must be provided",
+        message: "Departure City must be provided",
         statusCode: 400,
       });
     }
 
     if (!findTicketsPayload.to || findTicketsPayload.to == "") {
       return next({
-        message: "Arrival Aiport must be provided",
+        message: "Arrival City must be provided",
         statusCode: 400,
       });
     }
