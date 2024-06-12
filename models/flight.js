@@ -4,8 +4,14 @@ module.exports = (sequelize, DataTypes) => {
   class Flight extends Model {
     static associate(models) {
       Flight.belongsTo(models.Airline, { foreignKey: "airline_id" });
-      Flight.belongsTo(models.Airport, { foreignKey: "departureAirport" });
-      Flight.belongsTo(models.Airport, { foreignKey: "arrivalAirport" });
+      Flight.belongsTo(models.Airport, {
+        as: "departureAirport_respon",
+        foreignKey: "departureAirport",
+      });
+      Flight.belongsTo(models.Airport, {
+        as: "arrivalAirport_respon",
+        foreignKey: "arrivalAirport",
+      });
       Flight.hasMany(models.Booking, { foreignKey: "flight_id" });
     }
   }
