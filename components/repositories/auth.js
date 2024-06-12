@@ -123,33 +123,29 @@ exports.verifyOtp = async (email, otp) => {
 
 // Update User
 exports.updateUser = async (id, payload) => {
-  // encrypt the pass
-  payload.password = bcrypt.hashSync(payload.password, 10);
+  const selectedUser = await User.findOne({ where: { id } });
 
-  const { photo } = payload;
+  if (selectedUser) {
+    if (payload.photo && typeof payload.photo == "object") {
+      const { photo } = payload;
+      photo.publicId = crypto.randomBytes(16).toString("hex");
+      photo.name = `${photo.publicId}${path.parse(photo.name).ext}`;
+      const imageUpload = await uploader(photo);
+      payload.photo = imageUpload.secure_url;
+    }
 
-  if (photo) {
-    photo.publicId = crypto.randomBytes(16).toString("hex");
+    // validation for picture from google login
+    if (payload?.picture) {
+      payload.photo = payload?.picture;
+    }
 
-    photo.name = `${photo.publicId}${path.parse(photo.name).ext}`;
+    await User.update(payload, { where: { id } });
 
-    const imageUpload = await uploader(photo);
-    payload.photo = imageUpload.secure_url;
-  } else {
-    payload.photo =
-      "https://res.cloudinary.com/dqr9vycth/image/upload/profile_dummy.png";
+    return (data = await User.findOne({
+      where: { id },
+    }));
   }
-
-  // validation for picture from google login
-  if (payload?.picture) {
-    payload.photo = payload?.picture;
-  }
-
-  await User.update(payload, { where: { id } });
-
-  return (data = await User.findOne({
-    where: { id },
-  }));
+  throw new Error("User Not Found!");
 };
 
 // Delete User

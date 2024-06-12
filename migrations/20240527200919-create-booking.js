@@ -13,15 +13,18 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      flight_id: {
+      departure_flight_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      orderDate: {
+      return_flight_id: {
+        type: Sequelize.INTEGER,
+      },
+      order_date: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      priceAmount: {
+      price_amount: {
         type: Sequelize.INTEGER,
       },
       code: {

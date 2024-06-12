@@ -15,9 +15,20 @@ module.exports = {
       onUpdate: "CASCADE",
     });
     await queryInterface.addConstraint("Bookings", {
-      fields: ["flight_id"],
+      fields: ["departure_flight_id"],
       type: "foreign key",
-      name: "fk-to-Bookings-flight_id",
+      name: "fk-to-Bookings-departure_flight_id",
+      references: {
+        table: "Flights",
+        field: "id",
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+    await queryInterface.addConstraint("Bookings", {
+      fields: ["return_flight_id"],
+      type: "foreign key",
+      name: "fk-to-Bookings-return_flight_id",
       references: {
         table: "Flights",
         field: "id",
@@ -31,7 +42,11 @@ module.exports = {
     await queryInterface.removeConstraint("Bookings", "fk-to-Bookings-user_id");
     await queryInterface.removeConstraint(
       "Bookings",
-      "fk-to-Bookings-flight_id"
+      "fk-to-Bookings-departure_flight_id"
+    );
+    await queryInterface.removeConstraint(
+      "Bookings",
+      "fk-to-Bookings-return_flight_id"
     );
   },
 };
