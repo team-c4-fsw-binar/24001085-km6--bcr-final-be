@@ -1,7 +1,21 @@
-const { Flight } = require("../../models");
+const { Flight, Airport, Airline } = require("../../models");
 
 exports.getFlights = async () => {
-  const flights = await Flight.findAll();
+  const flights = await Flight.findAll({
+    include: [
+      {
+        model: Airport,
+        as: "departureAirport_respon",
+      },
+      {
+        model: Airport,
+        as: "arrivalAirport_respon",
+      },
+      {
+        model: Airline,
+      },
+    ],
+  });
 
   return flights;
 };

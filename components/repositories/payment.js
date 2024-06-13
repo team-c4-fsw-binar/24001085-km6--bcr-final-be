@@ -1,7 +1,9 @@
-const { Payment } = require("../../models");
+const { Payment, Booking } = require("../../models");
 
 exports.getPayments = async () => {
-  const data = await Payment.findAll({});
+  const data = await Payment.findAll({
+    include: { model: Booking },
+  });
   return data;
 };
 
@@ -23,21 +25,13 @@ exports.createPayment = async (payload) => {
 };
 
 exports.updatePayment = async (id, payload) => {
-  await Payment.update(payload, {
-    where: {
-      id,
-    },
-  });
+  const selectedPayment = await Payment.findOne({ where: { id } });
 
-  const data = await Payment.findAll({
-    where: {
-      id,
-    },
-  });
-  if (data.length > 0) {
-    return data[0];
+  if (selectedPayment) {
+    const updatedPayment = await selectedPayment.update({ ...payload });
+    return updatedPayment;
   }
-  throw new Error(`Payment is not found`);
+  throw new Error("Payment not found!");
 };
 
 exports.deletePayment = async (id) => {

@@ -41,6 +41,14 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: true,
       },
+      token: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      redirect_url: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
