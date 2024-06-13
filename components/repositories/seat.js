@@ -51,3 +51,13 @@ exports.deleteSeat = async (id) => {
   }
   return null;
 };
+
+exports.getSeatsByAirline = async (airlineId, seatClass) => {
+  const data = await Seat.findAll({
+    where: {
+      airline_id: airlineId,
+      seat_class: seatClass,
+    },
+  });
+  return data;
+};

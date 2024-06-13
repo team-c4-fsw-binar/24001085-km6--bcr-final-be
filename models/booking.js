@@ -5,19 +5,19 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Booking.belongsTo(models.User, { foreignKey: "user_id" });
       Booking.hasOne(models.Payment, { foreignKey: "booking_id" });
-      Booking.belongsTo(models.Flight, { foreignKey: "flight_id" });
+      Booking.belongsTo(models.Flight, { foreignKey: "departure_flight_id" });
+      Booking.belongsTo(models.Flight, { foreignKey: "return_flight_id" });
       Booking.hasMany(models.BookingPassenger, { foreignKey: "booking_id" });
       Booking.hasMany(models.BookingSeat, { foreignKey: "booking_id" });
-
     }
   }
   Booking.init(
     {
       user_id: DataTypes.INTEGER,
-      flight_id: DataTypes.INTEGER,
-      passenger_id: DataTypes.INTEGER,
-      orderDate: DataTypes.DATE,
-      priceAmount: DataTypes.INTEGER,
+      departure_flight_id: DataTypes.INTEGER,
+      return_flight_id: DataTypes.INTEGER,
+      order_date: DataTypes.DATE,
+      price_amount: DataTypes.INTEGER,
       code: DataTypes.STRING,
     },
     {

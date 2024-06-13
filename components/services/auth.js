@@ -228,4 +228,26 @@ exports.updateUser = async (id, payload) => {
 // delete
 exports.deleteUser = async (id) => (data = await deleteUser(id));
 
-exports.deleteUser = async (id) => (data = await deleteUser(id));
+exports.changePassword = async (id, payload) => {
+  const user = await findUserById(id);
+
+  if (!user) {
+    throw new Error("User not found!");
+  }
+
+  const isPasswordValid = await bcrypt.compare(
+    payload.currentPassword,
+    user.password
+  );
+  if (!isPasswordValid) {
+    throw new Error("Wrong password!");
+  }
+
+  const newUserPassword = await bcrypt.hashSync(payload.newPassword, 10);
+
+  const updatedUser = await updatedUser(id, {
+    ...user,
+    password: newUserPassword,
+  });
+  return updatedUser;
+};

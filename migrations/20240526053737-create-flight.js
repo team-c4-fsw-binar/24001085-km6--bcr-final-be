@@ -9,10 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      code: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       airline_id: {
         type: Sequelize.INTEGER,
         allowNull: false,

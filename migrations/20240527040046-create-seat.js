@@ -11,7 +11,7 @@ module.exports = {
       },
       seat_number: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       seat_class: {
         allowNull: false,
