@@ -15,8 +15,11 @@ exports.createBooking = async (req, res, next) => {
       order_date,
       price_amount,
       seats_id,
+      seat_class,
     } = req.body;
     const user_id = req?.user?.id;
+
+    const validSeatClasses = ["economy", "premium", "business", "first_class"];
 
     if (
       !departure_flight_id ||
@@ -60,6 +63,14 @@ exports.createBooking = async (req, res, next) => {
         statusCode: 400,
       });
     }
+
+    if (!validSeatClasses.includes(seat_class)) {
+      return next({
+        message:
+          "Invalid Seat's class. Must be one of: " +
+          validSeatClasses.join(", "),
+      });
+    }
     const data = await createBooking({
       user_id,
       departure_flight_id,
@@ -67,6 +78,7 @@ exports.createBooking = async (req, res, next) => {
       order_date,
       price_amount,
       seats_id,
+      seat_class,
     });
 
     res.status(201).json({

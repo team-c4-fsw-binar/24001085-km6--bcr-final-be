@@ -13,22 +13,22 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      payment_method: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      booking_price: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      discount: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-      },
-      tax_price: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-      },
+      // payment_method: {
+      //   type: Sequelize.STRING,
+      //   allowNull: false,
+      // },
+      // booking_price: {
+      //   type: Sequelize.INTEGER,
+      //   allowNull: false,
+      // },
+      // discount: {
+      //   type: Sequelize.INTEGER,
+      //   allowNull: true,
+      // },
+      // tax_price: {
+      //   type: Sequelize.INTEGER,
+      //   allowNull: true,
+      // },
       total_price: {
         type: Sequelize.INTEGER,
         allowNull: true,
@@ -37,10 +37,18 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      expired_at: {
-        type: Sequelize.DATE,
-        allowNull: true,
+      token: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
+      redirect_url: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      // expired_at: {
+      //   type: Sequelize.DATE,
+      //   allowNull: true,
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

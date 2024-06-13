@@ -33,7 +33,7 @@ exports.createPayment = async (req, res, next) => {
       tax_price,
       total_price,
       status,
-      expired_at,
+      // expired_at,
     } = req.body;
     if (!booking_id || booking_id == "") {
       return next({
@@ -59,12 +59,12 @@ exports.createPayment = async (req, res, next) => {
         statusCode: 400,
       });
     }
-    if (!expired_at || expired_at == "") {
-      return next({
-        message: "Payment's Expired must be provided",
-        statusCode: 400,
-      });
-    }
+    // if (!expired_at || expired_at == "") {
+    //   return next({
+    //     message: "Payment's Expired must be provided",
+    //     statusCode: 400,
+    //   });
+    // }
 
     const data = await paymentUsecase.createPayment({
       booking_id,
@@ -74,7 +74,7 @@ exports.createPayment = async (req, res, next) => {
       tax_price,
       total_price,
       status,
-      expired_at,
+      // expired_at,
     });
     res.status(201).json({
       message: "Success",
@@ -96,7 +96,7 @@ exports.updatePayment = async (req, res, next) => {
       tax_price,
       total_price,
       status,
-      expired_at,
+      // expired_at,
     } = req.body;
     if (!booking_id || booking_id == "") {
       return next({
@@ -122,12 +122,12 @@ exports.updatePayment = async (req, res, next) => {
         statusCode: 400,
       });
     }
-    if (!expired_at || expired_at == "") {
-      return next({
-        message: "Payment's Expired must be provided",
-        statusCode: 400,
-      });
-    }
+    // if (!expired_at || expired_at == "") {
+    //   return next({
+    //     message: "Payment's Expired must be provided",
+    //     statusCode: 400,
+    //   });
+    // }
 
     const data = await paymentUsecase.updatePayment(id, {
       booking_id,
@@ -137,7 +137,7 @@ exports.updatePayment = async (req, res, next) => {
       tax_price,
       total_price,
       status,
-      expired_at,
+      // expired_at,
     });
     res.status(201).json({
       message: "Success",

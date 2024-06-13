@@ -40,6 +40,24 @@ exports.updatePayment = async (id, payload) => {
   throw new Error(`Payment is not found`);
 };
 
+exports.updatePaymentByBookingId = async (booking_id, payload) => {
+  await Payment.update(payload, {
+    where: {
+      booking_id,
+    },
+  });
+
+  const data = await Payment.findAll({
+    where: {
+      booking_id,
+    },
+  });
+  if (data.length > 0) {
+    return data[0];
+  }
+  throw new Error(`Payment is not found`);
+};
+
 exports.deletePayment = async (id) => {
   const deletedCount = await Payment.destroy({
     where: {
