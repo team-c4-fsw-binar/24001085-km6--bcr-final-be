@@ -147,7 +147,7 @@ exports.sendResetPasswordEmail = async (email, link) => {
           <button
             class="reset-button"
           >
-            Reset Password
+            Ganti Password
           </button>
         </a>
         <p style="font-size: 0.9em">
