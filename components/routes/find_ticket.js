@@ -2,6 +2,6 @@ const router = require("express").Router();
 
 const { getFilteredTickets } = require("../controllers/find_ticket");
 
-router.route("/").get(getFilteredTickets);
+router.route("/").post(getFilteredTickets);
 
 module.exports = router;

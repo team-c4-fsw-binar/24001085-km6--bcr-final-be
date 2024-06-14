@@ -7,6 +7,6 @@ const {
 
 router
   .route("/")
-  .get(authMiddleware(), getBookingHistoriesByFlightIDandDateRange);
+  .post(authMiddleware(), getBookingHistoriesByFlightIDandDateRange);
 
 module.exports = router;
