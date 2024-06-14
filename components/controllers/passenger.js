@@ -2,10 +2,37 @@ const passengerUsecase = require("../services/passenger");
 
 exports.getPassengers = async (req, res, next) => {
   try {
+    let results = {};
     const data = await passengerUsecase.getPassengers();
+
+    const page = parseInt(req.query?.page);
+    const limit = parseInt(req.query?.limit);
+    if (page && limit) {
+      const startIndex = (page - 1) * limit;
+      const endIndex = page * limit;
+
+      if (endIndex < data.length) {
+        results.next = {
+          page: page + 1,
+          limit: limit,
+        };
+      }
+
+      if (startIndex > 0) {
+        results.previous = {
+          page: page - 1,
+          limit: limit,
+        };
+      }
+
+      results.results = data.slice(startIndex, endIndex);
+    } else {
+      results.results = data.slice();
+    }
+
     res.status(200).json({
       message: "Success",
-      data,
+      data: results,
     });
   } catch (error) {
     next(error);

@@ -31,6 +31,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      adultCount: {
+        type: Sequelize.INTEGER,
+      },
+      childCount: {
+        type: Sequelize.INTEGER,
+      },
+      babyCount: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

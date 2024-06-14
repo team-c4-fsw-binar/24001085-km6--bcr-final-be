@@ -1,4 +1,5 @@
 const paymentUsecase = require("../services/payment");
+const axios = require("axios");
 
 exports.getPayments = async (req, res, next) => {
   try {
@@ -66,7 +67,7 @@ exports.createPayment = async (req, res, next) => {
     //   });
     // }
 
-    const data = await paymentUsecase.createPayment({
+    const newPayment = await paymentUsecase.createPayment({
       booking_id,
       payment_method,
       booking_price,
@@ -76,9 +77,43 @@ exports.createPayment = async (req, res, next) => {
       status,
       // expired_at,
     });
+
+    let data = JSON.stringify({
+      transaction_details: {
+        order_id: booking_id,
+        gross_amount: total_price,
+      },
+      callbacks: {
+        finish: "https://google.com",
+      },
+      expiry: {
+        unit: "minutes",
+        duration: 60,
+      },
+    });
+
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "https://app.sandbox.midtrans.com/snap/v1/transactions",
+      headers: {
+        Authorization:
+          "Basic U0ItTWlkLXNlcnZlci1kZTdPemNXLWp2WmNTaC02YnhEbzFITlg=",
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    let response = await axios(config);
+
+    const updatedPayment = await paymentUsecase.updatePayment(newPayment.id, {
+      ...newPayment,
+      ...response.data,
+    });
+
     res.status(201).json({
       message: "Success",
-      data,
+      data: updatedPayment,
     });
   } catch (error) {
     next(error);

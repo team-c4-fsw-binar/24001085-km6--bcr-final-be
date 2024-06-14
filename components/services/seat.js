@@ -1,6 +1,7 @@
 const seatRepo = require("../repositories/seat");
 const bookingRepo = require("../repositories/booking");
 const bookingSeatRepo = require("../repositories/bookingSeat");
+const flightRepo = require("../repositories/flight");
 
 exports.getSeats = async () => {
   const data = await seatRepo.getSeats();
@@ -28,13 +29,14 @@ exports.deleteSeat = async (id) => {
   return data;
 };
 
-exports.getFilteredSeats = async (airlineId, seatClass, flight_id) => {
+exports.getFilteredSeats = async (flight_id, seatClass) => {
   let bookedSeatsId = [];
   let seats = [];
 
   const bookings = await bookingRepo.getBookingsByFlightId(flight_id);
+  const flight = await flightRepo.getFlightById(flight_id);
 
-  console.log(bookings[0].BookingSeats);
+  console.log(bookings[0]?.BookingSeats);
 
   bookings.forEach((booking) => {
     booking.BookingSeats.forEach((seat) => {
@@ -42,7 +44,10 @@ exports.getFilteredSeats = async (airlineId, seatClass, flight_id) => {
     });
   });
 
-  const seatsByAirline = await seatRepo.getSeatsByAirline(airlineId, seatClass);
+  const seatsByAirline = await seatRepo.getSeatsByAirline(
+    flight.airline_id,
+    seatClass
+  );
 
   seatsByAirline.forEach((seat) => {
     let obj = { id: seat.id, seat_no: seat.seat_number, booked: false };

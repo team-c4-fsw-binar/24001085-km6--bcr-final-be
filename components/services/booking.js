@@ -4,6 +4,7 @@ const {
   getBookingById,
   updateBooking,
   deleteBooking,
+  getBookingsByFlightId,
 } = require("../repositories/booking");
 const { getTokenAndRedirectPaymentUrl } = require("./midtrans");
 const { createPayment } = require("./payment");
@@ -11,6 +12,8 @@ const { updateFlight, getFlightById } = require("../repositories/flight");
 
 const { v4: uuidv4 } = require("uuid");
 const { createBookingSeat } = require("../repositories/bookingSeat");
+const { createPassenger } = require("../repositories/passenger");
+const { createBookingPassenger } = require("../repositories/bookingPassenger");
 
 exports.createBooking = async (payload) => {
   const {
@@ -21,6 +24,10 @@ exports.createBooking = async (payload) => {
     price_amount,
     seats_id,
     seat_class,
+    passengers,
+    adultCount,
+    childCount,
+    babyCount,
   } = payload;
   const code = uuidv4();
 
@@ -75,10 +82,35 @@ exports.createBooking = async (payload) => {
     order_date,
     price_amount,
     code,
+    adultCount,
+    childCount,
+    babyCount,
   });
+
+  // check if the seat has been booked before
+
+  // const departure_flight_booked_seats_id = [];
+  // const departure_bookings = await getBookingsByFlightId(departure_flight_id);
+  // departure_bookings.forEach((booking) => {
+  //   booking.BookingSeats.forEach((be) =>
+  //     departure_flight_booked_seats_id.push(be.seat_id)
+  //   );
+  // });
+
+  // Create Booking Seat
 
   seats_id.forEach(async (seat_id) => {
     await createBookingSeat({ booking_id: newBooking.id, seat_id });
+  });
+  
+  // Create Passengers
+  passengers.forEach(async (passenger) => {
+    const newPassenger = await createPassenger({ user_id, ...passenger });
+
+    await createBookingPassenger({
+      booking_id: newBooking.id,
+      passenger_id: newPassenger.id,
+    });
   });
 
   const dataMidtrans = await getTokenAndRedirectPaymentUrl({
