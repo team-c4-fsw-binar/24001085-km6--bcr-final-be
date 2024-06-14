@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       citizenship: DataTypes.STRING,
       identity_number: DataTypes.STRING,
       publisher_country: DataTypes.STRING,
-      expired_at: DataTypes.DATE,
     },
     {
       sequelize,

@@ -16,8 +16,7 @@ exports.createPayment = async (payload) => {
 };
 
 exports.updatePayment = async (id, payload) => {
-  await paymentRepo.updatePayment(id, payload);
-  const data = paymentRepo.getPayment(id);
+  const data = await paymentRepo.updatePayment(id, payload);
   return data;
 };
 

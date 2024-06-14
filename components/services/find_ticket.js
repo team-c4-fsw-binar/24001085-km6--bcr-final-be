@@ -20,13 +20,15 @@ exports.getFilteredTickets = async (payload) => {
   let filtered_departure_flight = departure_flight;
 
   filtered_departure_flight = filtered_departure_flight.filter((ticket) => {
-    const departureAirport_respon_lowerCase =
-      ticket.departureAirport_respon.city.toLowerCase();
-    const arrivalAirport_respon_lowerCase =
-      ticket.arrivalAirport_respon.city.toLowerCase();
     return (
-      departureAirport_respon_lowerCase === fromLowerCase &&
-      arrivalAirport_respon_lowerCase === toLowerCase
+      ticket.departureAirport_respon.city
+        .toLowerCase()
+        .includes(fromLowerCase) ||
+      ticket.arrivalAirport_respon.city.toLowerCase().includes(toLowerCase) ||
+      ticket.departureAirport_respon.country
+        .toLowerCase()
+        .includes(fromLowerCase) ||
+      ticket.arrivalAirport_respon.country.toLowerCase().includes(toLowerCase)
     );
   });
 

@@ -145,13 +145,11 @@ exports.deleteSeat = async (req, res, next) => {
 
 exports.getFilteredSeats = async (req, res, next) => {
   try {
-    const airlineId = req.query.airlineId;
-    const seatClass = req.query.seatClass;
     const flightId = req.query.flightId;
-
-    if (!airlineId || isNaN(parseInt(airlineId) || parseInt(airlineId) < 0)) {
+    const seatClass = req.query.seatClass;
+    if (!flightId || isNaN(parseInt(flightId) || parseInt(flightId) < 0)) {
       return next({
-        message: "Airline ID must be provided",
+        message: "Departure Flight ID must be provided",
         statusCode: 400,
       });
     }
@@ -161,16 +159,9 @@ exports.getFilteredSeats = async (req, res, next) => {
         statusCode: 400,
       });
     }
-    if (!flightId || isNaN(parseInt(flightId) || parseInt(flightId) < 0)) {
-      return next({
-        message: "Departure Flight ID must be provided",
-        statusCode: 400,
-      });
-    }
     const data = await seatUsecase.getFilteredSeats(
-      parseInt(airlineId),
-      seatClass,
-      parseInt(flightId)
+      parseInt(flightId),
+      seatClass
     );
     res.status(200).json({
       message: "Success",

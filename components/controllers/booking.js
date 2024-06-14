@@ -15,6 +15,11 @@ exports.createBooking = async (req, res, next) => {
       order_date,
       price_amount,
       seats_id,
+      seat_class,
+      passengers,
+      adultCount,
+      childCount,
+      babyCount,
     } = req.body;
     const user_id = req?.user?.id;
 
@@ -60,6 +65,31 @@ exports.createBooking = async (req, res, next) => {
         statusCode: 400,
       });
     }
+
+    if (passengers.length == 0) {
+      return next({
+        message: "At least one adult / child passenger is required!",
+        statusCode: 400,
+      });
+    }
+
+    if (!seat_class || seat_class == "") {
+      return next({
+        message: "Seat Class is required!",
+        statusCode: 400,
+      });
+    }
+
+    if (
+      !adultCount ||
+      isNaN(parseInt(adultCount) || parseInt(adultCount) < 0)
+    ) {
+      return next({
+        message: "Price Amount is required!",
+        statusCode: 400,
+      });
+    }
+
     const data = await createBooking({
       user_id,
       departure_flight_id,
@@ -67,6 +97,11 @@ exports.createBooking = async (req, res, next) => {
       order_date,
       price_amount,
       seats_id,
+      seat_class,
+      passengers,
+      adultCount,
+      childCount,
+      babyCount,
     });
 
     res.status(201).json({
