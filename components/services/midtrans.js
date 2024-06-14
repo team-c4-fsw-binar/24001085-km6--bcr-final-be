@@ -15,14 +15,14 @@ exports.getTokenAndRedirectPaymentUrl = async (payload) => {
 
   let data = JSON.stringify({
     transaction_details: {
-      order_id: order_id,
+      order_id: "TRANS-" + order_id,
       gross_amount: price_amount,
     },
     callbacks: {
       finish: "https://google.com",
     },
     expiry: {
-      unit: "minute",
+      unit: "minutes",
       duration: 60,
     },
   });
@@ -32,7 +32,7 @@ exports.getTokenAndRedirectPaymentUrl = async (payload) => {
     maxBodyLength: Infinity,
     url: "https://app.sandbox.midtrans.com/snap/v1/transactions",
     headers: {
-      Authorization: process.env.SECRET,
+      Authorization: `Basic U0ItTWlkLXNlcnZlci1kZTdPemNXLWp2WmNTaC02YnhEbzFITlg=`,
       "Content-Type": "application/json",
     },
     data: data,
@@ -45,6 +45,6 @@ exports.getTokenAndRedirectPaymentUrl = async (payload) => {
       redirect_url: response.data.redirect_url,
     };
   } catch (error) {
-    next(error);
+    throw new Error(error);
   }
 };
