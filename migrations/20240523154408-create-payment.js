@@ -13,22 +13,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      payment_method: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      booking_price: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      discount: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-      },
-      tax_price: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-      },
       total_price: {
         type: Sequelize.INTEGER,
         allowNull: true,
@@ -36,10 +20,6 @@ module.exports = {
       status: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      expired_at: {
-        type: Sequelize.DATE,
-        allowNull: true,
       },
       token: {
         type: Sequelize.STRING,

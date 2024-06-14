@@ -9,13 +9,8 @@ module.exports = (sequelize, DataTypes) => {
   Payment.init(
     {
       booking_id: DataTypes.INTEGER,
-      payment_method: DataTypes.STRING,
-      booking_price: DataTypes.INTEGER,
-      discount: DataTypes.INTEGER,
-      tax_price: DataTypes.INTEGER,
       total_price: DataTypes.INTEGER,
       status: DataTypes.STRING,
-      expired_at: DataTypes.DATE,
       token: DataTypes.STRING,
       redirect_url: DataTypes.STRING,
     },

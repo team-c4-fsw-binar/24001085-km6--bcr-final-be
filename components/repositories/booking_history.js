@@ -16,8 +16,7 @@ exports.getBookingsByUserId = async (user_id) => {
     include: [
       {
         model: Flight,
-        as: "departure_flight_respon",
-
+        as: "departureFlight_respon",
         include: [
           {
             model: Airport,
@@ -34,8 +33,7 @@ exports.getBookingsByUserId = async (user_id) => {
       },
       {
         model: Flight,
-        as: "return_flight_respon",
-
+        as: "returnFlight_respon",
         include: [
           {
             model: Airport,

@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
       Booking.belongsTo(models.User, { foreignKey: "user_id" });
       Booking.hasOne(models.Payment, { foreignKey: "booking_id" });
       Booking.belongsTo(models.Flight, {
-        as: "departure_flight_respon",
+        as: "departureFlight_respon",
         foreignKey: "departure_flight_id",
       });
       Booking.belongsTo(models.Flight, {
-        as: "return_flight_respon",
+        as: "returnFlight_respon",
         foreignKey: "return_flight_id",
       });
       Booking.hasMany(models.BookingPassenger, { foreignKey: "booking_id" });

@@ -23,6 +23,8 @@ exports.createBooking = async (req, res, next) => {
     } = req.body;
     const user_id = req?.user?.id;
 
+    const validSeatClasses = ["economy", "premium", "business", "first_class"];
+
     if (
       !departure_flight_id ||
       isNaN(parseInt(departure_flight_id) || parseInt(departure_flight_id) < 0)
@@ -63,6 +65,14 @@ exports.createBooking = async (req, res, next) => {
       return next({
         message: "Seats Id is required!",
         statusCode: 400,
+      });
+    }
+
+    if (!validSeatClasses.includes(seat_class)) {
+      return next({
+        message:
+          "Invalid Seat's class. Must be one of: " +
+          validSeatClasses.join(", "),
       });
     }
 

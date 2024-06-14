@@ -6,6 +6,10 @@ const {
   deleteBooking,
   getBookingsByFlightId,
 } = require("../repositories/booking");
+const { getTokenAndRedirectPaymentUrl } = require("./midtrans");
+const { createPayment } = require("./payment");
+const { updateFlight, getFlightById } = require("../repositories/flight");
+
 const { v4: uuidv4 } = require("uuid");
 const { createBookingSeat } = require("../repositories/bookingSeat");
 const { createPassenger } = require("../repositories/passenger");
@@ -26,6 +30,50 @@ exports.createBooking = async (payload) => {
     babyCount,
   } = payload;
   const code = uuidv4();
+
+  let return_flight = [];
+
+  let seat_id_length = seats_id.length;
+
+  if (return_flight_id) {
+    seat_id_length = seat_id_length / 2;
+    return_flight = await getFlightById(return_flight_id);
+  }
+
+  const departure_flight = await getFlightById(departure_flight_id);
+
+  const updateSeatsAvailability = async (
+    flight,
+    seat_class,
+    seats_id_length
+  ) => {
+    if (seat_class === "economy") {
+      flight.numberOfEconomySeatsLeft -= seats_id_length;
+      await updateFlight(departure_flight_id, {
+        numberOfEconomySeatsLeft: departure_flight.numberOfEconomySeatsLeft,
+      });
+    } else if (seat_class === "premium") {
+      flight.numberOfPremiumSeatsLeft -= seats_id_length;
+      await updateFlight(departure_flight_id, {
+        numberOfEconomySeatsLeft: departure_flight.numberOfPremiumSeatsLeft,
+      });
+    } else if (seat_class === "business") {
+      flight.numberOfBusinessSeatsLeft -= seats_id_length;
+      await updateFlight(departure_flight_id, {
+        numberOfEconomySeatsLeft: departure_flight.numberOfBusinessSeatsLeft,
+      });
+    } else if (seat_class === "first_class") {
+      flight.numberOfFirstClassSeatsLeft -= seats_id_length;
+      await updateFlight(departure_flight_id, {
+        numberOfEconomySeatsLeft: departure_flight.numberOfFirstClassSeatsLeft,
+      });
+    }
+  };
+
+  updateSeatsAvailability(departure_flight, seat_class, seat_id_length);
+  if (return_flight_id) {
+    updateSeatsAvailability(return_flight, seat_class, seat_id_length);
+  }
 
   const newBooking = await createBooking({
     user_id,
@@ -54,7 +102,7 @@ exports.createBooking = async (payload) => {
   seats_id.forEach(async (seat_id) => {
     await createBookingSeat({ booking_id: newBooking.id, seat_id });
   });
-
+  
   // Create Passengers
   passengers.forEach(async (passenger) => {
     const newPassenger = await createPassenger({ user_id, ...passenger });
@@ -64,6 +112,24 @@ exports.createBooking = async (payload) => {
       passenger_id: newPassenger.id,
     });
   });
+
+  const dataMidtrans = await getTokenAndRedirectPaymentUrl({
+    order_id: newBooking.id,
+    price_amount,
+  });
+
+  const newPayment = await createPayment({
+    booking_id: newBooking.id,
+    total_price: price_amount,
+    status: "Pending",
+    token: dataMidtrans.token,
+    redirect_url: dataMidtrans.redirect_url,
+  });
+
+  return {
+    token: dataMidtrans.token,
+    redirect_url: dataMidtrans.redirect_url,
+  };
 };
 
 exports.getBookingsByUserId = async (user_id) =>
