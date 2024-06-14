@@ -32,7 +32,7 @@ exports.getTokenAndRedirectPaymentUrl = async (payload) => {
     maxBodyLength: Infinity,
     url: "https://app.sandbox.midtrans.com/snap/v1/transactions",
     headers: {
-      Authorization: `Basic U0ItTWlkLXNlcnZlci1kZTdPemNXLWp2WmNTaC02YnhEbzFITlg=`,
+      Authorization: `Basic ${process.env.SECRET}`,
       "Content-Type": "application/json",
     },
     data: data,
