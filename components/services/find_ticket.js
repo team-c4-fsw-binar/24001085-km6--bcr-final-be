@@ -21,14 +21,16 @@ exports.getFilteredTickets = async (payload) => {
 
   filtered_departure_flight = filtered_departure_flight.filter((ticket) => {
     return (
-      ticket.departureAirport_respon.city
+      (ticket.departureAirport_respon.city
         .toLowerCase()
         .includes(fromLowerCase) ||
-      ticket.arrivalAirport_respon.city.toLowerCase().includes(toLowerCase) ||
-      ticket.departureAirport_respon.country
-        .toLowerCase()
-        .includes(fromLowerCase) ||
-      ticket.arrivalAirport_respon.country.toLowerCase().includes(toLowerCase)
+        ticket.departureAirport_respon.country
+          .toLowerCase()
+          .includes(fromLowerCase)) &&
+      (ticket.arrivalAirport_respon.city.toLowerCase().includes(toLowerCase) ||
+        ticket.arrivalAirport_respon.country
+          .toLowerCase()
+          .includes(toLowerCase))
     );
   });
 
@@ -106,13 +108,19 @@ exports.getFilteredTickets = async (payload) => {
     filtered_return_flight = return_flight;
 
     filtered_return_flight = filtered_return_flight.filter((ticket) => {
-      const departureAirport_respon_lowerCase =
-        ticket.departureAirport_respon.city.toLowerCase();
-      const arrivalAirport_respon_lowerCase =
-        ticket.arrivalAirport_respon.city.toLowerCase();
       return (
-        departureAirport_respon_lowerCase === toLowerCase &&
-        arrivalAirport_respon_lowerCase === fromLowerCase
+        (ticket.departureAirport_respon.city
+          .toLowerCase()
+          .includes(toLowerCase) ||
+          ticket.departureAirport_respon.country
+            .toLowerCase()
+            .includes(toLowerCase)) &&
+        (ticket.arrivalAirport_respon.city
+          .toLowerCase()
+          .includes(fromLowerCase) ||
+          ticket.arrivalAirport_respon.country
+            .toLowerCase()
+            .includes(fromLowerCase))
       );
     });
 
