@@ -9,6 +9,7 @@ const {
 const { getTokenAndRedirectPaymentUrl } = require("./midtrans");
 const { createPayment } = require("./payment");
 const { updateFlight, getFlightById } = require("../repositories/flight");
+const { createNotification } = require("../repositories/notif");
 
 const { v4: uuidv4 } = require("uuid");
 const { createBookingSeat } = require("../repositories/bookingSeat");
@@ -87,6 +88,19 @@ exports.createBooking = async (payload) => {
     babyCount,
   });
 
+  const dataMidtrans = await getTokenAndRedirectPaymentUrl({
+    order_id: code,
+    price_amount,
+  });
+
+  const newPayment = await createPayment({
+    booking_code: code,
+    total_price: price_amount,
+    status: "Pending",
+    token: dataMidtrans.token,
+    redirect_url: dataMidtrans.redirect_url,
+  });
+
   // check if the seat has been booked before
 
   // const departure_flight_booked_seats_id = [];
@@ -102,7 +116,7 @@ exports.createBooking = async (payload) => {
   seats_id.forEach(async (seat_id) => {
     await createBookingSeat({ booking_id: newBooking.id, seat_id });
   });
-  
+
   // Create Passengers
   passengers.forEach(async (passenger) => {
     const newPassenger = await createPassenger({ user_id, ...passenger });
@@ -113,17 +127,12 @@ exports.createBooking = async (payload) => {
     });
   });
 
-  const dataMidtrans = await getTokenAndRedirectPaymentUrl({
-    order_id: newBooking.id,
-    price_amount,
-  });
-
-  const newPayment = await createPayment({
-    booking_id: newBooking.id,
-    total_price: price_amount,
-    status: "Pending",
-    token: dataMidtrans.token,
-    redirect_url: dataMidtrans.redirect_url,
+  const newNotification = await createNotification({
+    type: "informasi",
+    title: `BOOKING SUCCES - ${code}`,
+    content: `Booking with code ${code} has been created`,
+    user_id: user_id,
+    isRead: 0,
   });
 
   return {

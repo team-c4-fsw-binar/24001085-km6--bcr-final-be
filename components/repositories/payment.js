@@ -34,16 +34,16 @@ exports.updatePayment = async (id, payload) => {
   throw new Error("Payment not found!");
 };
 
-exports.updatePaymentByBookingId = async (booking_id, payload) => {
+exports.updatePaymentByBookingId = async (booking_code, payload) => {
   await Payment.update(payload, {
     where: {
-      booking_id,
+      booking_code,
     },
   });
 
   const data = await Payment.findAll({
     where: {
-      booking_id,
+      booking_code,
     },
   });
   if (data.length > 0) {

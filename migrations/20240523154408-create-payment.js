@@ -9,8 +9,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      booking_id: {
-        type: Sequelize.INTEGER,
+      booking_code: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       total_price: {

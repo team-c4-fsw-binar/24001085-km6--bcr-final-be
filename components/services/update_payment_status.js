@@ -1,6 +1,6 @@
 const { updatePaymentByBookingId } = require("../repositories/payment");
 
-exports.updatePaymentStatus = async (booking_id, payload) => {
-  const updatedPayment = await updatePaymentByBookingId(booking_id, payload);
+exports.updatePaymentStatus = async (booking_code, payload) => {
+  const updatedPayment = await updatePaymentByBookingId(booking_code, payload);
   return updatedPayment;
 };
