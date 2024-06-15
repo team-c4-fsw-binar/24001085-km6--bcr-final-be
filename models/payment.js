@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       status: DataTypes.STRING,
       token: DataTypes.STRING,
       redirect_url: DataTypes.STRING,
+      start_at: DataTypes.DATE,
+      expired_at: DataTypes.DATE,
     },
     {
       sequelize,

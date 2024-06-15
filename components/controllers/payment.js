@@ -34,6 +34,8 @@ exports.createPayment = async (req, res, next) => {
       tax_price,
       total_price,
       status,
+      start_at,
+      expired_at,
       // expired_at,
     } = req.body;
     if (!booking_code || booking_code == "") {
@@ -60,6 +62,18 @@ exports.createPayment = async (req, res, next) => {
         statusCode: 400,
       });
     }
+    if (!start_at || start_at == "") {
+      return next({
+        message: "Start At must be provided",
+        statusCode: 400,
+      });
+    }
+    if (!expired_at || expired_at == "") {
+      return next({
+        message: "Expired At must be provided",
+        statusCode: 400,
+      });
+    }
     // if (!expired_at || expired_at == "") {
     //   return next({
     //     message: "Payment's Expired must be provided",
@@ -75,7 +89,8 @@ exports.createPayment = async (req, res, next) => {
       tax_price,
       total_price,
       status,
-      // expired_at,
+      start_at,
+      expired_at,
     });
 
     let data = JSON.stringify({
@@ -130,7 +145,8 @@ exports.updatePayment = async (req, res, next) => {
       tax_price,
       total_price,
       status,
-      // expired_at,
+      start_at,
+      expired_at,
     } = req.body;
     if (!booking_code || booking_code == "") {
       return next({
@@ -156,6 +172,18 @@ exports.updatePayment = async (req, res, next) => {
         statusCode: 400,
       });
     }
+    if (!start_at || start_at == "") {
+      return next({
+        message: "Start At must be provided",
+        statusCode: 400,
+      });
+    }
+    if (!expired_at || expired_at == "") {
+      return next({
+        message: "Expired At must be provided",
+        statusCode: 400,
+      });
+    }
     // if (!expired_at || expired_at == "") {
     //   return next({
     //     message: "Payment's Expired must be provided",
@@ -171,7 +199,8 @@ exports.updatePayment = async (req, res, next) => {
       tax_price,
       total_price,
       status,
-      // expired_at,
+      start_at,
+      expired_at,
     });
     res.status(201).json({
       message: "Success",

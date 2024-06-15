@@ -29,6 +29,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      start_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      expired_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

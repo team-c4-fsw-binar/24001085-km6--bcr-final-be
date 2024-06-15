@@ -93,12 +93,16 @@ exports.createBooking = async (payload) => {
     price_amount,
   });
 
+  const start_at = new Date();
+  const expiry_duration = 60 * 1000;
   const newPayment = await createPayment({
     booking_code: code,
     total_price: price_amount,
     status: "Pending",
     token: dataMidtrans.token,
     redirect_url: dataMidtrans.redirect_url,
+    start_at,
+    expired_at: new Date(start_at.getTime() + expiry_duration),
   });
 
   // check if the seat has been booked before
