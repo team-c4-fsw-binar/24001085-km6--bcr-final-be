@@ -32,6 +32,11 @@ exports.createBooking = async (payload) => {
   } = payload;
   const code = uuidv4();
 
+  const dataMidtrans = await getTokenAndRedirectPaymentUrl({
+    order_id: code,
+    price_amount,
+  });
+
   let return_flight = [];
 
   let seat_id_length = seats_id.length;
@@ -88,13 +93,8 @@ exports.createBooking = async (payload) => {
     babyCount,
   });
 
-  const dataMidtrans = await getTokenAndRedirectPaymentUrl({
-    order_id: code,
-    price_amount,
-  });
-
   const start_at = new Date();
-  const expiry_duration = 60 * 1000;
+  const expiry_duration = 60 * 60 * 1000;
   const newPayment = await createPayment({
     booking_code: code,
     total_price: price_amount,
