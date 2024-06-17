@@ -30,6 +30,7 @@ module.exports = {
       code: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       adultCount: {
         type: Sequelize.INTEGER,

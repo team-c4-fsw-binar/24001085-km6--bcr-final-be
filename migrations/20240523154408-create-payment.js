@@ -9,8 +9,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      booking_id: {
-        type: Sequelize.INTEGER,
+      booking_code: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       total_price: {
@@ -28,6 +28,14 @@ module.exports = {
       redirect_url: {
         type: Sequelize.STRING,
         allowNull: true,
+      },
+      start_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      expired_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

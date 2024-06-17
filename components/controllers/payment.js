@@ -27,18 +27,20 @@ exports.getPayment = async (req, res, next) => {
 exports.createPayment = async (req, res, next) => {
   try {
     const {
-      booking_id,
+      booking_code,
       payment_method,
       booking_price,
       discount,
       tax_price,
       total_price,
       status,
+      start_at,
+      expired_at,
       // expired_at,
     } = req.body;
-    if (!booking_id || booking_id == "") {
+    if (!booking_code || booking_code == "") {
       return next({
-        message: "Booking ID must be provided",
+        message: "Booking Code must be provided",
         statusCode: 400,
       });
     }
@@ -60,6 +62,18 @@ exports.createPayment = async (req, res, next) => {
         statusCode: 400,
       });
     }
+    if (!start_at || start_at == "") {
+      return next({
+        message: "Start At must be provided",
+        statusCode: 400,
+      });
+    }
+    if (!expired_at || expired_at == "") {
+      return next({
+        message: "Expired At must be provided",
+        statusCode: 400,
+      });
+    }
     // if (!expired_at || expired_at == "") {
     //   return next({
     //     message: "Payment's Expired must be provided",
@@ -68,19 +82,20 @@ exports.createPayment = async (req, res, next) => {
     // }
 
     const newPayment = await paymentUsecase.createPayment({
-      booking_id,
+      booking_code,
       payment_method,
       booking_price,
       discount,
       tax_price,
       total_price,
       status,
-      // expired_at,
+      start_at,
+      expired_at,
     });
 
     let data = JSON.stringify({
       transaction_details: {
-        order_id: booking_id,
+        order_id: booking_code,
         gross_amount: total_price,
       },
       callbacks: {
@@ -97,8 +112,7 @@ exports.createPayment = async (req, res, next) => {
       maxBodyLength: Infinity,
       url: "https://app.sandbox.midtrans.com/snap/v1/transactions",
       headers: {
-        Authorization:
-          "Basic U0ItTWlkLXNlcnZlci1kZTdPemNXLWp2WmNTaC02YnhEbzFITlg=",
+        Authorization: `Basic ${process.env.SECRET}`,
         "Content-Type": "application/json",
       },
       data: data,
@@ -124,18 +138,19 @@ exports.updatePayment = async (req, res, next) => {
   try {
     const { id } = req.params;
     const {
-      booking_id,
+      booking_code,
       payment_method,
       booking_price,
       discount,
       tax_price,
       total_price,
       status,
-      // expired_at,
+      start_at,
+      expired_at,
     } = req.body;
-    if (!booking_id || booking_id == "") {
+    if (!booking_code || booking_code == "") {
       return next({
-        message: "Booking ID must be provided",
+        message: "Booking Code must be provided",
         statusCode: 400,
       });
     }
@@ -157,6 +172,18 @@ exports.updatePayment = async (req, res, next) => {
         statusCode: 400,
       });
     }
+    if (!start_at || start_at == "") {
+      return next({
+        message: "Start At must be provided",
+        statusCode: 400,
+      });
+    }
+    if (!expired_at || expired_at == "") {
+      return next({
+        message: "Expired At must be provided",
+        statusCode: 400,
+      });
+    }
     // if (!expired_at || expired_at == "") {
     //   return next({
     //     message: "Payment's Expired must be provided",
@@ -165,14 +192,15 @@ exports.updatePayment = async (req, res, next) => {
     // }
 
     const data = await paymentUsecase.updatePayment(id, {
-      booking_id,
+      booking_code,
       payment_method,
       booking_price,
       discount,
       tax_price,
       total_price,
       status,
-      // expired_at,
+      start_at,
+      expired_at,
     });
     res.status(201).json({
       message: "Success",

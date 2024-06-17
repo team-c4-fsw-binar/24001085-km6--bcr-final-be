@@ -27,10 +27,10 @@ exports.getBookingSeat = async (req, res, next) => {
 
 exports.createBookingSeat = async (req, res, next) => {
   try {
-    const { booking_id, seat_id } = req.body;
-    if (!booking_id || booking_id == "") {
+    const { booking_code, seat_id } = req.body;
+    if (!booking_code || booking_code == "") {
       return next({
-        message: "Booking Id must be provided",
+        message: "Booking Code must be provided",
         statusCode: 400,
       });
     }
@@ -42,7 +42,7 @@ exports.createBookingSeat = async (req, res, next) => {
     }
 
     const data = await bookingSeatUsecase.createBookingSeat({
-      booking_id,
+      booking_code,
       seat_id,
     });
 
@@ -58,10 +58,10 @@ exports.createBookingSeat = async (req, res, next) => {
 exports.updateBookingSeat = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { booking_id, seat_id } = req.body;
-    if (!booking_id || booking_id == "") {
+    const { booking_code, seat_id } = req.body;
+    if (!booking_code || booking_code == "") {
       return next({
-        message: "Booking Id must be provided",
+        message: "Booking Code must be provided",
         statusCode: 400,
       });
     }
@@ -73,7 +73,7 @@ exports.updateBookingSeat = async (req, res, next) => {
     }
 
     const data = await bookingSeatUsecase.updateBookingSeat(id, {
-      booking_id,
+      booking_code,
       seat_id,
     });
 

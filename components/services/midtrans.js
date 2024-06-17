@@ -15,7 +15,7 @@ exports.getTokenAndRedirectPaymentUrl = async (payload) => {
 
   let data = JSON.stringify({
     transaction_details: {
-      order_id: "TRANS-" + order_id,
+      order_id: order_id,
       gross_amount: price_amount,
     },
     callbacks: {

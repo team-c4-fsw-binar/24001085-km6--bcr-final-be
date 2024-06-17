@@ -7,13 +7,13 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "passenger_id",
       });
       BookingPassenger.belongsTo(models.Booking, {
-        foreignKey: "booking_id",
+        foreignKey: "booking_code",
       });
     }
   }
   BookingPassenger.init(
     {
-      booking_id: DataTypes.INTEGER,
+      booking_code: DataTypes.STRING,
       passenger_id: DataTypes.INTEGER,
     },
     {

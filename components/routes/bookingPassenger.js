@@ -1,4 +1,4 @@
-const { createBookingPassenger, getAllBookingPassenger, getBookingPassengerById, getBookingPassengersByBookingId, updateBookingPassenger, deleteBookingPassenger } = require("../controllers/bookingPassenger");
+const { createBookingPassenger, getAllBookingPassenger, getBookingPassengerById, getBookingPassengersByBooking_code, updateBookingPassenger, deleteBookingPassenger } = require("../controllers/bookingPassenger");
 
 const router = require("express").Router();
 

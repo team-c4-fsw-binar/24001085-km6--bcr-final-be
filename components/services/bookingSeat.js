@@ -10,8 +10,8 @@ exports.getBookingSeat = async (id) => {
   return data;
 };
 
-exports.getBookingSeatByBookingId = async (bookingId) => {
-  const data = await bookingSeatRepo.getBookingSeatsByBookingId(bookingId);
+exports.getBookingSeatByBookingCode = async (booking_code) => {
+  const data = await bookingSeatRepo.getBookingSeatsByBookingCode(booking_code);
   return data;
 };
 
