@@ -17,6 +17,7 @@ const {
 
 const jsonwebtoken = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { createManyNotifications } = require("./notif");
 
 // register
 exports.register = async (payload) => {
@@ -63,6 +64,28 @@ exports.register = async (payload) => {
   } else {
     delete user?.dataValues?.otp;
   }
+
+  await createManyNotifications([
+    {
+      type: "promosi",
+      title: "Diskon pendatang baru!",
+      content: "Diskon 10% untuk kamu para pendatang baru!",
+      user_id: user.id,
+      isRead: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      type: "promosi",
+      title: "Diskon pertengahan tahun!",
+      content:
+        "Diskon 5% pertengahan tahun hanya berlaku 1 hari dari tanggal 25 Juni sampai 30 Juni yaa! Jangan sampai kelewatan",
+      user_id: user.id,
+      isRead: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ]);
 
   return {
     user,
@@ -230,22 +253,21 @@ exports.deleteUser = async (id) => (data = await deleteUser(id));
 
 exports.changePassword = async (id, payload) => {
   const user = await findUserById(id);
-
   if (!user) {
     throw new Error("User not found!");
   }
 
   const isPasswordValid = await bcrypt.compare(
-    payload.currentPassword,
+    payload.current_password,
     user.password
   );
   if (!isPasswordValid) {
     throw new Error("Wrong password!");
   }
 
-  const newUserPassword = await bcrypt.hashSync(payload.newPassword, 10);
+  const newUserPassword = await bcrypt.hashSync(payload.new_password, 10);
 
-  const updatedUser = await updatedUser(id, {
+  const updatedUser = await updateUser(id, {
     ...user,
     password: newUserPassword,
   });

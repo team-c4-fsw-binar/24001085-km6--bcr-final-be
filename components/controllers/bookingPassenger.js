@@ -61,6 +61,7 @@ exports.getAllBookingPassenger = async (req, res, next) => {
           limit: limit,
         };
       }
+      results.totalPage = Math.ceil(data.length / limit);
 
       results.results = data.slice(startIndex, endIndex);
     } else {

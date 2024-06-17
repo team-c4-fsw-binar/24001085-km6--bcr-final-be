@@ -11,7 +11,6 @@ const seatRoutes = require("./seat");
 const airportRoutes = require("./airport");
 const airlineRoutes = require("./airline");
 const flightRoutes = require("./flight");
-const midtransRoutes = require("./midtrans");
 
 const bookingHistoryRoutes = require("./booking_history");
 const findTicketsRoutes = require("./find_ticket");

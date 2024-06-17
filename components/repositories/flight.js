@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Flight, Airport, Airline } = require("../../models");
 
 exports.getFlights = async () => {

@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Airport } = require("../../models");
 const { uploader } = require("../../src/helper/cloudinary");
 const crypto = require("crypto");

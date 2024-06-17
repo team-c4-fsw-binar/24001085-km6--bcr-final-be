@@ -7,9 +7,11 @@ const {
   addAirport,
   updateAirport,
   deleteAirport,
+  getAllCities,
 } = require("../controllers/airport");
 
 router.route("/").get(getAirports).post(addAirport);
+router.get("/cities", getAllCities);
 router
   .route("/:id")
   .get(getAirportById)

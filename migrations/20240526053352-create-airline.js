@@ -17,6 +17,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      imgUrl: {
+        type: Sequelize.TEXT,
+      },
       baggage: {
         type: Sequelize.INTEGER,
         allowNull: false,
