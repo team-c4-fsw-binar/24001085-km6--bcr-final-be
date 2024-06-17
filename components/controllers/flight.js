@@ -6,12 +6,21 @@ const {
   addFlight,
   updateFlight,
   deleteFlight,
+  getFlightsBySearchValue,
 } = require("../services/flight");
 
 exports.getFlights = async (req, res, next) => {
   try {
+    const search_value = req.query?.search;
+
     let results = {};
-    const data = await getFlights();
+    let data;
+
+    if (search_value) {
+      data = await getFlightsBySearchValue(search_value);
+    } else {
+      data = await getFlights();
+    }
 
     const page = parseInt(req.query?.page);
     const limit = parseInt(req.query?.limit);
@@ -32,6 +41,7 @@ exports.getFlights = async (req, res, next) => {
           limit: limit,
         };
       }
+      results.totalPage = Math.ceil(data.length / limit);
 
       results.results = data.slice(startIndex, endIndex);
     } else {

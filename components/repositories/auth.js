@@ -89,15 +89,6 @@ exports.getGoogleAccessTokenData = async (accessToken) => {
   return response.data;
 };
 
-// reset Pass
-exports.updateUserPassword = async (id, password) => {
-  // encrypt the pass
-  password = bcrypt.hashSync(password, 10);
-
-  await User.update({ password }, { where: { id } });
-  return await User.findOne({ where: { id } });
-};
-
 // verify OTP
 exports.verifyOtp = async (email, otp) => {
   const user = await User.findOne({ where: { email } });
