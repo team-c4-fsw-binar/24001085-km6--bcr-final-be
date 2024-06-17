@@ -34,7 +34,7 @@ exports.updatePayment = async (id, payload) => {
   throw new Error("Payment not found!");
 };
 
-exports.updatePaymentByBookingId = async (booking_code, payload) => {
+exports.updatePaymentByBookingCode = async (booking_code, payload) => {
   await Payment.update(payload, {
     where: {
       booking_code,

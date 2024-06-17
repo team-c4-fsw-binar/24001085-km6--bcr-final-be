@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
         as: "returnFlight_respon",
         foreignKey: "return_flight_id",
       });
-      Booking.hasMany(models.BookingPassenger, { foreignKey: "booking_id" });
-      Booking.hasMany(models.BookingSeat, { foreignKey: "booking_id" });
+      Booking.hasMany(models.BookingPassenger, { foreignKey: "booking_code" });
+      Booking.hasMany(models.BookingSeat, { foreignKey: "booking_code" });
     }
   }
   Booking.init(

@@ -118,7 +118,7 @@ exports.createBooking = async (payload) => {
   // Create Booking Seat
 
   seats_id.forEach(async (seat_id) => {
-    await createBookingSeat({ booking_id: newBooking.id, seat_id });
+    await createBookingSeat({ booking_code: code, seat_id });
   });
 
   // Create Passengers
@@ -126,7 +126,7 @@ exports.createBooking = async (payload) => {
     const newPassenger = await createPassenger({ user_id, ...passenger });
 
     await createBookingPassenger({
-      booking_id: newBooking.id,
+      booking_code: code,
       passenger_id: newPassenger.id,
     });
   });

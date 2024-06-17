@@ -1,4 +1,4 @@
-const { createBookingPassenger, getBookingPassengerById, getBookingPassengersByBookingId, updateBookingPassenger, deleteBookingPassenger, getAllBookingPassenger } = require("../repositories/bookingPassenger");
+const { createBookingPassenger, getBookingPassengerById, getBookingPassengersByBookingCode, updateBookingPassenger, deleteBookingPassenger, getAllBookingPassenger } = require("../repositories/bookingPassenger");
 
 
 exports.createBookingPassenger = async (payload) => await createBookingPassenger(payload);

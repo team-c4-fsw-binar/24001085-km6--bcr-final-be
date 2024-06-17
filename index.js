@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 
 const cron = require("node-cron");
-const { Payment } = require("./models");
+const { Payment, BookingSeat, BookingPassenger } = require("./models");
 const { Op } = require("sequelize");
 
 const router = require("./components/routes");
@@ -57,7 +57,7 @@ cron.schedule("*/1 * * * *", async () => {
 
   // Temukan transaksi yang telah melewati waktu expiry dan masih dalam status pending
   try {
-    const [numberOfAffectedRows] = await Payment.update(
+    const [numberOfAffectedRows, affectedPayments] = await Payment.update(
       { status: "Expired" },
       {
         where: {
@@ -66,11 +66,43 @@ cron.schedule("*/1 * * * *", async () => {
             [Op.lte]: now,
           },
         },
+        returning: true,
       }
     );
 
     if (numberOfAffectedRows > 0) {
       console.log(`${numberOfAffectedRows} transaksi telah kedaluwarsa.`);
+
+      const bookingIds = affectedPayments.map(
+        (payment) => payment.booking_code
+      );
+
+      await BookingSeat.destroy({
+        where: {
+          booking_code: {
+            [Op.in]: bookingIds,
+          },
+        },
+      });
+
+      await BookingPassenger.destroy({
+        where: {
+          booking_code: {
+            [Op.in]: bookingIds,
+          },
+        },
+      });
+
+      console.log(
+        `BookingSeats terkait dengan booking_id ${bookingIds.join(
+          ", "
+        )} telah dihapus.`
+      );
+      console.log(
+        `BookingPassengers terkait dengan booking_id ${bookingIds.join(
+          ", "
+        )} telah dihapus.`
+      );
     }
   } catch (error) {
     console.error("Error updating expired transactions:", error);

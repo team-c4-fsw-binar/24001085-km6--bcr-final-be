@@ -1,7 +1,7 @@
 const {
   createBookingPassenger,
   getBookingPassengerById,
-  getBookingPassengersByBookingId,
+  getBookingPassengersByBookingCode,
   updateBookingPassenger,
   deleteBookingPassenger,
   getAllBookingPassenger,
@@ -9,10 +9,10 @@ const {
 
 exports.createBookingPassenger = async (req, res, next) => {
   try {
-    const { booking_id, passenger_id } = req.body;
-    if (typeof booking_id != "number") {
+    const { booking_code, passenger_id } = req.body;
+    if (typeof booking_code != "number") {
       return next({
-        message: "Booking ID must Be Number!",
+        message: "Booking Code must Be Number!",
         statusCode: 400,
       });
     }
@@ -25,7 +25,7 @@ exports.createBookingPassenger = async (req, res, next) => {
     }
 
     const data = await createBookingPassenger({
-      booking_id,
+      booking_code,
       passenger_id,
     });
     res.status(201).json({
@@ -91,10 +91,10 @@ exports.getBookingPassengerById = async (req, res, next) => {
 exports.updateBookingPassenger = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { booking_id, passenger_id } = req.body;
-    if (typeof booking_id != "number") {
+    const { booking_code, passenger_id } = req.body;
+    if (typeof booking_code != "number") {
       return next({
-        message: "Booking ID must Be Number!",
+        message: "Booking Code must Be Number!",
         statusCode: 400,
       });
     }
@@ -106,7 +106,7 @@ exports.updateBookingPassenger = async (req, res, next) => {
       });
     }
     const data = await updateBookingPassenger(id, {
-      booking_id,
+      booking_code,
       passenger_id,
     });
 
