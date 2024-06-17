@@ -19,7 +19,10 @@ exports.getTokenAndRedirectPaymentUrl = async (payload) => {
       gross_amount: price_amount,
     },
     callbacks: {
-      finish: "https://google.com",
+      finish:
+        process.env.NODE_ENV == "development"
+          ? "http://localhost:3000/api/payments/update_status"
+          : "https://terbangaja-staging-dot-kampus-merdeka-6.df.r.appspot.com/api/payments/update_status",
     },
     expiry: {
       unit: "minutes",

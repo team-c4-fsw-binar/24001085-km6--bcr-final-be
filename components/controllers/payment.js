@@ -223,3 +223,27 @@ exports.deletePayment = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.updateStatus = async (req, res, next) => {
+  try {
+    const data = req.query;
+    let status;
+
+    if (data.status_code == 200) {
+      status = "Success";
+    } else if (data.status_code == 201) {
+      status = "Pending";
+    }
+
+    const updatedPayment = await paymentUsecase.updateStatus(data.order_id, {
+      status,
+    });
+
+    res.status(200).json({
+      status: "Updated successfully",
+      data: updatedPayment,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

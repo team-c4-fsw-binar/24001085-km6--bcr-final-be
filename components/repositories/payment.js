@@ -65,3 +65,13 @@ exports.deletePayment = async (id) => {
 
   return null;
 };
+
+exports.updateStatus = async (booking_code, payload) => {
+  const selectedPayment = await Payment.findOne({ where: { booking_code } });
+
+  if (selectedPayment) {
+    const updatedPayment = await selectedPayment.update({ ...payload });
+    return updatedPayment;
+  }
+  throw new Error("Payment not found!");
+};
