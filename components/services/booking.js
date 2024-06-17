@@ -81,7 +81,7 @@ exports.createBooking = async (payload) => {
     updateSeatsAvailability(return_flight, seat_class, seat_id_length);
   }
 
-  const newBooking = await createBooking({
+  await createBooking({
     user_id,
     departure_flight_id,
     return_flight_id,
@@ -95,7 +95,7 @@ exports.createBooking = async (payload) => {
 
   const start_at = new Date();
   const expiry_duration = 60 * 60 * 1000;
-  const newPayment = await createPayment({
+  await createPayment({
     booking_code: code,
     total_price: price_amount,
     status: "Pending",
@@ -107,13 +107,13 @@ exports.createBooking = async (payload) => {
 
   // check if the seat has been booked before
 
-  // const departure_flight_booked_seats_id = [];
-  // const departure_bookings = await getBookingsByFlightId(departure_flight_id);
-  // departure_bookings.forEach((booking) => {
-  //   booking.BookingSeats.forEach((be) =>
-  //     departure_flight_booked_seats_id.push(be.seat_id)
-  //   );
-  // });
+  const departure_flight_booked_seats_id = [];
+  const departure_bookings = await getBookingsByFlightId(departure_flight_id);
+  departure_bookings.forEach((booking) => {
+    booking.BookingSeats.forEach((be) =>
+      departure_flight_booked_seats_id.push(be.seat_id)
+    );
+  });
 
   // Create Booking Seat
 
@@ -131,9 +131,9 @@ exports.createBooking = async (payload) => {
     });
   });
 
-  const newNotification = await createNotification({
+  await createNotification({
     type: "informasi",
-    title: `BOOKING SUCCES - ${code}`,
+    title: `BOOKING SUCCESS - ${code}`,
     content: `Booking with code ${code} has been created`,
     user_id: user_id,
     isRead: 0,

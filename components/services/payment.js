@@ -24,3 +24,8 @@ exports.deletePayment = async (id) => {
   const data = await paymentRepo.deletePayment(id);
   return data;
 };
+
+exports.updateStatus = async (booking_code, payload) => {
+  const data = await paymentRepo.updateStatus(booking_code, payload);
+  return data;
+};
