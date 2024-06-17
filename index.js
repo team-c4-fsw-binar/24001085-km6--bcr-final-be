@@ -52,61 +52,61 @@ app.use((err, req, res, next) => {
   });
 });
 
-cron.schedule("*/1 * * * *", async () => {
-  const now = new Date();
+// cron.schedule("*/1 * * * *", async () => {
+//   const now = new Date();
 
-  // Temukan transaksi yang telah melewati waktu expiry dan masih dalam status pending
-  try {
-    const [numberOfAffectedRows, affectedPayments] = await Payment.update(
-      { status: "Expired" },
-      {
-        where: {
-          status: "Pending",
-          expired_at: {
-            [Op.lte]: now,
-          },
-        },
-        returning: true,
-      }
-    );
+//   // Temukan transaksi yang telah melewati waktu expiry dan masih dalam status pending
+//   try {
+//     const [numberOfAffectedRows, affectedPayments] = await Payment.update(
+//       { status: "Expired" },
+//       {
+//         where: {
+//           status: "Pending",
+//           expired_at: {
+//             [Op.lte]: now,
+//           },
+//         },
+//         returning: true,
+//       }
+//     );
 
-    if (numberOfAffectedRows > 0) {
-      console.log(`${numberOfAffectedRows} transaksi telah kedaluwarsa.`);
+//     if (numberOfAffectedRows > 0) {
+//       console.log(`${numberOfAffectedRows} transaksi telah kedaluwarsa.`);
 
-      const bookingIds = affectedPayments.map(
-        (payment) => payment.booking_code
-      );
+//       const bookingIds = affectedPayments.map(
+//         (payment) => payment.booking_code
+//       );
 
-      await BookingSeat.destroy({
-        where: {
-          booking_code: {
-            [Op.in]: bookingIds,
-          },
-        },
-      });
+//       await BookingSeat.destroy({
+//         where: {
+//           booking_code: {
+//             [Op.in]: bookingIds,
+//           },
+//         },
+//       });
 
-      await BookingPassenger.destroy({
-        where: {
-          booking_code: {
-            [Op.in]: bookingIds,
-          },
-        },
-      });
+//       await BookingPassenger.destroy({
+//         where: {
+//           booking_code: {
+//             [Op.in]: bookingIds,
+//           },
+//         },
+//       });
 
-      console.log(
-        `BookingSeats terkait dengan booking_id ${bookingIds.join(
-          ", "
-        )} telah dihapus.`
-      );
-      console.log(
-        `BookingPassengers terkait dengan booking_id ${bookingIds.join(
-          ", "
-        )} telah dihapus.`
-      );
-    }
-  } catch (error) {
-    console.error("Error updating expired transactions:", error);
-  }
-});
+//       console.log(
+//         `BookingSeats terkait dengan booking_id ${bookingIds.join(
+//           ", "
+//         )} telah dihapus.`
+//       );
+//       console.log(
+//         `BookingPassengers terkait dengan booking_id ${bookingIds.join(
+//           ", "
+//         )} telah dihapus.`
+//       );
+//     }
+//   } catch (error) {
+//     console.error("Error updating expired transactions:", error);
+//   }
+// });
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
