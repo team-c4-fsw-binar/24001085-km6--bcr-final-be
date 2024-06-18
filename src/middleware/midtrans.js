@@ -17,14 +17,18 @@ exports.validateIP = (req, res, next) => {
 
 // Middleware untuk memvalidasi signature key
 exports.validateSignature = (req, res, next) => {
-  const signatureKey = req.headers["x-signature-key"];
-  const body = JSON.stringify(req.body);
+  const { order_id, status_code, gross_amount } = req.body;
+  const receivedSignatureKey = req.body.signature_key;
+
+  const input = order_id + status_code + gross_amount + MIDTRANS_SERVER_KEY;
+
   const calculatedSignature = crypto
-    .createHmac("sha512", MIDTRANS_SERVER_KEY)
-    .update(body)
+    .createHash("sha512")
+    .update(input)
     .digest("hex");
 
-  if (signatureKey === calculatedSignature) {
+  // Validate signature
+  if (receivedSignatureKey === calculatedSignature) {
     return next();
   }
   res.status(403).send("Forbidden");
