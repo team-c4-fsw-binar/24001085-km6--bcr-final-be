@@ -6,6 +6,6 @@ const {
   validateSignature,
 } = require("../../src/middleware/midtrans");
 
-router.route("/").post(validateIP, validateSignature, updatePaymentStatus);
+router.route("/").post(validateSignature, updatePaymentStatus);
 
 module.exports = router;
