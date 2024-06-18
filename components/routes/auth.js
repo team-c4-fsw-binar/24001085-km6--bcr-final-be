@@ -20,7 +20,7 @@ router.post("/verify-otp", verifyOtp);
 router.post("/login", login);
 router.post("/google-login", googleLogin);
 router.post("/forgot-password", forgotPassword);
-router.post("/reset-password/:id/:token", resetPassword);
+router.patch("/reset-password/:id/:token", resetPassword);
 router.post("/resend-otp", authMiddleware(), resendOtp);
 
 router

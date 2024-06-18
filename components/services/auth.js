@@ -47,7 +47,6 @@ exports.register = async (payload) => {
   const jwtPayload = { id: user[0]?.id || user?.id };
   const token = jsonwebtoken.sign(jwtPayload, process.env.JWT_SECRET, {
     expiresIn: "2h",
-    expiresIn: "2h",
   });
 
   // Kirim email OTP
@@ -65,8 +64,6 @@ exports.register = async (payload) => {
   }
 
   return {
-    user,
-    token,
     user,
     token,
   };
@@ -88,7 +85,7 @@ exports.verifyOtp = async (email, otp) => {
 exports.resendOtp = async (id) => {
   const user = await resendOtp(id);
 
-  return await sendOtpEmail(user.email, user.otp);
+  return await sendOtpEmail(user.email, user.otp, user.name);
 };
 
 // login
@@ -181,7 +178,7 @@ exports.forgotPassword = async (email) => {
   // link deploy for reset pass route
   const link = `${process.env.FRONTEND_URL}/reset-password/${user.id}/${token}`;
 
-  await sendResetPasswordEmail(email, link);
+  await sendResetPasswordEmail(user.email, link, user.name);
 
   return link;
 };

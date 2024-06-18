@@ -91,9 +91,6 @@ exports.getGoogleAccessTokenData = async (accessToken) => {
 
 // reset Pass
 exports.updateUserPassword = async (id, password) => {
-  // encrypt the pass
-  password = bcrypt.hashSync(password, 10);
-
   await User.update({ password }, { where: { id } });
   return await User.findOne({ where: { id } });
 };
@@ -132,6 +129,9 @@ exports.updateUser = async (id, payload) => {
       photo.name = `${photo.publicId}${path.parse(photo.name).ext}`;
       const imageUpload = await uploader(photo);
       payload.photo = imageUpload.secure_url;
+    } else {
+      payload.photo =
+      "https://res.cloudinary.com/dqr9vycth/image/upload/profile_dummy.png";
     }
 
     // validation for picture from google login
