@@ -24,6 +24,7 @@ exports.getPassengers = async (req, res, next) => {
           limit: limit,
         };
       }
+      results.totalPage = Math.ceil(data.length / limit);
 
       results.results = data.slice(startIndex, endIndex);
     } else {
@@ -61,7 +62,7 @@ exports.createPassenger = async (req, res, next) => {
       citizenship,
       identity_number,
       publisher_country,
-      expired_at,
+      // expired_at,
     } = req.body;
     if (!user_id || user_id == "") {
       return next({
@@ -99,12 +100,12 @@ exports.createPassenger = async (req, res, next) => {
         statusCode: 400,
       });
     }
-    if (!expired_at || expired_at == "") {
-      return next({
-        message: "Expired At must be provided",
-        statusCode: 400,
-      });
-    }
+    // if (!expired_at || expired_at == "") {
+    //   return next({
+    //     message: "Expired At must be provided",
+    //     statusCode: 400,
+    //   });
+    // }
 
     const data = await passengerUsecase.createPassenger({
       user_id,
@@ -113,7 +114,7 @@ exports.createPassenger = async (req, res, next) => {
       citizenship,
       identity_number,
       publisher_country,
-      expired_at,
+      // expired_at,
     });
     res.status(201).json({
       message: "Success",
@@ -134,7 +135,7 @@ exports.updatePassenger = async (req, res, next) => {
       citizenship,
       identity_number,
       publisher_country,
-      expired_at,
+      // expired_at,
     } = req.body;
     if (!user_id || user_id == "") {
       return next({
@@ -172,12 +173,12 @@ exports.updatePassenger = async (req, res, next) => {
         statusCode: 400,
       });
     }
-    if (!expired_at || expired_at == "") {
-      return next({
-        message: "Expired At must be provided",
-        statusCode: 400,
-      });
-    }
+    // if (!expired_at || expired_at == "") {
+    //   return next({
+    //     message: "Expired At must be provided",
+    //     statusCode: 400,
+    //   });
+    // }
 
     const data = await passengerUsecase.updatePassenger(id, {
       user_id,
@@ -186,7 +187,7 @@ exports.updatePassenger = async (req, res, next) => {
       citizenship,
       identity_number,
       publisher_country,
-      expired_at,
+      // expired_at,
     });
     res.status(201).json({
       message: "Success",

@@ -4,12 +4,12 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.addConstraint("Payments", {
-      fields: ["booking_id"],
+      fields: ["booking_code"],
       type: "foreign key",
-      name: "fk-to-Payments-booking_id",
+      name: "fk-to-Payments-booking_code",
       references: {
         table: "Bookings",
-        field: "id",
+        field: "code",
       },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
@@ -19,7 +19,7 @@ module.exports = {
   async down(queryInterface, Sequelize) {
     await queryInterface.removeConstraint(
       "Payments",
-      "fk-to-Payments-booking_id"
+      "fk-to-Payments-booking_code"
     );
   },
 };

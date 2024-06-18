@@ -6,6 +6,7 @@ const {
   edit,
   delUser,
   resendOtp,
+  changePassword,
   forgotPassword,
   resetPassword,
   googleLogin,
@@ -19,6 +20,7 @@ router.post("/register", register);
 router.post("/verify-otp", verifyOtp);
 router.post("/login", login);
 router.post("/google-login", googleLogin);
+router.post("/change-password", authMiddleware(), changePassword);
 router.post("/forgot-password", forgotPassword);
 router.patch("/reset-password/:id/:token", resetPassword);
 router.post("/resend-otp", authMiddleware(), resendOtp);

@@ -15,12 +15,15 @@ exports.getTokenAndRedirectPaymentUrl = async (payload) => {
 
   let data = JSON.stringify({
     transaction_details: {
-      order_id: "TRANS-" + order_id,
+      order_id: order_id,
       gross_amount: price_amount,
     },
-    callbacks: {
-      finish: "https://google.com",
-    },
+    // callbacks: {
+    //   finish:
+    //     process.env.NODE_ENV == "development"
+    //       ? "http://localhost:3000/api/payments/update_status"
+    //       : "https://terbangaja-staging-dot-kampus-merdeka-6.df.r.appspot.com/api/payments/update_status",
+    // },
     expiry: {
       unit: "minutes",
       duration: 60,

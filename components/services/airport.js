@@ -14,6 +14,15 @@ exports.getAirportById = async (id) => {
   const airports = await getAirportById(id);
   return airports;
 };
+exports.getAirportsByCityOrCountry = async (search_value) => {
+  const airports = await getAirports();
+  const filteredAirports = airports.filter(
+    (airport) =>
+      airport.city.toLowerCase().includes(search_value.toLowerCase()) ||
+      airport.country.toLowerCase().includes(search_value.toLowerCase())
+  );
+  return filteredAirports;
+};
 exports.addAirport = async (payload) => {
   const airports = await addAirport(payload);
   return airports;

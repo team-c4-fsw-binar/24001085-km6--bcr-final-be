@@ -17,10 +17,10 @@ exports.getBookingSeat = async (id) => {
   throw new Error(`Booking Seat is not found`);
 };
 
-exports.getBookingSeatsByBookingId = async (bookingId) => {
+exports.getBookingSeatsByBookingCode = async (booking_code) => {
   const data = await BookingSeat.findAll({
     where: {
-      booking_id: bookingId,
+      booking_code: booking_code,
     },
   });
   if (data.length > 0) {

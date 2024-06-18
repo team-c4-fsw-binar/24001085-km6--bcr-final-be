@@ -4,7 +4,10 @@ module.exports = (sequelize, DataTypes) => {
   class Booking extends Model {
     static associate(models) {
       Booking.belongsTo(models.User, { foreignKey: "user_id" });
-      Booking.hasOne(models.Payment, { foreignKey: "booking_id" });
+      Booking.hasOne(models.Payment, {
+        foreignKey: "booking_code",
+        sourceKey: "code",
+      });
       Booking.belongsTo(models.Flight, {
         as: "departureFlight_respon",
         foreignKey: "departure_flight_id",
@@ -13,8 +16,14 @@ module.exports = (sequelize, DataTypes) => {
         as: "returnFlight_respon",
         foreignKey: "return_flight_id",
       });
-      Booking.hasMany(models.BookingPassenger, { foreignKey: "booking_id" });
-      Booking.hasMany(models.BookingSeat, { foreignKey: "booking_id" });
+      Booking.hasMany(models.BookingPassenger, {
+        foreignKey: "booking_code",
+        sourceKey: "code",
+      });
+      Booking.hasMany(models.BookingSeat, {
+        foreignKey: "booking_code",
+        sourceKey: "code",
+      });
     }
   }
   Booking.init(

@@ -90,7 +90,7 @@ exports.getGoogleAccessTokenData = async (accessToken) => {
 };
 
 // reset Pass
-exports.updateUserPassword = async (id, password) => {
+exports.resetUserPassword = async (id, password) => {
   await User.update({ password }, { where: { id } });
   return await User.findOne({ where: { id } });
 };

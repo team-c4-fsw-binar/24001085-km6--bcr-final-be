@@ -4,12 +4,21 @@ const {
   addAirport,
   updateAirport,
   deleteAirport,
+  getAirportsByCityOrCountry,
 } = require("../services/airport");
 
 exports.getAirports = async (req, res, next) => {
   try {
+    const search_value = req.query?.search;
+
     let results = {};
-    const data = await getAirports();
+    let data;
+
+    if (search_value) {
+      data = await getAirportsByCityOrCountry(search_value);
+    } else {
+      data = await getAirports();
+    }
 
     const page = parseInt(req.query?.page);
     const limit = parseInt(req.query?.limit);
@@ -30,6 +39,8 @@ exports.getAirports = async (req, res, next) => {
           limit: limit,
         };
       }
+
+      results.totalPage = Math.ceil(data.length / limit);
 
       results.results = data.slice(startIndex, endIndex);
     } else {
@@ -140,6 +151,50 @@ exports.deleteAirport = async (req, res, next) => {
     res.status(200).json({
       data,
       message: "Airport deleted successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getAllCities = async (req, res, next) => {
+  try {
+    let results = {};
+    const airportRes = await getAirports();
+    const data = airportRes.map((airport) => ({
+      id: airport.id,
+      city: airport.city,
+    }));
+
+    const page = parseInt(req.query?.page);
+    const limit = parseInt(req.query?.limit);
+    if (page && limit) {
+      const startIndex = (page - 1) * limit;
+      const endIndex = page * limit;
+
+      if (endIndex < data.length) {
+        results.next = {
+          page: page + 1,
+          limit: limit,
+        };
+      }
+
+      if (startIndex > 0) {
+        results.previous = {
+          page: page - 1,
+          limit: limit,
+        };
+      }
+
+      results.totalPage = Math.ceil(data.length / limit);
+
+      results.results = data.slice(startIndex, endIndex);
+    } else {
+      results.results = data.slice();
+    }
+    res.status(200).json({
+      data: results,
+      message: "Airports fetched successfully",
     });
   } catch (error) {
     next(error);

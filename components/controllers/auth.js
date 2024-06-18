@@ -298,10 +298,10 @@ exports.delUser = async (req, res, next) => {
 
 exports.changePassword = async (req, res, next) => {
   try {
-    const { currentPassword, newPassword } = req.body;
+    const { current_password, new_password } = req.body;
     const data = await changePassword(req.user.id, {
-      currentPassword,
-      newPassword,
+      current_password,
+      new_password,
     });
 
     res.status(200).json({
