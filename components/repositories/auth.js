@@ -89,6 +89,12 @@ exports.getGoogleAccessTokenData = async (accessToken) => {
   return response.data;
 };
 
+// reset Pass
+exports.resetUserPassword = async (id, password) => {
+  await User.update({ password }, { where: { id } });
+  return await User.findOne({ where: { id } });
+};
+
 // verify OTP
 exports.verifyOtp = async (email, otp) => {
   const user = await User.findOne({ where: { email } });
@@ -123,6 +129,9 @@ exports.updateUser = async (id, payload) => {
       photo.name = `${photo.publicId}${path.parse(photo.name).ext}`;
       const imageUpload = await uploader(photo);
       payload.photo = imageUpload.secure_url;
+    } else {
+      payload.photo =
+      "https://res.cloudinary.com/dqr9vycth/image/upload/profile_dummy.png";
     }
 
     // validation for picture from google login

@@ -191,10 +191,9 @@ exports.googleLogin = async (req, res, next) => {
 exports.forgotPassword = async (req, res, next) => {
   try {
     const { email } = req.body;
-    const link = await forgotPassword(email);
+    await forgotPassword(email);
     res.status(200).json({
       message: "Password reset link sent successfully",
-      link,
     });
   } catch (error) {
     next(error);
