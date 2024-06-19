@@ -1,4 +1,7 @@
-const { getTickets } = require("../repositories/find_ticket");
+const {
+  getTicketsSameDay,
+  getTicketsDifferentDay,
+} = require("../repositories/find_ticket");
 
 exports.getFilteredTickets = async (payload) => {
   const {
@@ -14,7 +17,16 @@ exports.getFilteredTickets = async (payload) => {
   const fromLowerCase = from.toLowerCase();
   const toLowerCase = to.toLowerCase();
 
-  const departure_flight = await getTickets(departure_date, seat_class);
+  let departure_flight = [];
+
+  const now = new Date().toDateString();
+
+  if (now == new Date(departure_date).toDateString()) {
+    departure_flight = await getTicketsSameDay(departure_date, seat_class);
+  } else {
+    departure_flight = await getTicketsDifferentDay(departure_date, seat_class);
+  }
+
   let filtered_return_flight = [];
 
   let filtered_departure_flight = departure_flight;
@@ -103,7 +115,13 @@ exports.getFilteredTickets = async (payload) => {
   }
 
   if (return_date) {
-    const return_flight = await getTickets(return_date, seat_class);
+    let return_flight = [];
+
+    if (now == new Date(return_date).toDateString()) {
+      return_flight = await getTicketsSameDay(return_date, seat_class);
+    } else {
+      return_flight = await getTicketsDifferentDay(return_date, seat_class);
+    }
 
     filtered_return_flight = return_flight;
 

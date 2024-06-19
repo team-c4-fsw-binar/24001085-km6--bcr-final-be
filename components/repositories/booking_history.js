@@ -6,6 +6,7 @@ const {
   BookingPassenger,
   BookingSeat,
   Seat,
+  Passenger
 } = require("../../models");
 
 exports.getBookingsByUserId = async (user_id) => {
@@ -50,6 +51,11 @@ exports.getBookingsByUserId = async (user_id) => {
       },
       {
         model: BookingPassenger,
+        include: [
+          {
+            model: Passenger,
+          },
+        ],
       },
       {
         model: BookingSeat,
