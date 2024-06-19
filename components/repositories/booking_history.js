@@ -4,6 +4,7 @@ const {
   Airport,
   Airline,
   BookingPassenger,
+  Passenger,
   BookingSeat,
   Seat,
   Passenger
