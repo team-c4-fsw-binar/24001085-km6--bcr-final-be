@@ -65,7 +65,7 @@ app.use((err, req, res, next) => {
 //       { status: "Expired" },
 //       {
 //         where: {
-//           status: "Pending",
+//           status: "Need Method",
 //           expired_at: {
 //             [Op.lte]: now,
 //           },
