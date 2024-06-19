@@ -13,7 +13,9 @@ exports.getBookingHistoriesByFlightIDandDateRange = async (
 
   // Filter berdasarkan code
   if (code) {
-    filteredData = filteredData.filter((booking) => booking.code.include(code));
+    filteredData = filteredData.filter((booking) =>
+      booking.code.includes(code)
+    );
   }
 
   // Jika rentang tanggal diberikan, filter berdasarkan rentang tanggal

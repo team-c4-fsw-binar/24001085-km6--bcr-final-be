@@ -163,6 +163,7 @@ exports.googleLogin = async (accessToken) => {
       password: "",
       name: googleData?.given_name,
       picture: googleData?.picture,
+      isVerified: true,
     });
   }
 
