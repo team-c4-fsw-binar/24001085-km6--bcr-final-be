@@ -43,10 +43,12 @@ exports.createUser = async (payload) => {
   // exp 15 menit
   const otpExp = new Date(Date.now() + 15 * 60 * 1000);
 
-  payload.otp = otp;
-  payload.otpExp = otpExp;
+  if (!payload.isVerified) {
+    payload.otp = otp;
+    payload.otpExp = otpExp;
 
-  payload.isVerified = false;
+    payload.isVerified = false;
+  }
 
   return (data = await User.create(payload));
 };

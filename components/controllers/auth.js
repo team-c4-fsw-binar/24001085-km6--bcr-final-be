@@ -242,11 +242,12 @@ exports.edit = async (req, res, next) => {
 
     let photo;
 
-    if (req.body?.photo) {
-      photo = req.body?.photo;
-    } else {
+    if (req.files) {
       const { photo: photoFile } = JSON.parse(JSON.stringify(req.files));
       photo = photoFile;
+    } else {
+      const { photo: userPhoto } = await profile(id);
+      photo = userPhoto;
     }
 
     if (!name || name == "") {
