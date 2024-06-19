@@ -4,10 +4,9 @@ const {
   Airport,
   Airline,
   BookingPassenger,
-  Passenger,
   BookingSeat,
   Seat,
-  Passenger
+  Passenger,
 } = require("../../models");
 
 exports.getBookingsByUserId = async (user_id) => {
