@@ -13,15 +13,17 @@ exports.getBookingHistoriesByFlightIDandDateRange = async (
 
   // Filter berdasarkan code
   if (code) {
-    filteredData = filteredData.filter(
-      (booking) => booking.code === code
-    );
+    filteredData = filteredData.filter((booking) => booking.code === code);
   }
 
   // Jika rentang tanggal diberikan, filter berdasarkan rentang tanggal
   if (startDate && endDate) {
     const start = new Date(startDate);
+    start.setHours(0, 0, 0, 0);
+
     const end = new Date(endDate);
+    end.setHours(23, 59, 59, 999);
+
     filteredData = filteredData.filter((booking) => {
       const bookingDate = new Date(booking.createdAt);
       return bookingDate >= start && bookingDate <= end;

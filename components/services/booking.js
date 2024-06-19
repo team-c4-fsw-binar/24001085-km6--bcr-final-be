@@ -98,7 +98,7 @@ exports.createBooking = async (payload) => {
   await createPayment({
     booking_code: code,
     total_price: price_amount,
-    status: "Pending",
+    status: "Need Method",
     token: dataMidtrans.token,
     redirect_url: dataMidtrans.redirect_url,
     start_at,
