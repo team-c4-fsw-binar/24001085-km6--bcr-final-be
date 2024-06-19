@@ -11,6 +11,8 @@ exports.updatePaymentStatus = async (req, res, next) => {
       await updatePaymentStatus(order_id, { status: "Success" });
     } else if (transaction_status === "expire") {
       await updatePaymentStatus(order_id, { status: "Expired" });
+    } else if (transaction_status === "pending") {
+      await updatePaymentStatus(order_id, { status: "Pending" });
     } else if (
       transaction_status === "cancel" ||
       transaction_status === "deny"
@@ -22,7 +24,6 @@ exports.updatePaymentStatus = async (req, res, next) => {
       message: `Success Update Payment`,
       data: null,
     });
-    
   } catch (error) {
     next(error);
   }
