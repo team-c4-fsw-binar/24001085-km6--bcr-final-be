@@ -1,3 +1,6 @@
+const { Op } = require("sequelize");
+const { Payment, BookingSeat, BookingPassenger } = require("../../models");
+
 const updatePaymentStatusScheduled = async () => {
   const now = new Date();
 
