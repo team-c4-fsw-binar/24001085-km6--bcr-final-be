@@ -35,3 +35,10 @@ exports.deleteBookingSeat = async (id) => {
   const data = await bookingSeatRepo.deleteBookingSeat(id);
   return data;
 };
+
+exports.deleteBookingSeatByBookingCode = async (booking_code) => {
+  const data = await bookingSeatRepo.deleteBookingSeatByBookingCode(
+    booking_code
+  );
+  return data;
+};
