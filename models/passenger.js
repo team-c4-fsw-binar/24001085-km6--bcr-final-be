@@ -14,11 +14,13 @@ module.exports = (sequelize, DataTypes) => {
   Passenger.init(
     {
       user_id: DataTypes.INTEGER,
+      title: DataTypes.ENUM("Mr.", "Ms.", "Mrs."),
       name: DataTypes.STRING,
       born_date: DataTypes.DATE,
       citizenship: DataTypes.STRING,
       identity_number: DataTypes.STRING,
       publisher_country: DataTypes.STRING,
+      identity_expire_date: DataTypes.DATE,
     },
     {
       sequelize,
