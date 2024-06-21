@@ -27,5 +27,4 @@ jobs:
 
       - name: Deploy to App Engine
         run: |
-          gcloud app deploy cron.yaml
           gcloud app deploy staging.yaml
