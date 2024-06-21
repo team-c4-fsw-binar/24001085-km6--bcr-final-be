@@ -34,6 +34,14 @@ router.use("/flights", flightRoutes);
 router.use("/bookingHistories", bookingHistoryRoutes);
 router.use("/findTickets", findTicketsRoutes);
 router.use("/updatePaymentStatus", updatePaymentStatus);
-router.use("/updatePaymentStatusScheduled", updatePaymentStatusScheduled);
+router.get("/updatePaymentStatusScheduled", async (req, res) => {
+  try {
+    await updatePaymentStatusScheduled();
+    res.status(200).send("Payment status updated successfully.");
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("Error updating payment status.");
+  }
+});
 
 module.exports = router;
