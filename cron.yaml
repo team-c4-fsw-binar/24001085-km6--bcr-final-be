@@ -1,4 +1,4 @@
 cron:
   - description: "Update payment status every 5 minutes"
-    url: /update-payment-status
+    url: /updatePaymentStatusScheduled
     schedule: every 5 minutes
