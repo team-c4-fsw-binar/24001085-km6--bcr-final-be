@@ -1,0 +1,4 @@
+cron:
+  - description: "Update payment status every 5 minutes"
+    url: /update-payment-status
+    schedule: every 5 minutes

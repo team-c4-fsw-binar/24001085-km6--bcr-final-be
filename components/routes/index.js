@@ -15,6 +15,7 @@ const flightRoutes = require("./flight");
 const bookingHistoryRoutes = require("./booking_history");
 const findTicketsRoutes = require("./find_ticket");
 const updatePaymentStatus = require("./update_payment_status");
+const { updatePaymentStatusScheduled } = require("../../src/utils/payment");
 
 router.use("/auth", authRoutes);
 router.use("/notifications", notifRoutes);
@@ -33,5 +34,6 @@ router.use("/flights", flightRoutes);
 router.use("/bookingHistories", bookingHistoryRoutes);
 router.use("/findTickets", findTicketsRoutes);
 router.use("/updatePaymentStatus", updatePaymentStatus);
+router.use("/updatePaymentStatusScheduled", updatePaymentStatusScheduled);
 
 module.exports = router;
