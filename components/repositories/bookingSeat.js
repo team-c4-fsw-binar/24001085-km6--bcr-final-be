@@ -75,3 +75,15 @@ exports.deleteBookingSeat = async (id) => {
   }
   return null;
 };
+
+exports.deleteBookingSeatByBookingCode = async (booking_code) => {
+  const deletedCount = await BookingSeat.destroy({
+    where: {
+      booking_code,
+    },
+  });
+  if (deletedCount === 0) {
+    throw new Error(`Booking Seat is not found`);
+  }
+  return null;
+};
