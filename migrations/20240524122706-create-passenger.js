@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      title: {
+        type: Sequelize.ENUM("Mr.", "Ms.", "Mrs."),
+        allowNull: false,
+      },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -31,6 +35,10 @@ module.exports = {
       },
       publisher_country: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      identity_expire_date: {
+        type: Sequelize.DATEONLY,
         allowNull: false,
       },
       createdAt: {

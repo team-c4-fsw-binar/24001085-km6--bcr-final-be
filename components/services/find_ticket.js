@@ -52,7 +52,7 @@ exports.getFilteredTickets = async (payload) => {
     });
     if (filter === "harga_termurah") {
       filtered_departure_flight = filtered_departure_flight.sort(
-        (a, b) => a.price - b.price
+        (a, b) => a.economyPrice - b.economyPrice
       );
     }
   }
@@ -62,7 +62,7 @@ exports.getFilteredTickets = async (payload) => {
     });
     if (filter === "harga_termurah") {
       filtered_departure_flight = filtered_departure_flight.sort(
-        (a, b) => a.price - b.price
+        (a, b) => a.premiumPrice - b.premiumPrice
       );
     }
   }
@@ -72,7 +72,7 @@ exports.getFilteredTickets = async (payload) => {
     });
     if (filter === "harga_termurah") {
       filtered_departure_flight = filtered_departure_flight.sort(
-        (a, b) => a.price - b.price
+        (a, b) => a.businessPrice - b.businessPrice
       );
     }
   }
@@ -82,7 +82,7 @@ exports.getFilteredTickets = async (payload) => {
     });
     if (filter === "harga_termurah") {
       filtered_departure_flight = filtered_departure_flight.sort(
-        (a, b) => a.price - b.price
+        (a, b) => a.firstClassPrice - b.firstClassPrice
       );
     }
   }
