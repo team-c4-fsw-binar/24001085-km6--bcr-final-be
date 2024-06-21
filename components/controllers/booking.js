@@ -12,7 +12,7 @@ exports.createBooking = async (req, res, next) => {
     const {
       departure_flight_id,
       return_flight_id,
-      order_date,
+      // order_date,
       price_amount,
       seats_id,
       seat_class,
@@ -44,12 +44,12 @@ exports.createBooking = async (req, res, next) => {
         statusCode: 400,
       });
     }
-    if (!order_date || order_date == "") {
-      return next({
-        message: "Order Date is required!",
-        statusCode: 400,
-      });
-    }
+    // if (!order_date || order_date == "") {
+    //   return next({
+    //     message: "Order Date is required!",
+    //     statusCode: 400,
+    //   });
+    // }
 
     if (
       !price_amount ||
@@ -104,7 +104,7 @@ exports.createBooking = async (req, res, next) => {
       user_id,
       departure_flight_id,
       return_flight_id,
-      order_date,
+      // order_date,
       price_amount,
       seats_id,
       seat_class,

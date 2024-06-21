@@ -7,6 +7,7 @@ const {
   BookingSeat,
   Seat,
   Passenger,
+  Payment,
 } = require("../../models");
 
 exports.getBookingsByUserId = async (user_id) => {
@@ -15,6 +16,9 @@ exports.getBookingsByUserId = async (user_id) => {
       user_id,
     },
     include: [
+      {
+        model: Payment,
+      },
       {
         model: Flight,
         as: "departureFlight_respon",

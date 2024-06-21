@@ -27,7 +27,7 @@ exports.getBookingHistoriesByFlightIDandDateRange = async (
     end.setHours(23, 59, 59, 999);
 
     filteredData = filteredData.filter((booking) => {
-      const bookingDate = new Date(booking.createdAt);
+      const bookingDate = new Date(booking.order_date);
       return bookingDate >= start && bookingDate <= end;
     });
   }
