@@ -62,13 +62,61 @@ exports.getFilteredTickets = async (req, res, next) => {
             "Invalid Filters. Must be one of: " + validFilters.join(", "),
         });
       }
+    } else {
+      findTicketsPayload.filter = "harga_termurah";
     }
 
-    const data = await getFilteredTickets(findTicketsPayload);
+    let departure_results = {};
+    let return_results = {};
+    const { departure_flight, return_flight } = await getFilteredTickets(
+      findTicketsPayload
+    );
+
+    const page = parseInt(req.query?.page);
+    const limit = parseInt(req.query?.limit);
+    if (page && limit) {
+      const startIndex = (page - 1) * limit;
+      const endIndex = page * limit;
+
+      departure_results.totalPage = Math.ceil(departure_flight.length / limit);
+      return_results.totalPage = Math.ceil(return_flight.length / limit);
+
+      if (endIndex < departure_flight.length) {
+        departure_results.next = {
+          page: page + 1,
+          limit: limit,
+        };
+      }
+      if (endIndex < return_flight.length) {
+        return_results.next = {
+          page: page + 1,
+          limit: limit,
+        };
+      }
+
+      if (startIndex > 0 && page < departure_results.totalPage > 0) {
+        departure_results.previous = {
+          page: page - 1,
+          limit: limit,
+        };
+      }
+      if (startIndex > 0 && page < return_results.totalPage) {
+        return_results.previous = {
+          page: page - 1,
+          limit: limit,
+        };
+      }
+
+      departure_results.results = departure_flight.slice(startIndex, endIndex);
+      return_results.results = return_flight.slice(startIndex, endIndex);
+    } else {
+      departure_results.results = departure_flight.slice();
+      return_results.results = return_flight.slice();
+    }
 
     res.status(201).json({
       message: "Success",
-      data,
+      data: { departure_results, return_results },
     });
   } catch (error) {
     next(error);

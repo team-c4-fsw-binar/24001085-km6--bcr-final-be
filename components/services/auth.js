@@ -165,6 +165,28 @@ exports.googleLogin = async (accessToken) => {
       picture: googleData?.picture,
       isVerified: true,
     });
+
+    await createManyNotifications([
+      {
+        type: "promosi",
+        title: "Diskon pendatang baru!",
+        content: "Diskon 10% untuk kamu para pendatang baru!",
+        user_id: user.id,
+        isRead: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        type: "promosi",
+        title: "Diskon pertengahan tahun!",
+        content:
+          "Diskon 5% pertengahan tahun hanya berlaku 1 hari dari tanggal 25 Juni sampai 30 Juni yaa! Jangan sampai kelewatan",
+        user_id: user.id,
+        isRead: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
   }
 
   // Delete object password from user
@@ -189,7 +211,7 @@ exports.googleLogin = async (accessToken) => {
 exports.forgotPassword = async (email) => {
   const user = await findUserByEmail(email);
   if (!user) {
-    throw new Error("User Not Exists!!");
+    throw new Error("User not Found");
   }
 
   // create token
@@ -211,7 +233,7 @@ exports.forgotPassword = async (email) => {
 exports.resetPassword = async (id, token, newPassword) => {
   const user = await findUserById(id);
   if (!user) {
-    throw new Error("User Not Exists!!");
+    throw new Error("User not Found");
   }
 
   jsonwebtoken.verify(token, process.env.JWT_SECRET);
@@ -223,7 +245,7 @@ exports.resetPassword = async (id, token, newPassword) => {
 exports.profile = async (id) => {
   let data = await findUserById(id);
   if (!data) {
-    throw new Error(`User is not Found`);
+    throw new Error(`User not Found`);
   }
 
   // delete password
