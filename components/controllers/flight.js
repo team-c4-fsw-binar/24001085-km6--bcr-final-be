@@ -28,6 +28,8 @@ exports.getFlights = async (req, res, next) => {
       const startIndex = (page - 1) * limit;
       const endIndex = page * limit;
 
+      results.totalPage = Math.ceil(data.length / limit);
+
       if (endIndex < data.length) {
         results.next = {
           page: page + 1,
@@ -35,14 +37,12 @@ exports.getFlights = async (req, res, next) => {
         };
       }
 
-      if (startIndex > 0) {
+      if (startIndex > 0 && page < results.totalPage) {
         results.previous = {
           page: page - 1,
           limit: limit,
         };
       }
-      results.totalPage = Math.ceil(data.length / limit);
-
       results.results = data.slice(startIndex, endIndex);
     } else {
       results.results = data.slice();
