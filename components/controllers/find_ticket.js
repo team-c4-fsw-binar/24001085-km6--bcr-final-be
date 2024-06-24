@@ -1,8 +1,11 @@
-const { getFilteredTickets } = require("../services/find_ticket");
+const {
+  getFilteredTickets,
+  findTicketDetail,
+} = require("../services/find_ticket");
 
+const validSeatClasses = ["economy", "premium", "business", "first_class"];
 exports.getFilteredTickets = async (req, res, next) => {
   try {
-    const validSeatClasses = ["economy", "premium", "business", "first_class"];
     const validFilters = [
       "harga_termurah",
       "durasi_terpendek",
@@ -117,6 +120,69 @@ exports.getFilteredTickets = async (req, res, next) => {
     res.status(201).json({
       message: "Success",
       data: { departure_results, return_results },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getTicketDetail = async (req, res, next) => {
+  let {
+    departure_flight_id,
+    return_flight_id,
+    seat_class,
+    adultCount,
+    childCount,
+  } = req.body;
+
+  if (
+    !departure_flight_id ||
+    isNaN(parseInt(departure_flight_id)) ||
+    parseInt(departure_flight_id) < 0
+  ) {
+    return next({
+      message: "Departure flight is required.",
+      statusCode: 400,
+    });
+  }
+
+  if (
+    (return_flight_id && isNaN(parseInt(return_flight_id))) ||
+    parseInt(return_flight_id) < 0
+  ) {
+    return next({
+      message: "Return flight id must be valid.",
+      statusCode: 400,
+    });
+  }
+
+  if (!adultCount || isNaN(parseInt(adultCount)) || parseInt(adultCount) < 0) {
+    return next({
+      message: "Adult must be present for this flight.",
+      statusCode: 400,
+    });
+  }
+
+  if ((childCount && isNaN(parseInt(childCount))) || parseInt(childCount) < 0) {
+    return next({
+      message: "Child count must be valid (greater than zero).",
+      statusCode: 400,
+    });
+  }
+
+  if (!validSeatClasses.includes(seat_class)) {
+    return next({
+      message:
+        "Invalid Seat's class. Must be one of: " + validSeatClasses.join(", "),
+    });
+  }
+
+  const data = await findTicketDetail(req.body);
+
+  try {
+    res.status(201).json({
+      message: "Success",
+      data,
     });
   } catch (error) {
     next(error);

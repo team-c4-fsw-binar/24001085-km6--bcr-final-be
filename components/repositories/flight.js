@@ -24,6 +24,19 @@ exports.getFlights = async () => {
 exports.getFlightById = async (id) => {
   const selectedFlight = await Flight.findOne({
     where: { id },
+    include: [
+      {
+        model: Airport,
+        as: "departureAirport_respon",
+      },
+      {
+        model: Airport,
+        as: "arrivalAirport_respon",
+      },
+      {
+        model: Airline,
+      },
+    ],
   });
 
   if (selectedFlight) {

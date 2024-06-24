@@ -2,6 +2,47 @@ const {
   getTicketsSameDay,
   getTicketsDifferentDay,
 } = require("../repositories/find_ticket");
+const { getFlightById } = require("../repositories/flight");
+const { getFilteredSeats } = require("./seat");
+
+const getPrice = async (flight_id, seat_class, adultCount, childCount) => {
+  let { economyPrice, premiumPrice, businessPrice, firstClassPrice } =
+    await getFlightById(flight_id);
+
+  switch (seat_class) {
+    case "economy":
+      return {
+        adultTotal: economyPrice * adultCount,
+        childTotal: economyPrice * childCount,
+        total: economyPrice * adultCount + economyPrice * childCount,
+      };
+    case "premium":
+      return {
+        adultTotal: premiumPrice * adultCount,
+        childTotal: premiumPrice * childCount,
+        total: premiumPrice * adultCount + premiumPrice * childCount,
+      };
+    case "business":
+      return {
+        adultTotal: businessPrice * adultCount,
+        childTotal: businessPrice * childCount,
+        total: businessPrice * adultCount + businessPrice * childCount,
+      };
+    case "first_class":
+      return {
+        adultTotal: firstClassPrice * adultCount,
+        childTotal: firstClassPrice * childCount,
+        total: firstClassPrice * adultCount + firstClassPrice * childCount,
+      };
+
+    default:
+      return {
+        adultTotal: economyPrice * adultCount,
+        childTotal: economyPrice * childCount,
+        total: economyPrice * adultCount + economyPrice * childCount,
+      };
+  }
+};
 
 exports.getFilteredTickets = async (payload) => {
   const {
@@ -214,5 +255,69 @@ exports.getFilteredTickets = async (payload) => {
   return {
     departure_flight: filtered_departure_flight,
     return_flight: filtered_return_flight,
+  };
+};
+
+exports.findTicketDetail = async (payload) => {
+  const {
+    departure_flight_id,
+    return_flight_id,
+    seat_class,
+    adultCount,
+    childCount,
+  } = payload;
+
+  let return_flight_detail;
+  let return_flight_seats;
+  let return_flight_price;
+
+  let departure_flight_detail = await getFlightById(departure_flight_id);
+  let departure_flight_seats = await getFilteredSeats(
+    departure_flight_id,
+    seat_class
+  );
+  let departure_flight_price = await getPrice(
+    departure_flight_id,
+    seat_class,
+    adultCount,
+    childCount
+  );
+
+  if (return_flight_id) {
+    return_flight_detail = await getFlightById(return_flight_id);
+    return_flight_seats = await getFilteredSeats(return_flight_id, seat_class);
+
+    return_flight_price = await getPrice(
+      return_flight_id,
+      seat_class,
+      adultCount,
+      childCount
+    );
+
+    return {
+      departure_flight: {
+        detail: departure_flight_detail,
+        seats: departure_flight_seats,
+        price: departure_flight_price,
+      },
+      return_flight: {
+        detail: return_flight_detail,
+        seats: return_flight_seats,
+        price: return_flight_price,
+      },
+      adult_count: adultCount,
+      child_count: childCount,
+      total_amount: departure_flight_price.total + return_flight_price.total,
+    };
+  }
+  return {
+    departure_flight: {
+      detail: departure_flight_detail,
+      seats: departure_flight_seats,
+      price: departure_flight_price,
+    },
+    adult_count: adultCount,
+    child_count: childCount,
+    total_amount: departure_flight_price.total,
   };
 };
