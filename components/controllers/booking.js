@@ -12,8 +12,6 @@ exports.createBooking = async (req, res, next) => {
     const {
       departure_flight_id,
       return_flight_id,
-      // order_date,
-      price_amount,
       seats_id,
       seat_class,
       passengers,
@@ -41,22 +39,6 @@ exports.createBooking = async (req, res, next) => {
     ) {
       return next({
         message: "Return flight Id is not valid!",
-        statusCode: 400,
-      });
-    }
-    // if (!order_date || order_date == "") {
-    //   return next({
-    //     message: "Order Date is required!",
-    //     statusCode: 400,
-    //   });
-    // }
-
-    if (
-      !price_amount ||
-      isNaN(parseInt(price_amount) || parseInt(price_amount) < 0)
-    ) {
-      return next({
-        message: "Price Amount is required!",
         statusCode: 400,
       });
     }
@@ -95,7 +77,7 @@ exports.createBooking = async (req, res, next) => {
       isNaN(parseInt(adultCount) || parseInt(adultCount) < 0)
     ) {
       return next({
-        message: "Price Amount is required!",
+        message: "Adult count is required!",
         statusCode: 400,
       });
     }
@@ -104,8 +86,6 @@ exports.createBooking = async (req, res, next) => {
       user_id,
       departure_flight_id,
       return_flight_id,
-      // order_date,
-      price_amount,
       seats_id,
       seat_class,
       passengers,
