@@ -12,10 +12,8 @@ const {
   changePassword,
 } = require("../services/auth");
 
-// */register
 exports.register = async (req, res, next) => {
   try {
-    // get body
     const { name, password, email, phone } = req.body;
 
     let photo = null;
@@ -26,38 +24,38 @@ exports.register = async (req, res, next) => {
 
     if (name == "" || !name) {
       return next({
-        message: "Name Must Be Filled!",
+        message: "Name is required",
         statusCode: 400,
       });
     }
 
     if (password == "" || !password) {
       return next({
-        message: "Password Must Be Filled!",
+        message: "Password is required",
         statusCode: 400,
       });
     } else if (password.length <= 7) {
       return next({
-        message: "Password Must Be Longer Than 8 Characters!",
+        message: "Password must be longer than 8 characters!",
         statusCode: 400,
       });
     }
 
     if (email == "" || !email) {
       return next({
-        message: "Email Must Be Filled!",
+        message: "Email is required",
         statusCode: 400,
       });
     }
 
     if (!phone || phone == "") {
       return next({
-        message: "Phone Number Must Be Filled!",
+        message: "Phone Number is required",
         statusCode: 400,
       });
     } else if (!/^\d{11,13}$/.test(phone)) {
       return next({
-        message: "Phone Must Be a Valid Number Between 11 and 13 Digits!",
+        message: "Phone must Be a valid number between 11 and 13 digits",
         statusCode: 400,
       });
     }
@@ -71,25 +69,24 @@ exports.register = async (req, res, next) => {
     });
 
     res.status(200).json({
-      message: "Register Success",
+      message: "Register success",
       data,
     });
   } catch (error) {
-    if (error.message == "Email is already registered!") {
+    if (error.message == "Email is already registered") {
       return next({ message: error.message, statusCode: 400 });
     }
     next(error);
   }
 };
 
-// */verify-otp
 exports.verifyOtp = async (req, res, next) => {
   try {
     const { email, otp } = req.body;
 
     if (!email || !otp) {
       return next({
-        message: "Email and OTP Must Be Filled!",
+        message: "Email and OTP are required",
         statusCode: 400,
       });
     }
@@ -97,7 +94,7 @@ exports.verifyOtp = async (req, res, next) => {
     const data = await verifyOtp(email, otp);
 
     res.status(200).json({
-      message: "OTP Verification Success",
+      message: "OTP verified successfully",
       data,
     });
   } catch (error) {
@@ -117,14 +114,13 @@ exports.verifyOtp = async (req, res, next) => {
   }
 };
 
-//  */resend-otp
 exports.resendOtp = async (req, res, next) => {
   try {
     const { id } = req.user;
 
     if (!id) {
       return next({
-        message: "User ID must be provided",
+        message: "User ID is required",
         statusCode: 400,
       });
     }
@@ -140,14 +136,13 @@ exports.resendOtp = async (req, res, next) => {
   }
 };
 
-// */login
 exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
     if (!email || email == "" || !password || password == "") {
       return next({
-        message: "Email and Password are Required",
+        message: "Email and Password are required",
         statusCode: 400,
       });
     }
@@ -155,7 +150,7 @@ exports.login = async (req, res, next) => {
     const data = await login({ email, password });
 
     res.status(200).json({
-      message: "Login Success",
+      message: "Login success",
       data,
     });
   } catch (error) {
@@ -165,17 +160,15 @@ exports.login = async (req, res, next) => {
 
 exports.googleLogin = async (req, res, next) => {
   try {
-    // get the body
     const { access_token } = req.body;
 
     if (!access_token) {
       return next({
         statusCode: 400,
-        message: "Access token must be provided!",
+        message: "Access token is required",
       });
     }
 
-    // login with google logic
     const data = await googleLogin(access_token);
 
     res.status(200).json({
@@ -187,7 +180,6 @@ exports.googleLogin = async (req, res, next) => {
   }
 };
 
-// */forgot-pass
 exports.forgotPassword = async (req, res, next) => {
   try {
     const { email } = req.body;
@@ -200,32 +192,29 @@ exports.forgotPassword = async (req, res, next) => {
   }
 };
 
-// */reset-pass
 exports.resetPassword = async (req, res, next) => {
   try {
     const { id, token } = req.params;
     const { password } = req.body;
     if (!password || password == "") {
       return next({
-        message: "Password Must Be Field",
+        message: "Password is required",
         statusCode: 400,
       });
     }
     await resetPassword(id, token, password);
-    res.status(200).json({ message: "Password Reset Successfully" });
+    res.status(200).json({ message: "Password reset successfully" });
   } catch (error) {
     next(error);
   }
 };
 
-// */profile
 exports.profile = async (req, res, next) => {
   try {
-    // get user by id
     const data = await profile(req.user.id);
 
     res.status(200).json({
-      message: "Profile Success",
+      message: "Profile fetched successfully",
       data,
     });
   } catch (error) {
@@ -233,7 +222,6 @@ exports.profile = async (req, res, next) => {
   }
 };
 
-// */edit-user
 exports.edit = async (req, res, next) => {
   try {
     const { id } = req?.user;
@@ -251,21 +239,21 @@ exports.edit = async (req, res, next) => {
 
     if (!name || name == "") {
       return next({
-        message: "Name are required!!",
+        message: "Name is required",
         statusCode: 400,
       });
     }
 
     if (!email || email == "") {
       return next({
-        message: "Email are required!!",
+        message: "Email is required",
         statusCode: 400,
       });
     }
 
     if (!phone || phone == "") {
       return next({
-        message: "Email are required!!",
+        message: "Email is required",
         statusCode: 400,
       });
     }
@@ -273,7 +261,7 @@ exports.edit = async (req, res, next) => {
     const data = await updateUser(id, { name, email, photo, phone });
 
     res.status(200).json({
-      message: "Update Success",
+      message: "User updated successfully",
       data,
     });
   } catch (error) {
@@ -281,7 +269,6 @@ exports.edit = async (req, res, next) => {
   }
 };
 
-// */delete-user
 exports.delUser = async (req, res, next) => {
   try {
     const { id } = req.user;
@@ -289,7 +276,7 @@ exports.delUser = async (req, res, next) => {
     const data = await deleteUser(id);
 
     res.status(200).json({
-      message: "Deleted User Succesfully",
+      message: "User deleted successfully",
       data,
     });
   } catch (error) {

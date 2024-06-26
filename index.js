@@ -31,7 +31,6 @@ app.use("*", (req, res) => {
   });
 });
 
-// Error Middleware
 app.use((err, req, res, next) => {
   let statusCode = 500;
   let message = "Internal Server Error";

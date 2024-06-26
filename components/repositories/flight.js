@@ -43,7 +43,7 @@ exports.getFlightById = async (id) => {
     return selectedFlight;
   }
 
-  throw new Error("Flight not found!");
+  throw new Error("Flight not found");
 };
 
 exports.addFlight = async (payload) => {
@@ -58,7 +58,7 @@ exports.updateFlight = async (id, payload) => {
     const updatedFlight = await selectedFlight.update({ ...payload });
     return updatedFlight;
   }
-  throw new Error("Flight not found!");
+  throw new Error("Flight not found");
 };
 
 exports.deleteFlight = async (id) => {
@@ -68,5 +68,5 @@ exports.deleteFlight = async (id) => {
     return deletedFlight;
   }
 
-  throw new Error("Flight not found!");
+  throw new Error("Flight not found");
 };

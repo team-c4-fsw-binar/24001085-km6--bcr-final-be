@@ -8,7 +8,6 @@ const {
 
 exports.createBooking = async (req, res, next) => {
   try {
-    // get body
     const {
       departure_flight_id,
       return_flight_id,
@@ -28,7 +27,7 @@ exports.createBooking = async (req, res, next) => {
       isNaN(parseInt(departure_flight_id) || parseInt(departure_flight_id) < 0)
     ) {
       return next({
-        message: "Departure flight Id is required!",
+        message: "Departure flight id is required",
         statusCode: 400,
       });
     }
@@ -38,14 +37,14 @@ exports.createBooking = async (req, res, next) => {
       isNaN(parseInt(return_flight_id) || parseInt(return_flight_id) < 0)
     ) {
       return next({
-        message: "Return flight Id is not valid!",
+        message: "Return flight id is not valid",
         statusCode: 400,
       });
     }
 
     if (seats_id.length == 0) {
       return next({
-        message: "Seats Id is required!",
+        message: "Seats id is required",
         statusCode: 400,
       });
     }
@@ -53,21 +52,20 @@ exports.createBooking = async (req, res, next) => {
     if (!validSeatClasses.includes(seat_class)) {
       return next({
         message:
-          "Invalid Seat's class. Must be one of: " +
-          validSeatClasses.join(", "),
+          "Invalid seat class. Must be one of: " + validSeatClasses.join(", "),
       });
     }
 
     if (passengers.length == 0) {
       return next({
-        message: "At least one adult / child passenger is required!",
+        message: "At least one adult / child passenger is required",
         statusCode: 400,
       });
     }
 
     if (!seat_class || seat_class == "") {
       return next({
-        message: "Seat Class is required!",
+        message: "Seat class is required",
         statusCode: 400,
       });
     }
@@ -77,7 +75,7 @@ exports.createBooking = async (req, res, next) => {
       isNaN(parseInt(adultCount) || parseInt(adultCount) < 0)
     ) {
       return next({
-        message: "Adult count is required!",
+        message: "Adult count is required",
         statusCode: 400,
       });
     }
@@ -95,7 +93,7 @@ exports.createBooking = async (req, res, next) => {
     });
 
     res.status(201).json({
-      message: `Success Create Booking`,
+      message: `Booking created successfully`,
       data,
     });
   } catch (error) {
@@ -137,7 +135,7 @@ exports.getBookingsByUserId = async (req, res, next) => {
     }
     res.status(200).json({
       data: results,
-      message: `Success Get Booking By User`,
+      message: `Booking by user fetched successfully`,
     });
   } catch (error) {
     next(error);
@@ -149,7 +147,7 @@ exports.getBookingById = async (req, res, next) => {
     const { id } = req.params;
     const data = await getBookingById(id);
     res.status(200).json({
-      message: `Success Get Booking By ID`,
+      message: `Booking by id fetched successfully`,
       data,
     });
   } catch (error) {
@@ -168,7 +166,7 @@ exports.updateBooking = async (req, res, next) => {
       price_amount,
     });
     res.status(200).json({
-      message: `Success Update Booking`,
+      message: `Booking updated successfully`,
       data,
     });
   } catch (error) {
@@ -181,7 +179,7 @@ exports.deleteBooking = async (req, res, next) => {
     const { id } = req.params;
     const data = await deleteBooking(id);
     res.status(200).json({
-      message: `Success Delete Notification`,
+      message: `Booking deleted successfully`,
       data,
     });
   } catch (error) {

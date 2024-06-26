@@ -63,7 +63,7 @@ exports.getFlightById = async (req, res, next) => {
     const data = await getFlightById(id);
     res.status(200).json({
       data,
-      message: `Flights with ${id} fetched successfully`,
+      message: `Flights with id ${id} fetched successfully`,
     });
   } catch (error) {
     next(error);
@@ -129,7 +129,7 @@ exports.addFlight = async (req, res, next) => {
     ) {
       return next({
         statusCode: 500,
-        message: "Number of Economy Seats Left is required",
+        message: "Number of economy seats left is required",
       });
     }
     if (
@@ -139,7 +139,7 @@ exports.addFlight = async (req, res, next) => {
     ) {
       return next({
         statusCode: 500,
-        message: "Number of Premium Seats Left is required",
+        message: "Number of premium seats left is required",
       });
     }
     if (
@@ -149,7 +149,7 @@ exports.addFlight = async (req, res, next) => {
     ) {
       return next({
         statusCode: 500,
-        message: "Number of Business Seats Left is required",
+        message: "Number of business seats left is required",
       });
     }
     if (
@@ -159,7 +159,7 @@ exports.addFlight = async (req, res, next) => {
     ) {
       return next({
         statusCode: 500,
-        message: "Number of First Class Seats Left is required",
+        message: "Number of first class seats left is required",
       });
     }
 
@@ -178,7 +178,7 @@ exports.addFlight = async (req, res, next) => {
     if (!departureAirportExist) {
       return next({
         statusCode: 404,
-        message: "Departure Airport is not found",
+        message: "Departure airport is not found",
       });
     }
     const arrivalAirportExist = await getAirportById(
@@ -195,7 +195,7 @@ exports.addFlight = async (req, res, next) => {
     const data = await addFlight(newFlight);
     res.status(201).json({
       data,
-      message: "Flight added successfully",
+      message: "Flight created successfully",
     });
   } catch (error) {
     next(error);
@@ -263,7 +263,7 @@ exports.updateFlight = async (req, res, next) => {
     ) {
       return next({
         statusCode: 500,
-        message: "Number of Economy Seats Left is required",
+        message: "Number of economy seats left is required",
       });
     }
     if (
@@ -273,7 +273,7 @@ exports.updateFlight = async (req, res, next) => {
     ) {
       return next({
         statusCode: 500,
-        message: "Number of Premium Seats Left is required",
+        message: "Number of premium seats left is required",
       });
     }
     if (
@@ -283,7 +283,7 @@ exports.updateFlight = async (req, res, next) => {
     ) {
       return next({
         statusCode: 500,
-        message: "Number of Business Seats Left is required",
+        message: "Number of business seats left is required",
       });
     }
     if (
@@ -293,7 +293,7 @@ exports.updateFlight = async (req, res, next) => {
     ) {
       return next({
         statusCode: 500,
-        message: "Number of First Class Seats Left is required",
+        message: "Number of first Class seats left is required",
       });
     }
 
@@ -314,7 +314,7 @@ exports.updateFlight = async (req, res, next) => {
     if (!departureAirportExist) {
       return next({
         statusCode: 404,
-        message: "Departure Airport is not found",
+        message: "Departure airport is not found",
       });
     }
     const arrivalAirportExist = await getAirportById(
@@ -324,7 +324,7 @@ exports.updateFlight = async (req, res, next) => {
     if (!arrivalAirportExist) {
       return next({
         statusCode: 404,
-        message: "Arrival Airport is not found",
+        message: "Arrival airport is not found",
       });
     }
 

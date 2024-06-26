@@ -16,7 +16,7 @@ exports.getPayment = async (id) => {
   if (data.length > 0) {
     return data[0];
   }
-  throw new Error(`Payment is not found`);
+  throw new Error(`Payment not found`);
 };
 
 exports.createPayment = async (payload) => {
@@ -31,7 +31,7 @@ exports.updatePayment = async (id, payload) => {
     const updatedPayment = await selectedPayment.update({ ...payload });
     return updatedPayment;
   }
-  throw new Error("Payment not found!");
+  throw new Error("Payment not found");
 };
 
 exports.updatePaymentByBookingCode = async (booking_code, payload) => {
@@ -49,7 +49,7 @@ exports.updatePaymentByBookingCode = async (booking_code, payload) => {
   if (data.length > 0) {
     return data[0];
   }
-  throw new Error(`Payment is not found`);
+  throw new Error(`Payment not found`);
 };
 
 exports.deletePayment = async (id) => {
@@ -60,7 +60,7 @@ exports.deletePayment = async (id) => {
   });
 
   if (deletedCount === 0) {
-    throw new Error(`Payment is not found`);
+    throw new Error(`Payment not found`);
   }
 
   return null;
@@ -73,5 +73,5 @@ exports.updateStatus = async (booking_code, payload) => {
     const updatedPayment = await selectedPayment.update({ ...payload });
     return updatedPayment;
   }
-  throw new Error("Payment not found!");
+  throw new Error("Payment not found");
 };

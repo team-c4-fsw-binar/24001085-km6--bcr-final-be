@@ -36,50 +36,43 @@ exports.createPayment = async (req, res, next) => {
       status,
       start_at,
       expired_at,
-      // expired_at,
     } = req.body;
     if (!booking_code || booking_code == "") {
       return next({
-        message: "Booking Code must be provided",
+        message: "Booking code is required",
         statusCode: 400,
       });
     }
     if (!payment_method || payment_method == "") {
       return next({
-        message: "Payment Method must be provided",
+        message: "Payment method is required",
         statusCode: 400,
       });
     }
     if (!booking_price || booking_price == "") {
       return next({
-        message: "Booking Price must be provided",
+        message: "Booking price is required",
         statusCode: 400,
       });
     }
     if (!status || status == "") {
       return next({
-        message: "Status must be provided",
+        message: "Status is required",
         statusCode: 400,
       });
     }
     if (!start_at || start_at == "") {
       return next({
-        message: "Start At must be provided",
+        message: "Start time is required",
         statusCode: 400,
       });
     }
     if (!expired_at || expired_at == "") {
       return next({
-        message: "Expired At must be provided",
+        message: "Expired time is required",
         statusCode: 400,
       });
     }
-    // if (!expired_at || expired_at == "") {
-    //   return next({
-    //     message: "Payment's Expired must be provided",
-    //     statusCode: 400,
-    //   });
-    // }
 
     const newPayment = await paymentUsecase.createPayment({
       booking_code,
@@ -150,46 +143,40 @@ exports.updatePayment = async (req, res, next) => {
     } = req.body;
     if (!booking_code || booking_code == "") {
       return next({
-        message: "Booking Code must be provided",
+        message: "Booking code is required",
         statusCode: 400,
       });
     }
     if (!payment_method || payment_method == "") {
       return next({
-        message: "Payment Method must be provided",
+        message: "Payment method is required",
         statusCode: 400,
       });
     }
     if (!booking_price || booking_price == "") {
       return next({
-        message: "Booking Price must be provided",
+        message: "Booking price is required",
         statusCode: 400,
       });
     }
     if (!status || status == "") {
       return next({
-        message: "Status must be provided",
+        message: "Status is required",
         statusCode: 400,
       });
     }
     if (!start_at || start_at == "") {
       return next({
-        message: "Start At must be provided",
+        message: "Start time is required",
         statusCode: 400,
       });
     }
     if (!expired_at || expired_at == "") {
       return next({
-        message: "Expired At must be provided",
+        message: "Expired time is required",
         statusCode: 400,
       });
     }
-    // if (!expired_at || expired_at == "") {
-    //   return next({
-    //     message: "Payment's Expired must be provided",
-    //     statusCode: 400,
-    //   });
-    // }
 
     const data = await paymentUsecase.updatePayment(id, {
       booking_code,

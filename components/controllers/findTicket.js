@@ -1,7 +1,7 @@
 const {
   getFilteredTickets,
   findTicketDetail,
-} = require("../services/find_ticket");
+} = require("../services/findTicket");
 
 const validSeatClasses = ["economy", "premium", "business", "first_class"];
 exports.getFilteredTickets = async (req, res, next) => {
@@ -18,14 +18,14 @@ exports.getFilteredTickets = async (req, res, next) => {
 
     if (!findTicketsPayload.from || findTicketsPayload.from == "") {
       return next({
-        message: "Departure City must be provided",
+        message: "Departure city is required",
         statusCode: 400,
       });
     }
 
     if (!findTicketsPayload.to || findTicketsPayload.to == "") {
       return next({
-        message: "Arrival City must be provided",
+        message: "Arrival city is required",
         statusCode: 400,
       });
     }
@@ -35,7 +35,7 @@ exports.getFilteredTickets = async (req, res, next) => {
       findTicketsPayload.departure_date == ""
     ) {
       return next({
-        message: "Departure Date must be provided",
+        message: "Departure date is required",
         statusCode: 400,
       });
     }
@@ -46,7 +46,7 @@ exports.getFilteredTickets = async (req, res, next) => {
       findTicketsPayload.total_passengers < 0
     ) {
       return next({
-        message: "Total Passengers must be provided",
+        message: "Total passengers is required",
         statusCode: 400,
       });
     }
@@ -54,15 +54,14 @@ exports.getFilteredTickets = async (req, res, next) => {
     if (!validSeatClasses.includes(findTicketsPayload.seat_class)) {
       return next({
         message:
-          "Invalid Seat's class. Must be one of: " +
-          validSeatClasses.join(", "),
+          "Invalid seat class. Must be one of: " + validSeatClasses.join(", "),
       });
     }
     if (findTicketsPayload.filter) {
       if (!validFilters.includes(findTicketsPayload.filter)) {
         return next({
           message:
-            "Invalid Filters. Must be one of: " + validFilters.join(", "),
+            "Invalid filters. Must be one of: " + validFilters.join(", "),
         });
       }
     } else {
@@ -141,7 +140,7 @@ exports.getTicketDetail = async (req, res, next) => {
     parseInt(departure_flight_id) < 0
   ) {
     return next({
-      message: "Departure flight is required.",
+      message: "Departure flight is required",
       statusCode: 400,
     });
   }
@@ -151,21 +150,21 @@ exports.getTicketDetail = async (req, res, next) => {
     parseInt(return_flight_id) < 0
   ) {
     return next({
-      message: "Return flight id must be valid.",
+      message: "Return flight id must be valid",
       statusCode: 400,
     });
   }
 
   if (!adultCount || isNaN(parseInt(adultCount)) || parseInt(adultCount) < 0) {
     return next({
-      message: "Adult must be present for this flight.",
+      message: "Adult must be present for this flight",
       statusCode: 400,
     });
   }
 
   if ((childCount && isNaN(parseInt(childCount))) || parseInt(childCount) < 0) {
     return next({
-      message: "Child count must be valid (greater than zero).",
+      message: "Child count must be valid (greater than zero)",
       statusCode: 400,
     });
   }
@@ -173,7 +172,7 @@ exports.getTicketDetail = async (req, res, next) => {
   if (!validSeatClasses.includes(seat_class)) {
     return next({
       message:
-        "Invalid Seat's class. Must be one of: " + validSeatClasses.join(", "),
+        "Invalid seat class. Must be one of: " + validSeatClasses.join(", "),
     });
   }
 

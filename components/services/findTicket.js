@@ -1,7 +1,7 @@
 const {
   getTicketsSameDay,
   getTicketsDifferentDay,
-} = require("../repositories/find_ticket");
+} = require("../repositories/findTicket");
 const { getFlightById } = require("../repositories/flight");
 const { getFilteredSeats } = require("./seat");
 

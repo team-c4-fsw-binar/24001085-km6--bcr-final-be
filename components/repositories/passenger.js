@@ -14,7 +14,7 @@ exports.getPassenger = async (id) => {
   if (data.length > 0) {
     return data[0];
   }
-  throw new Error(`Passenger is not found`);
+  throw new Error(`Passenger not found`);
 };
 
 exports.createPassenger = async (payload) => {
@@ -37,7 +37,7 @@ exports.updatePassenger = async (id, payload) => {
   if (data.length > 0) {
     return data[0];
   }
-  throw new Error(`Passenger is not found`);
+  throw new Error(`Passenger not found`);
 };
 
 exports.deletePassenger = async (id) => {
@@ -47,7 +47,7 @@ exports.deletePassenger = async (id) => {
     },
   });
   if (deletedCount === 0) {
-    throw new Error(`Passenger is not found`);
+    throw new Error(`Passenger not found`);
   }
   return null;
 };

@@ -10,16 +10,10 @@ const {
 exports.createBookingPassenger = async (req, res, next) => {
   try {
     const { booking_code, passenger_id } = req.body;
-    if (typeof booking_code != "number") {
-      return next({
-        message: "Booking Code must Be Number!",
-        statusCode: 400,
-      });
-    }
 
     if (typeof passenger_id != "number") {
       return next({
-        message: "Passenger ID must Be Number!",
+        message: "Passenger id is not valid",
         statusCode: 400,
       });
     }
@@ -29,7 +23,7 @@ exports.createBookingPassenger = async (req, res, next) => {
       passenger_id,
     });
     res.status(201).json({
-      message: "Create Booking Passenger Success",
+      message: "Booking Passenger created successfully",
       data,
     });
   } catch (error) {
@@ -70,7 +64,7 @@ exports.getAllBookingPassenger = async (req, res, next) => {
     }
     res.status(200).json({
       data: results,
-      message: "Get All Booking Passenger successfully",
+      message: "Booking passengers fetched successfully",
     });
   } catch (error) {
     next(error);
@@ -82,7 +76,7 @@ exports.getBookingPassengerById = async (req, res, next) => {
     const { id } = req.params;
     const data = await getBookingPassengerById(id);
     res.status(200).json({
-      message: "Get Booking Passenger By ID Success",
+      message: "Booking passengers by id fetched successfully",
       data,
     });
   } catch (error) {
@@ -94,16 +88,10 @@ exports.updateBookingPassenger = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { booking_code, passenger_id } = req.body;
-    if (typeof booking_code != "number") {
-      return next({
-        message: "Booking Code must Be Number!",
-        statusCode: 400,
-      });
-    }
 
     if (typeof passenger_id != "number") {
       return next({
-        message: "Passenger ID must Be Number!",
+        message: "Passenger id is not valid",
         statusCode: 400,
       });
     }
@@ -113,7 +101,7 @@ exports.updateBookingPassenger = async (req, res, next) => {
     });
 
     res.status(200).json({
-      message: "Update Booking Passenger Success",
+      message: "Booking passengers updated successfully",
       data,
     });
   } catch (error) {
@@ -126,7 +114,7 @@ exports.deleteBookingPassenger = async (req, res, next) => {
     const { id } = req.params;
     const data = await deleteBookingPassenger(id);
     res.status(200).json({
-      message: "Delete Booking Passenger Success",
+      message: "Booking passengers deleted successfully",
       data,
     });
   } catch (error) {

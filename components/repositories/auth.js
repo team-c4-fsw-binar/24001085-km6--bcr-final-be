@@ -8,9 +8,7 @@ const path = require("path");
 const axios = require("axios");
 const otpGenerator = require("otp-generator");
 
-// Create User
 exports.createUser = async (payload) => {
-  // encrypt the pass
   payload.password = bcrypt.hashSync(payload.password, 10);
 
   const { photo } = payload;
@@ -27,12 +25,10 @@ exports.createUser = async (payload) => {
       "https://res.cloudinary.com/dqr9vycth/image/upload/profile_dummy.png";
   }
 
-  // validation for picture from google login
   if (payload?.picture) {
     payload.photo = payload?.picture;
   }
 
-  // create otp
   const otp = otpGenerator.generate(6, {
     digits: true,
     upperCaseAlphabets: false,
@@ -40,7 +36,6 @@ exports.createUser = async (payload) => {
     specialChars: false,
   });
 
-  // exp 15 menit
   const otpExp = new Date(Date.now() + 15 * 60 * 1000);
 
   if (!payload.isVerified) {
@@ -53,7 +48,6 @@ exports.createUser = async (payload) => {
   return (data = await User.create(payload));
 };
 
-// resend OTP
 exports.resendOtp = async (id) => {
   const user = await User.findOne({ where: { id } });
   if (!user) {
@@ -76,14 +70,11 @@ exports.resendOtp = async (id) => {
   return user;
 };
 
-// Find User : Email
 exports.findUserByEmail = async (email) =>
   await User.findOne({ where: { email } });
 
-// Find User : ID
 exports.findUserById = async (id) => await User.findOne({ where: { id } });
 
-// get user data using access_token from google
 exports.getGoogleAccessTokenData = async (accessToken) => {
   const response = await axios.get(
     `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`
@@ -91,25 +82,23 @@ exports.getGoogleAccessTokenData = async (accessToken) => {
   return response.data;
 };
 
-// reset Pass
 exports.resetUserPassword = async (id, password) => {
   await User.update({ password }, { where: { id } });
   return await User.findOne({ where: { id } });
 };
 
-// verify OTP
 exports.verifyOtp = async (email, otp) => {
   const user = await User.findOne({ where: { email } });
   if (!user) {
-    throw new Error("User Not Found!");
+    throw new Error("User not found");
   }
 
   if (user.otp !== otp) {
-    throw new Error("Invalid OTP!");
+    throw new Error("Invalid OTP");
   }
 
   if (user.otpExp <= new Date()) {
-    throw new Error("Expired OTP!");
+    throw new Error("Expired OTP");
   }
 
   user.otp = null;
@@ -120,7 +109,6 @@ exports.verifyOtp = async (email, otp) => {
   return user;
 };
 
-// Update User
 exports.updateUser = async (id, payload) => {
   const selectedUser = await User.findOne({ where: { id } });
 
@@ -132,7 +120,6 @@ exports.updateUser = async (id, payload) => {
       const imageUpload = await uploader(photo);
       payload.photo = imageUpload.secure_url;
     }
-    // validation for picture from google login
     if (payload?.picture) {
       payload.photo = payload?.picture;
     }
@@ -143,10 +130,9 @@ exports.updateUser = async (id, payload) => {
       where: { id },
     }));
   }
-  throw new Error("User Not Found!");
+  throw new Error("User not found");
 };
 
-// Delete User
 exports.deleteUser = async (id) => {
   await User.destroy({ where: { id } });
   return null;

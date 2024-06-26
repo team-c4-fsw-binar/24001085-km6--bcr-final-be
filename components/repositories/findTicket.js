@@ -7,10 +7,10 @@ exports.getTicketsSameDay = async (departure_date, seat_class) => {
   const timeString = now.toLocaleTimeString("en-US", { hour12: false });
 
   const [hours, minutes, seconds] = timeString.split(":").map(Number);
-  startOfDay.setHours(hours, minutes, seconds, 0); // Set ke awal hari (00:00:00.000)
+  startOfDay.setHours(hours, minutes, seconds, 0);
 
   const endOfDay = new Date(departure_date);
-  endOfDay.setHours(23, 59, 59, 999); // Set ke akhir hari (23:59:59.999)
+  endOfDay.setHours(23, 59, 59, 999);
 
   const data = await Flight.findAll({
     where: {
@@ -29,19 +29,6 @@ exports.getTicketsSameDay = async (departure_date, seat_class) => {
       },
       {
         model: Airline,
-        // include: [
-        //   {
-        //     model: Seat,
-        //     where: {
-        //       seat_class: seat_class,
-        //     },
-        //     include: [
-        //       {
-        //         model: BookingSeat,
-        //       },
-        //     ],
-        //   },
-        // ],
       },
     ],
   });
@@ -50,10 +37,10 @@ exports.getTicketsSameDay = async (departure_date, seat_class) => {
 
 exports.getTicketsDifferentDay = async (departure_date, seat_class) => {
   const startOfDay = new Date(departure_date);
-  startOfDay.setHours(0, 0, 0, 0); // Set ke awal hari (00:00:00.000)
+  startOfDay.setHours(0, 0, 0, 0);
 
   const endOfDay = new Date(departure_date);
-  endOfDay.setHours(23, 59, 59, 999); // Set ke akhir hari (23:59:59.999)
+  endOfDay.setHours(23, 59, 59, 999);
 
   const data = await Flight.findAll({
     where: {
@@ -72,19 +59,6 @@ exports.getTicketsDifferentDay = async (departure_date, seat_class) => {
       },
       {
         model: Airline,
-        // include: [
-        //   {
-        //     model: Seat,
-        //     where: {
-        //       seat_class: seat_class,
-        //     },
-        //     include: [
-        //       {
-        //         model: BookingSeat,
-        //       },
-        //     ],
-        //   },
-        // ],
       },
     ],
   });

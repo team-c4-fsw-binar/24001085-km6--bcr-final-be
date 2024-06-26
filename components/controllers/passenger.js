@@ -62,50 +62,43 @@ exports.createPassenger = async (req, res, next) => {
       citizenship,
       identity_number,
       publisher_country,
-      // expired_at,
     } = req.body;
     if (!user_id || user_id == "") {
       return next({
-        message: "User Id must be provided",
+        message: "User id is required",
         statusCode: 400,
       });
     }
     if (!name || name == "") {
       return next({
-        message: "Name must be provided",
+        message: "Name is required",
         statusCode: 400,
       });
     }
     if (!born_date || born_date == "") {
       return next({
-        message: "Born Date must be provided",
+        message: "Born date is required",
         statusCode: 400,
       });
     }
     if (!citizenship || citizenship == "") {
       return next({
-        message: "Citizenship must be provided",
+        message: "Citizenship is required",
         statusCode: 400,
       });
     }
     if (!identity_number || identity_number == "") {
       return next({
-        message: "Identity Number must be provided",
+        message: "Identity number is required",
         statusCode: 400,
       });
     }
     if (!publisher_country || publisher_country == "") {
       return next({
-        message: "Publisher Country must be provided",
+        message: "Publisher country is required",
         statusCode: 400,
       });
     }
-    // if (!expired_at || expired_at == "") {
-    //   return next({
-    //     message: "Expired At must be provided",
-    //     statusCode: 400,
-    //   });
-    // }
 
     const data = await passengerUsecase.createPassenger({
       user_id,
@@ -114,7 +107,6 @@ exports.createPassenger = async (req, res, next) => {
       citizenship,
       identity_number,
       publisher_country,
-      // expired_at,
     });
     res.status(201).json({
       message: "Success",
@@ -135,50 +127,43 @@ exports.updatePassenger = async (req, res, next) => {
       citizenship,
       identity_number,
       publisher_country,
-      // expired_at,
     } = req.body;
     if (!user_id || user_id == "") {
       return next({
-        message: "User Id must be provided",
+        message: "User id is required",
         statusCode: 400,
       });
     }
     if (!name || name == "") {
       return next({
-        message: "Name must be provided",
+        message: "Name is required",
         statusCode: 400,
       });
     }
     if (!born_date || born_date == "") {
       return next({
-        message: "Born Date must be provided",
+        message: "Born date is required",
         statusCode: 400,
       });
     }
     if (!citizenship || citizenship == "") {
       return next({
-        message: "Citizenship must be provided",
+        message: "Citizenship is required",
         statusCode: 400,
       });
     }
     if (!identity_number || identity_number == "") {
       return next({
-        message: "Identity Number must be provided",
+        message: "Identity number is required",
         statusCode: 400,
       });
     }
     if (!publisher_country || publisher_country == "") {
       return next({
-        message: "Publisher Country must be provided",
+        message: "Publisher country is required",
         statusCode: 400,
       });
     }
-    // if (!expired_at || expired_at == "") {
-    //   return next({
-    //     message: "Expired At must be provided",
-    //     statusCode: 400,
-    //   });
-    // }
 
     const data = await passengerUsecase.updatePassenger(id, {
       user_id,
@@ -187,7 +172,6 @@ exports.updatePassenger = async (req, res, next) => {
       citizenship,
       identity_number,
       publisher_country,
-      // expired_at,
     });
     res.status(201).json({
       message: "Success",

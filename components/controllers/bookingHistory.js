@@ -1,19 +1,17 @@
 const {
   getBookingHistoriesByFlightIDandDateRange,
-} = require("../services/booking_history");
+} = require("../services/bookingHistory");
 
 exports.getBookingHistoriesByFlightIDandDateRange = async (req, res, next) => {
   try {
-    const user_id = req?.user?.id;
+    const userId = req?.user?.id;
     const bookingHistoryPayload = req.body;
     const page = parseInt(req.query?.page);
     const limit = parseInt(req.query?.limit);
 
-    console.log(page);
-
     let results = {};
     const data = await getBookingHistoriesByFlightIDandDateRange(
-      user_id,
+      userId,
       bookingHistoryPayload
     );
 

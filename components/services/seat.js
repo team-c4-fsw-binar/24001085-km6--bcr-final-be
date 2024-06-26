@@ -36,8 +36,6 @@ exports.getFilteredSeats = async (flight_id, seatClass) => {
   const bookings = await bookingRepo.getBookingsByFlightId(flight_id);
   const flight = await flightRepo.getFlightById(flight_id);
 
-  console.log(bookings[0]?.BookingSeats);
-
   bookings.forEach((booking) => {
     booking.BookingSeats.forEach((seat) => {
       bookedSeatsId.push(seat.seat_id);

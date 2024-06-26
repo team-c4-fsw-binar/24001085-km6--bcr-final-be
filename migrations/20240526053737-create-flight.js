@@ -12,32 +12,14 @@ module.exports = {
       airline_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        // references: {
-        //   model: {
-        //     tableName: "Airlines",
-        //   },
-        //   key: "id",
-        // },
       },
       departureAirport: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        // references: {
-        //   model: {
-        //     tableName: "Airports",
-        //   },
-        //   key: "id",
-        // },
       },
       arrivalAirport: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        // references: {
-        //   model: {
-        //     tableName: "Airports",
-        //   },
-        //   key: "id",
-        // },
       },
       discount: {
         type: Sequelize.INTEGER,

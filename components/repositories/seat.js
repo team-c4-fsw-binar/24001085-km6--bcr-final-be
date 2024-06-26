@@ -14,7 +14,7 @@ exports.getSeat = async (id) => {
   if (data.length > 0) {
     return data[0];
   }
-  throw new Error(`Seat is not found`);
+  throw new Error(`Seat not found`);
 };
 
 exports.createSeat = async (payload) => {
@@ -37,7 +37,7 @@ exports.updateSeat = async (id, payload) => {
   if (data.length > 0) {
     return data[0];
   }
-  throw new Error(`Seat is not found`);
+  throw new Error(`Seat not found`);
 };
 
 exports.deleteSeat = async (id) => {
@@ -47,7 +47,7 @@ exports.deleteSeat = async (id) => {
     },
   });
   if (deletedCount === 0) {
-    throw new Error(`Seat is not found`);
+    throw new Error(`Seat not found`);
   }
   return null;
 };

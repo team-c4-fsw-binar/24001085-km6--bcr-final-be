@@ -1,6 +1,4 @@
 const seats = [
-  // :Airline 1
-  // Airline 1 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -505,7 +503,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 1 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -1010,7 +1007,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 1 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -1263,7 +1259,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 1 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -1516,8 +1511,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 2
-  // Airline 2 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -2022,7 +2015,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 2 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -2527,7 +2519,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 2 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -2780,7 +2771,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 2 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -3033,8 +3023,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 3
-  // Airline 3 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -3539,7 +3527,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 3 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -4044,7 +4031,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 3 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -4297,7 +4283,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 3 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -4550,8 +4535,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 4
-  // Airline 4 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -5056,7 +5039,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 4 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -5561,7 +5543,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 4 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -5814,7 +5795,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 4 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -6067,8 +6047,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 5
-  // Airline 5 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -6573,7 +6551,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 5 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -7078,7 +7055,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 5 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -7331,7 +7307,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 5 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -7584,8 +7559,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 6
-  // Airline 6 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -8090,7 +8063,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 6 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -8595,7 +8567,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 6 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -8848,7 +8819,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 6 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -9101,8 +9071,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 7
-  // Airline 7 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -9607,7 +9575,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 7 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -10112,7 +10079,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 7 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -10365,7 +10331,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 7 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -10618,8 +10583,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 8
-  // Airline 8 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -11124,7 +11087,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 8 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -11629,7 +11591,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 8 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -11882,7 +11843,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 8 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -12135,8 +12095,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 9
-  // Airline 9 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -12641,7 +12599,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 9 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -13146,7 +13103,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 9 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -13399,7 +13355,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 9 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -13652,8 +13607,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 10
-  // Airline 10 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -14158,7 +14111,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 10 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -14663,7 +14615,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 10 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -14916,7 +14867,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 10 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -15169,8 +15119,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 11
-  // Airline 11 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -15675,7 +15623,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 11 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -16180,7 +16127,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 11 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -16433,7 +16379,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 11 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -16686,8 +16631,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 12
-  // Airline 12 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -17192,7 +17135,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 12 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -17697,7 +17639,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 12 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -17950,7 +17891,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 12 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -18203,8 +18143,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 13
-  // Airline 13 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -18709,7 +18647,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 13 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -19214,7 +19151,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 13 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -19467,7 +19403,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 13 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -19720,8 +19655,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 14
-  // Airline 14 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -20226,7 +20159,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 14 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -20731,7 +20663,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 14 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -20984,7 +20915,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 14 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -21237,8 +21167,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 15
-  // Airline 15 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -21743,7 +21671,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 15 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -22248,7 +22175,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 15 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -22501,7 +22427,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 15 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -22754,8 +22679,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 16
-  // Airline 16 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -23260,7 +23183,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 16 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -23765,7 +23687,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 16 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -24018,7 +23939,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 16 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -24271,8 +24191,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 17
-  // Airline 17 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -24777,7 +24695,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 17 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -25282,7 +25199,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 17 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -25535,7 +25451,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 17 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -25788,8 +25703,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 18
-  // Airline 18 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -26294,7 +26207,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 18 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -26799,7 +26711,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 18 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -27052,7 +26963,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 18 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -27305,8 +27215,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 19
-  // Airline 19 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -27811,7 +27719,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 19 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -28316,7 +28223,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 19 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -28569,7 +28475,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 19 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -28822,8 +28727,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 20
-  // Airline 20 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -29328,7 +29231,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 20 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -29833,7 +29735,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 20 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -30086,7 +29987,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 20 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -30339,8 +30239,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 21
-  // Airline 21 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -30845,7 +30743,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 21 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -31350,7 +31247,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 21 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -31603,7 +31499,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 21 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -31856,8 +31751,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 22
-  // Airline 22 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -32362,7 +32255,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 22 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -32867,7 +32759,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 22 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -33120,7 +33011,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 22 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -33373,8 +33263,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 23
-  // Airline 23 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -33879,7 +33767,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 23 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -34384,7 +34271,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 23 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -34637,7 +34523,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 23 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -34890,8 +34775,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 24
-  // Airline 24 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -35396,7 +35279,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 24 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -35901,7 +35783,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 24 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -36154,7 +36035,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 24 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -36407,8 +36287,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 25
-  // Airline 25 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -36913,7 +36791,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 25 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -37418,7 +37295,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 25 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -37671,7 +37547,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 25 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -37924,8 +37799,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 26
-  // Airline 26 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -38430,7 +38303,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 26 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -38935,7 +38807,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 26 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -39188,7 +39059,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 26 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -39441,8 +39311,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 27
-  // Airline 27 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -39947,7 +39815,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 27 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -40452,7 +40319,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 27 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -40705,7 +40571,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 27 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -40958,8 +40823,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 28
-  // Airline 28 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -41464,7 +41327,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 28 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -41969,7 +41831,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 28 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -42222,7 +42083,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 28 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -42475,8 +42335,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 29
-  // Airline 29 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -42981,7 +42839,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 29 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -43486,7 +43343,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 29 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -43739,7 +43595,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 29 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -43992,8 +43847,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 30
-  // Airline 30 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -44498,7 +44351,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 30 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -45003,7 +44855,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 30 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -45256,7 +45107,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 30 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -45509,8 +45359,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 31
-  // Airline 31 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -46015,7 +45863,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 31 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -46520,7 +46367,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 31 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -46773,7 +46619,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 31 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -47026,8 +46871,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 32
-  // Airline 32 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -47532,7 +47375,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 32 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -48037,7 +47879,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 32 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -48290,7 +48131,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 32 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -48543,8 +48383,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 33
-  // Airline 33 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -49049,7 +48887,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 33 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -49554,7 +49391,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 33 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -49807,7 +49643,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 33 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -50060,8 +49895,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 34
-  // Airline 34 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -50566,7 +50399,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 34 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -51071,7 +50903,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 34 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -51324,7 +51155,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 34 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -51577,8 +51407,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 35
-  // Airline 35 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -52083,7 +51911,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 35 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -52588,7 +52415,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 35 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -52841,7 +52667,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 35 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -53094,8 +52919,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 36
-  // Airline 36 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -53600,7 +53423,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 36 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -54105,7 +53927,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 36 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -54358,7 +54179,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 36 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -54611,8 +54431,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 37
-  // Airline 37 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -55117,7 +54935,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 37 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -55622,7 +55439,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 37 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -55875,7 +55691,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 37 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -56128,8 +55943,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 38
-  // Airline 38 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -56634,7 +56447,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 38 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -57139,7 +56951,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 38 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -57392,7 +57203,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 38 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -57645,8 +57455,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 39
-  // Airline 39 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -58151,7 +57959,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 39 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -58656,7 +58463,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 39 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -58909,7 +58715,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 39 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -59162,8 +58967,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 40
-  // Airline 40 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -59668,7 +59471,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 40 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -60173,7 +59975,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 40 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -60426,7 +60227,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 40 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -60679,8 +60479,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 41
-  // Airline 41 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -61185,7 +60983,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 41 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -61690,7 +61487,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 41 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -61943,7 +61739,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 41 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -62196,8 +61991,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 42
-  // Airline 42 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -62702,7 +62495,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 42 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -63207,7 +62999,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 42 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -63460,7 +63251,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 42 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -63713,8 +63503,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 43
-  // Airline 43 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -64219,7 +64007,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 43 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -64724,7 +64511,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 43 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -64977,7 +64763,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 43 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",
@@ -65230,8 +65015,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // :Airline 44
-  // Airline 44 - Economy Class
   {
     seat_number: "A1",
     seat_class: "economy",
@@ -65736,7 +65519,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 44 - Premium Class
   {
     seat_number: "A1",
     seat_class: "premium",
@@ -66241,7 +66023,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 44 - Business Class
   {
     seat_number: "A1",
     seat_class: "business",
@@ -66494,7 +66275,6 @@ const seats = [
     createdAt: new Date(),
     updatedAt: new Date(),
   },
-  // Airline 44 - First Class
   {
     seat_number: "A1",
     seat_class: "first_class",

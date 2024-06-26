@@ -59,20 +59,19 @@ exports.createSeat = async (req, res, next) => {
     const { seat_number, airline_id, seat_class } = req.body;
     if (!seat_number || seat_number == "") {
       return next({
-        message: "Seat Number must be provided",
+        message: "Seat number is required",
         statusCode: 400,
       });
     }
     if (!validSeatClasses.includes(seat_class)) {
       return next({
         message:
-          "Invalid Seat's class. Must be one of: " +
-          validSeatClasses.join(", "),
+          "Invalid seat class. Must be one of: " + validSeatClasses.join(", "),
       });
     }
     if (!airline_id || airline_id == "") {
       return next({
-        message: "Flight ID must be provided",
+        message: "Flight id is required",
         statusCode: 400,
       });
     }
@@ -99,20 +98,19 @@ exports.updateSeat = async (req, res, next) => {
     const { seat_number, airline_id, seat_class } = req.body;
     if (!seat_number || seat_number == "") {
       return next({
-        message: "Seat Number must be provided",
+        message: "Seat number is required",
         statusCode: 400,
       });
     }
     if (!validSeatClasses.includes(seat_class)) {
       return next({
         message:
-          "Invalid Seat's class. Must be one of: " +
-          validSeatClasses.join(", "),
+          "Invalid seat class. Must be one of: " + validSeatClasses.join(", "),
       });
     }
     if (!airline_id || airline_id == "") {
       return next({
-        message: "Flight ID must be provided",
+        message: "Flight id is required",
         statusCode: 400,
       });
     }
@@ -151,13 +149,13 @@ exports.getFilteredSeats = async (req, res, next) => {
     const seatClass = req.query.seatClass;
     if (!flightId || isNaN(parseInt(flightId) || parseInt(flightId) < 0)) {
       return next({
-        message: "Departure Flight ID must be provided",
+        message: "Departure flight id is required",
         statusCode: 400,
       });
     }
     if (!seatClass || seatClass == "") {
       return next({
-        message: "Seat Class must be provided",
+        message: "Seat class is required",
         statusCode: 400,
       });
     }

@@ -4,7 +4,6 @@ const { Payment, BookingSeat, BookingPassenger } = require("../../models");
 const updatePaymentStatusScheduled = async () => {
   const now = new Date();
 
-  // Temukan transaksi yang telah melewati waktu expiry dan masih dalam status pending
   try {
     const [numberOfAffectedRows, affectedPayments] = await Payment.update(
       { status: "Expired" },
@@ -20,8 +19,6 @@ const updatePaymentStatusScheduled = async () => {
     );
 
     if (numberOfAffectedRows > 0) {
-      console.log(`${numberOfAffectedRows} transaksi telah kedaluwarsa.`);
-
       const bookingIds = affectedPayments.map(
         (payment) => payment.booking_code
       );
@@ -41,17 +38,6 @@ const updatePaymentStatusScheduled = async () => {
           },
         },
       });
-
-      console.log(
-        `BookingSeats terkait dengan booking_id ${bookingIds.join(
-          ", "
-        )} telah dihapus.`
-      );
-      console.log(
-        `BookingPassengers terkait dengan booking_id ${bookingIds.join(
-          ", "
-        )} telah dihapus.`
-      );
     }
   } catch (error) {
     console.error("Error updating expired transactions:", error);

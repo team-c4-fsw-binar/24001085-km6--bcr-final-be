@@ -14,7 +14,7 @@ exports.getBookingSeat = async (id) => {
   if (data.length > 0) {
     return data[0];
   }
-  throw new Error(`Booking Seat is not found`);
+  throw new Error(`Booking seat not found`);
 };
 
 exports.getBookingSeatsByBookingCode = async (booking_code) => {
@@ -26,7 +26,7 @@ exports.getBookingSeatsByBookingCode = async (booking_code) => {
   if (data.length > 0) {
     return data[0];
   }
-  throw new Error(`Booking Seat is not found`);
+  throw new Error(`Booking seat not found`);
 };
 
 exports.getBookingSeatsBySeatId = async (seatId) => {
@@ -38,7 +38,7 @@ exports.getBookingSeatsBySeatId = async (seatId) => {
   if (data.length > 0) {
     return data[0];
   }
-  throw new Error(`Booking Seat is not found`);
+  throw new Error(`Booking seat not found`);
 };
 
 exports.createBookingSeat = async (payload) => {
@@ -61,7 +61,7 @@ exports.updateBookingSeat = async (id, payload) => {
   if (data.length > 0) {
     return data[0];
   }
-  throw new Error(`Booking Seat is not found`);
+  throw new Error(`Booking seat not found`);
 };
 
 exports.deleteBookingSeat = async (id) => {
@@ -71,7 +71,7 @@ exports.deleteBookingSeat = async (id) => {
     },
   });
   if (deletedCount === 0) {
-    throw new Error(`Booking Seat is not found`);
+    throw new Error(`Booking seat not found`);
   }
   return null;
 };
@@ -83,7 +83,7 @@ exports.deleteBookingSeatByBookingCode = async (booking_code) => {
     },
   });
   if (deletedCount === 0) {
-    throw new Error(`Booking Seat is not found`);
+    throw new Error(`Booking seat not found`);
   }
   return null;
 };

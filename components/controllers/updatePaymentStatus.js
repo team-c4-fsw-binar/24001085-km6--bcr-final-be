@@ -1,4 +1,4 @@
-const { updatePaymentStatus } = require("../services/update_payment_status");
+const { updatePaymentStatus } = require("../services/updatePaymentStatus");
 const {
   deleteBookingPassengerByBookingCode,
 } = require("../services/bookingPassenger");

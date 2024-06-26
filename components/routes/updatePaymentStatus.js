@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const { updatePaymentStatus } = require("../controllers/update_payment_status");
+const { updatePaymentStatus } = require("../controllers/updatePaymentStatus");
 const {
   validateIP,
   validateSignature,

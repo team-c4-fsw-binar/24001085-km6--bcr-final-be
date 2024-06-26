@@ -3,14 +3,6 @@ const axios = require("axios");
 const { config } = require("../../config/cloudinary");
 
 exports.getTokenAndRedirectPaymentUrl = async (payload) => {
-  // let snap = new Midtrans.Snap({
-  //   isProduction: false,
-  //   serverKey: process.env.SECRET,
-  //   clientKey: process.env.NEXT_PUBLIC_CLIENT,
-  // });
-  // const data = await snap.createTransactionToken(payload);
-  // return data;
-
   const { order_id, price_amount } = payload;
 
   let data = JSON.stringify({
@@ -18,12 +10,6 @@ exports.getTokenAndRedirectPaymentUrl = async (payload) => {
       order_id: order_id,
       gross_amount: price_amount,
     },
-    // callbacks: {
-    //   finish:
-    //     process.env.NODE_ENV == "development"
-    //       ? "http://localhost:3000/api/payments/update_status"
-    //       : "https://terbangaja-staging-dot-kampus-merdeka-6.df.r.appspot.com/api/payments/update_status",
-    // },
     expiry: {
       unit: "minutes",
       duration: 60,

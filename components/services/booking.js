@@ -15,7 +15,7 @@ const { v4: uuidv4 } = require("uuid");
 const { createBookingSeat } = require("../repositories/bookingSeat");
 const { createPassenger } = require("../repositories/passenger");
 const { createBookingPassenger } = require("../repositories/bookingPassenger");
-const { findTicketDetail } = require("./find_ticket");
+const { findTicketDetail } = require("./findTicket");
 
 exports.createBooking = async (payload) => {
   const {
@@ -122,8 +122,6 @@ exports.createBooking = async (payload) => {
     expired_at: new Date(start_at.getTime() + expiry_duration),
   });
 
-  // check if the seat has been booked before
-
   const departure_flight_booked_seats_id = [];
   const departure_bookings = await getBookingsByFlightId(departure_flight_id);
   departure_bookings.forEach((booking) => {
@@ -132,13 +130,10 @@ exports.createBooking = async (payload) => {
     );
   });
 
-  // Create Booking Seat
-
   seats_id.forEach(async (seat_id) => {
     await createBookingSeat({ booking_code: code, seat_id });
   });
 
-  // Create Passengers
   passengers.forEach(async (passenger) => {
     const newPassenger = await createPassenger({ user_id, ...passenger });
 
