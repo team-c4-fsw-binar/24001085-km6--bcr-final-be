@@ -3,7 +3,7 @@ const { authMiddleware } = require("../../src/middleware/auth");
 
 const {
   getBookingHistoriesByFlightIDandDateRange,
-} = require("../controllers/booking_history");
+} = require("../controllers/bookingHistory");
 
 router
   .route("/")

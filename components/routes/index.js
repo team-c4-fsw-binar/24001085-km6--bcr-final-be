@@ -12,7 +12,7 @@ const airportRoutes = require("./airport");
 const airlineRoutes = require("./airline");
 const flightRoutes = require("./flight");
 
-const bookingHistoryRoutes = require("./booking_history");
+const bookingHistoryRoutes = require("./bookingHistory");
 const findTicketsRoutes = require("./findTicket");
 const updatePaymentStatus = require("./updatePaymentStatus");
 const { updatePaymentStatusScheduled } = require("../../src/utils/payment");
