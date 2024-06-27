@@ -4,7 +4,7 @@ exports.getBookingHistoriesByFlightIDandDateRange = async (
   user_id,
   payload
 ) => {
-  const { code, startDate, endDate } = payload;
+  const { code, startDate, endDate, departureArrivalAirport } = payload;
 
   const data = await getBookingsByUserId(user_id);
 
@@ -26,6 +26,26 @@ exports.getBookingHistoriesByFlightIDandDateRange = async (
     filteredData = filteredData.filter((booking) => {
       const bookingDate = new Date(booking.order_date);
       return bookingDate >= start && bookingDate <= end;
+    });
+  }
+
+  if (departureArrivalAirport) {
+    filteredData = filteredData.filter((booking) => {
+      let contoh = booking.departureFlight_respon.departureAirport_respon.name;
+      return (
+        booking.departureFlight_respon.departureAirport_respon?.name.includes(
+          departureArrivalAirport
+        ) ||
+        booking.departureFlight_respon.arrivalAirport_respon?.name.includes(
+          departureArrivalAirport
+        ) ||
+        booking.returnFlight_respon.departureAirport_respon?.name.includes(
+          departureArrivalAirport
+        ) ||
+        booking.returnFlight_respon.arrivalAirport_respon?.name.includes(
+          departureArrivalAirport
+        )
+      );
     });
   }
 
