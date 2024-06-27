@@ -4,7 +4,7 @@ exports.getBookingHistoriesByFlightIDandDateRange = async (
   user_id,
   payload
 ) => {
-  const { code, startDate, endDate, departureArrivalAirport } = payload;
+  const { code, startDate, endDate, airportName } = payload;
 
   const data = await getBookingsByUserId(user_id);
 
@@ -29,22 +29,22 @@ exports.getBookingHistoriesByFlightIDandDateRange = async (
     });
   }
 
-  if (departureArrivalAirport) {
+  if (airportName) {
     filteredData = filteredData.filter((booking) => {
-      let contoh = booking.departureFlight_respon.departureAirport_respon.name;
+      let departureFlightDepartureAirport =
+        booking.departureFlight_respon?.departureAirport_respon?.name?.toLowerCase();
+      let departureFlightArrivalAirport =
+        booking.departureFlight_respon?.arrivalAirport_respon?.name?.toLowerCase();
+      let returnFlightDepartureAirport =
+        booking.returnFlight_respon?.departureAirport_respon?.name?.toLowerCase();
+      let returnFlightArrivalAirport =
+        booking.returnFlight_respon?.arrivalAirport_respon?.name?.toLowerCase();
+
       return (
-        booking.departureFlight_respon.departureAirport_respon?.name.includes(
-          departureArrivalAirport
-        ) ||
-        booking.departureFlight_respon.arrivalAirport_respon?.name.includes(
-          departureArrivalAirport
-        ) ||
-        booking.returnFlight_respon.departureAirport_respon?.name.includes(
-          departureArrivalAirport
-        ) ||
-        booking.returnFlight_respon.arrivalAirport_respon?.name.includes(
-          departureArrivalAirport
-        )
+        departureFlightDepartureAirport?.includes(airportName.toLowerCase()) ||
+        departureFlightArrivalAirport?.includes(airportName.toLowerCase()) ||
+        returnFlightDepartureAirport?.includes(airportName.toLowerCase()) ||
+        returnFlightArrivalAirport?.includes(airportName.toLowerCase())
       );
     });
   }
