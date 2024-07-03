@@ -8,8 +8,12 @@ const {
   getFilteredSeats,
 } = require("../controllers/seat");
 
-router.route("/").get(getSeats).post(createSeat);
+router.route("/").get(getSeats).post(authMiddleware(), createSeat);
 router.get("/filter", getFilteredSeats);
-router.route("/:id").get(getSeat).put(updateSeat).delete(deleteSeat);
+router
+  .route("/:id")
+  .get(getSeat)
+  .put(authMiddleware(), updateSeat)
+  .delete(authMiddleware(), deleteSeat);
 
 module.exports = router;

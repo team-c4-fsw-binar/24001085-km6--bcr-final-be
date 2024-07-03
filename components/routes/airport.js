@@ -10,12 +10,12 @@ const {
   getAllCities,
 } = require("../controllers/airport");
 
-router.route("/").get(getAirports).post(addAirport);
+router.route("/").get(getAirports).post(authMiddleware(), addAirport);
 router.get("/cities", getAllCities);
 router
   .route("/:id")
   .get(getAirportById)
-  .put(updateAirport)
-  .delete(deleteAirport);
+  .put(authMiddleware(), updateAirport)
+  .delete(authMiddleware(), deleteAirport);
 
 module.exports = router;

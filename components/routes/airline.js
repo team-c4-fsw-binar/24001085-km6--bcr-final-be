@@ -9,11 +9,11 @@ const {
   deleteAirline,
 } = require("../controllers/airline");
 
-router.route("/").get(getAirlines).post(addAirline);
+router.route("/").get(getAirlines).post(authMiddleware(), addAirline);
 router
   .route("/:id")
   .get(getAirlineById)
-  .put(updateAirline)
-  .delete(deleteAirline);
+  .put(authMiddleware(), updateAirline)
+  .delete(authMiddleware(), deleteAirline);
 
 module.exports = router;

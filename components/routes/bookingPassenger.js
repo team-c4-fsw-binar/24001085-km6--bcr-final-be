@@ -2,15 +2,13 @@ const { createBookingPassenger, getAllBookingPassenger, getBookingPassengerById,
 
 const router = require("express").Router();
 
-router
-  .route("/")
-  .post(createBookingPassenger)
-  .get(getAllBookingPassenger)
+router.route("/").postauthMiddleware(),
+  createBookingPassenger.get(getAllBookingPassenger);
 
 router
   .route("/:id")
   .get(getBookingPassengerById)
-  .put(updateBookingPassenger)
-  .delete(deleteBookingPassenger)
+  .put(authMiddleware(), updateBookingPassenger)
+  .delete(authMiddleware(), deleteBookingPassenger);
 
 module.exports = router

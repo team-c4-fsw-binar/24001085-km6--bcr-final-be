@@ -9,7 +9,11 @@ const {
   deleteFlight,
 } = require("../controllers/flight");
 
-router.route("/").get(getFlights).post(addFlight);
-router.route("/:id").get(getFlightById).put(updateFlight).delete(deleteFlight);
+router.route("/").get(getFlights).post(authMiddleware(), addFlight);
+router
+  .route("/:id")
+  .get(getFlightById)
+  .put(authMiddleware(), updateFlight)
+  .delete(authMiddleware(), deleteFlight);
 
 module.exports = router;

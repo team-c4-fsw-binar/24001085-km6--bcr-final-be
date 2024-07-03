@@ -8,12 +8,15 @@ const {
 
 const router = require("express").Router();
 
-router.route("/").post(createBookingSeat).get(getBookingSeats);
+router
+  .route("/")
+  .post(authMiddleware(), createBookingSeat)
+  .get(getBookingSeats);
 
 router
   .route("/:id")
   .get(getBookingSeat)
-  .put(updateBookingSeat)
-  .delete(deleteBookingSeat);
+  .put(authMiddleware(), updateBookingSeat)
+  .delete(authMiddleware(), deleteBookingSeat);
 
 module.exports = router;
